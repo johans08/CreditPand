@@ -26,5 +26,19 @@ namespace CreditPand.UI.Controllers
 
             return View();
         }
+
+        public ActionResult Services()
+        {
+            ViewBag.Message = "Your services page.";
+
+            return View();
+        }
+
+        public ActionResult OnePage()
+        {
+            ViewBag.Message = "One Page transform.";
+
+            return View();
+        }
     }
 }

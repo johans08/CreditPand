@@ -9,7 +9,12 @@ namespace CreditPand.UI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/JqueryJs/jquery.min.js", 
+                        "~/Scripts/MainJs/slick.js", 
+                        "~/Scripts/MainJs/owl.js",
+                        "~/Scripts/MainJs/custom.js",
+                        "~/Scripts/MainJs/accordions.js",
+                        "~/Scripts/MainJs/jquery.singlePageNav.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -20,11 +25,14 @@ namespace CreditPand.UI
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/BootstrapJs/bootstrap.bundle.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/BootstrapCss/bootstrap.min.css",
+                      "~/Content/MainCss/fontawesome.css",
+                      "~/Content/MainCss/owl.css",
+                      "~/Content/MainCss/templatemo-finance-business.css",
+                      "~/Content/MainCss/flex-slider.css"));
         }
     }
 }
