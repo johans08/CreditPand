@@ -135,8 +135,12 @@
     <Content Include="Content\Images\about-image.jpg" />
     <Content Include="Content\Images\client-01.png" />
     <Content Include="Content\Images\fun-facts-bg.jpg" />
+    <Content Include="Content\Images\Fundadores.gif" />
     <Content Include="Content\Images\more-info.jpg" />
     <Content Include="Content\Images\page-heading-bg.jpg" />
+    <Content Include="Content\Images\Panda.png" />
+    <Content Include="Content\Images\PandaDurmiendo.gif" />
+    <Content Include="Content\Images\PandaUser.jpg" />
     <Content Include="Content\Images\service_01.jpg" />
     <Content Include="Content\Images\service_02.jpg" />
     <Content Include="Content\Images\service_03.jpg" />
@@ -211,7 +215,7 @@
     <Content Include="Scripts\JqueryJs\jquery.min.map" />
     <Content Include="Scripts\JqueryJs\jquery.slim.min.map" />
     <Content Include="Views\Home\Services.cshtml" />
-    <Content Include="Views\Home\OnePage.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
