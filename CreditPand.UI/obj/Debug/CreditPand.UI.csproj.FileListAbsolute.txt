@@ -83,4 +83,3 @@ C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.csproj.AssemblyReference.cac
 C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.csproj.CoreCompileInputs.cache
 C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.dll
 C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.pdb
-C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.csproj.CopyComplete
