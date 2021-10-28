@@ -40,5 +40,12 @@ namespace CreditPand.UI.Controllers
 
             return View();
         }
+
+        public ActionResult ClientCards()
+        {
+            ViewBag.Message = "One Page transform.";
+
+            return View();
+        }
     }
 }

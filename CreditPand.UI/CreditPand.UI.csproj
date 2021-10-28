@@ -154,6 +154,7 @@
     <Content Include="Content\Images\team_01.jpg" />
     <Content Include="Content\Images\team_02.jpg" />
     <Content Include="Content\Images\team_03.jpg" />
+    <Content Include="Content\Images\VisaMastercard.png" />
     <Content Include="Content\MainCss\flex-slider.css" />
     <Content Include="Content\MainCss\fontawesome.css" />
     <Content Include="Content\MainCss\owl.css" />
@@ -216,6 +217,7 @@
     <Content Include="Scripts\JqueryJs\jquery.slim.min.map" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ClientCards.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
