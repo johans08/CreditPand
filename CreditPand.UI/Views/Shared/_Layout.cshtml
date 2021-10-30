@@ -27,14 +27,19 @@
             <div class="row">
                 <div class="col-md-8 col-xs-12">
                     <ul class="left-info">
-                        <li><a href="#"><i class="fa fa-laptop"></i> Opciones de Usuario </a></li> <!-- Opciones de usuario -->
-                        <li><a href="#"><i class="fa fa-user"></i> User : Nombre</a></li> <!-- Perfil del Usuario -->
+
+                        @{
+                            string nombre = "Johans"; <!-- Debe de ir el nombre del que inicio la sesión -->
+                        }
+
+                        <li><a><i class="fa fa-laptop"></i> Opciones de Usuario</a></li> <!-- Perfil del Usuario -->
+                        <li><a href="@Url.Action("User", "Home")"><i class="fa fa-user"></i> Usuario : @nombre</a></li> <!-- Perfil de Administrador -->
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
-                        <li><a href="ClientCards"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo personal de tarjetas -->
-                        <li><a href="#"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
+                        <li><a href="@Url.Action("ClientCards", "Home")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
+                        <li><a href="@Url.Action("Login", "Home")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
                     </ul>
                 </div>
             </div>
@@ -46,16 +51,16 @@
             <div class="row">
                 <div class="col-md-8 col-xs-12">
                     <ul class="left-info">
-                        <li><a href="#"><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                        <li><a href="#"><i class="fa fa-user"></i> Admin : Nombre</a></li> <!-- Perfil de Administrador -->
+                        <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
+                        <li><a href="@Url.Action("User", "Home")"><i class="fa fa-user"></i> Admin : @nombre</a></li> <!-- Perfil de Administrador -->
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
-                        <li><a href="#"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
-                        <li><a href="#"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
-                        <li><a href="#"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
+                        <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
+                        <li><a href="@Url.Action("AdminList", "Home")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
+                        <li><a href="@Url.Action("AdminCards", "Home")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
+                        <li><a href="@Url.Action("Login", "Home")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
                     </ul>
                 </div>
             </div>
@@ -72,22 +77,19 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Index">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">
                                 Inicio
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="About">Sobre Nosotros</a>
+                            <a class="nav-link" href="@Url.Action("About", "Home")">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Services">Nuestros Servicios</a>
+                            <a class="nav-link" href="@Url.Action("Contact", "Home")">Contactenos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Contact">Contactenos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Register">Registrar Usuario</a>
+                            <a class="nav-link" href="@Url.Action("Register", "Home")">Registrar Usuario</a>
                         </li>
                     </ul>
                 </div>
@@ -194,5 +196,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>
