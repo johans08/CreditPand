@@ -225,6 +225,7 @@
     <Content Include="Views\Home\ClientCards.cshtml" />
     <Content Include="Views\Home\AdminCards.cshtml" />
     <Content Include="Views\Home\AdminCharts.cshtml" />
+    <Content Include="Views\Home\User.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
