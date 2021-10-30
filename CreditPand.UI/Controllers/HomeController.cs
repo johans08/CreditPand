@@ -27,16 +27,36 @@ namespace CreditPand.UI.Controllers
             return View();
         }
 
-        public ActionResult Services()
+       
+
+        public ActionResult Register()
         {
-            ViewBag.Message = "Your services page.";
+            ViewBag.Message = "One Page transform.";
 
             return View();
         }
 
-        public ActionResult OnePage()
+        public ActionResult ClientCards()
         {
             ViewBag.Message = "One Page transform.";
+
+            return View();
+        }
+        public ActionResult AdminCards()
+        {
+            ViewBag.Message = "Administracion de Tarjetas.";
+
+            return View();
+        }
+        public ActionResult AdminCharts()
+        {
+            ViewBag.Message = "Administracion de Reportes.";
+
+            return View();
+        }
+        public ActionResult User()
+        {
+            ViewBag.Message = "Administracion de usuarios.";
 
             return View();
         }

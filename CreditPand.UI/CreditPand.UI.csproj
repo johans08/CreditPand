@@ -132,11 +132,20 @@
     <Content Include="Content\Fonts\flexslider-icon.svg" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\slick.svg" />
+    <Content Include="Content\Highcharts\Code\highcharts-3d.js" />
+    <Content Include="Content\Highcharts\Code\highcharts.js" />
+    <Content Include="Content\Highcharts\Code\Modules\accessibility.js" />
+    <Content Include="Content\Highcharts\Code\Modules\export-data.js" />
+    <Content Include="Content\Highcharts\Code\Modules\exporting.js" />
     <Content Include="Content\Images\about-image.jpg" />
     <Content Include="Content\Images\client-01.png" />
     <Content Include="Content\Images\fun-facts-bg.jpg" />
+    <Content Include="Content\Images\Fundadores.gif" />
     <Content Include="Content\Images\more-info.jpg" />
     <Content Include="Content\Images\page-heading-bg.jpg" />
+    <Content Include="Content\Images\Panda.png" />
+    <Content Include="Content\Images\PandaDurmiendo.gif" />
+    <Content Include="Content\Images\PandaUser.jpg" />
     <Content Include="Content\Images\service_01.jpg" />
     <Content Include="Content\Images\service_02.jpg" />
     <Content Include="Content\Images\service_03.jpg" />
@@ -150,6 +159,7 @@
     <Content Include="Content\Images\team_01.jpg" />
     <Content Include="Content\Images\team_02.jpg" />
     <Content Include="Content\Images\team_03.jpg" />
+    <Content Include="Content\Images\VisaMastercard.png" />
     <Content Include="Content\MainCss\flex-slider.css" />
     <Content Include="Content\MainCss\fontawesome.css" />
     <Content Include="Content\MainCss\owl.css" />
@@ -211,7 +221,11 @@
     <Content Include="Scripts\JqueryJs\jquery.min.map" />
     <Content Include="Scripts\JqueryJs\jquery.slim.min.map" />
     <Content Include="Views\Home\Services.cshtml" />
-    <Content Include="Views\Home\OnePage.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ClientCards.cshtml" />
+    <Content Include="Views\Home\AdminCards.cshtml" />
+    <Content Include="Views\Home\AdminCharts.cshtml" />
+    <Content Include="Views\Home\User.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
