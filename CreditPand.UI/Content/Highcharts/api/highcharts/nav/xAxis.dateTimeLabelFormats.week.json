@@ -1,1 +1,0 @@
-{"typeList":{"names":["string","*"]},"children":[{"name":"main","fullname":"xAxis.dateTimeLabelFormats.week.main","isLeaf":true,"default":"%e. %b","typeMap":{"string":1},"typeList":{"names":["string"]},"filename":"js/Core/Axis/AxisDefaults.js","line":500,"lineEnd":500,"version":"fb2231ee7c"}]}

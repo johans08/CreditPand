@@ -132,6 +132,11 @@
     <Content Include="Content\Fonts\flexslider-icon.svg" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Fonts\slick.svg" />
+    <Content Include="Content\Highcharts\Code\highcharts-3d.js" />
+    <Content Include="Content\Highcharts\Code\highcharts.js" />
+    <Content Include="Content\Highcharts\Code\Modules\accessibility.js" />
+    <Content Include="Content\Highcharts\Code\Modules\export-data.js" />
+    <Content Include="Content\Highcharts\Code\Modules\exporting.js" />
     <Content Include="Content\Images\about-image.jpg" />
     <Content Include="Content\Images\client-01.png" />
     <Content Include="Content\Images\fun-facts-bg.jpg" />
@@ -188,7 +193,6 @@
     <Content Include="Scripts\MainJs\jquery.singlePageNav.min.js" />
     <Content Include="Scripts\MainJs\owl.js" />
     <Content Include="Scripts\MainJs\slick.js" />
-    <Content Include="Views\Shared\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

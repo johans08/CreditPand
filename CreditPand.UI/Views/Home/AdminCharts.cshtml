@@ -3,72 +3,79 @@
     ViewBag.Title = "AdminCharts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style type="text/css">
-    #container {
-        height: 400px;
-    }
 
-    .highcharts-figure, .highcharts-data-table table {
-        min-width: 310px;
-        max-width: 800px;
-        margin: 1em auto;
-    }
-
-    #sliders td input[type=range] {
-        display: inline;
-    }
-
-    #sliders td {
-        padding-right: 1em;
-        white-space: nowrap;
-    }
-</style>
 
 <!-- Page Content -->
-
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Reportes Graficos</h1>
+                <span>Reportes graficos de la empresa!</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="single-services">
     <div class="container">
         <div class="row" id="tabs">
             <div class="col-md-4">
                 <ul>
-                    <li><a href='#tabs-1'>MasterCard <i class="fa fa-angle-right"></i></a></li>
-                    <li><a href='#tabs-2'>Visa <i class="fa fa-angle-right"></i></a></li>
+                    <li><a href='#tabs-1'>Grafica 1 <i class="fa fa-angle-right"></i></a></li>
+                    <li><a href='#tabs-2'>Grafica 2 <i class="fa fa-angle-right"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-8">
                 <section class='tabs-content'>
                     <article id='tabs-1'>
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-                                <p class="highcharts-description">
-                                    Chart designed to highlight 3D column chart rendering options.
-                                    Move the sliders below to change the basic 3D settings for the chart.
-                                    3D column charts are generally harder to read than 2D charts, but provide
-                                    an interesting visual effect.
-                                </p>
-                                <div id="sliders">
-                                    <table>
-                                        <tr>
-                                            <td><label for="alpha">Alpha Angle</label></td>
-                                            <td><input id="alpha" type="range" min="0" max="45" value="15" /> <span id="alpha-value" class="value"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label for="beta">Beta Angle</label></td>
-                                            <td><input id="beta" type="range" min="-45" max="45" value="15" /> <span id="beta-value" class="value"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label for="depth">Depth</label></td>
-                                            <td><input id="depth" type="range" min="20" max="100" value="50" /> <span id="depth-value" class="value"></span></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </figure>
+                        <figure class="highcharts-figure">
+                            <div id="container1"></div>
+                            <p class="highcharts-description">
+                                Chart designed to highlight 3D column chart rendering options.
+                                Move the sliders below to change the basic 3D settings for the chart.
+                                3D column charts are generally harder to read than 2D charts, but provide
+                                an interesting visual effect.
+                            </p>
+                        </figure>
+                    </article>
+                    <article id='tabs-2'>
+                        <figure class="highcharts-figure">
+                            <div id="container2"></div>
+                            <p class="highcharts-description">
+                                Bar chart showing horizontal columns. This chart type is often
+                                beneficial for smaller screens, as the user can scroll through the data
+                                vertically, and axis labels are easy to read.
+                            </p>
+                        </figure>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- ******************** -->
+<!-- SCRIPTS DE LA PAGINA -->
+<!-- ******************** -->
 
-<script type="text/javascript">// Set up the chart
+<script language="text/Javascript">
+
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+</script>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+<script type="text/javascript">
+// Set up the chart
 const chart = new Highcharts.Chart({
     chart: {
-        renderTo: 'container',
+        renderTo: 'container1',
         type: 'column',
         options3d: {
             enabled: true,
@@ -109,100 +116,75 @@ document.querySelectorAll('#sliders input').forEach(input => input.addEventListe
 
 showValues();</script>
 
+<script src="~/Content/Highcharts/Code/Modules/accessibility.js"></script>
+<script src="~/Content/Highcharts/Code/Modules/export-data.js"></script>
+<script src="~/Content/Highcharts/Code/Modules/exporting.js"></script>
+<script src="~/Content/Highcharts/Code/highcharts-3d.js"></script>
+<script src="~/Content/Highcharts/Code/highcharts.js"></script>
 
-                    </article>
-                    <article id='tabs-2'>
-                        <div class="col-md-12">
-                            <div class="section-heading">
-                                <h2>Solicitar tarjeta<em> Visa</em></h2>
-                                <span>Llena los datos para solicitar una nueva tarjeta</span>
-                            </div>
-                        </div>
-                        <div class="callback-form" style="margin-top: 0px;">
-                            <div class="col-md-12">
-                                <div class="contact-form">
-                                    <form id="contact" action="" method="post">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <button type="submit" id="form-submit" class="border-button">Send Message</button>
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h4>Beneficios Visa</h4>
-                        <p>
-                            ¿Qué es la tarjeta Visa Infinite?
-                            La tarjeta Visa Infinite te brinda gama de beneficios creados para personas como tú.
-                            <br><br>Desde un asistente personal las 24 horas, a la cobertura de seguros más amplia para tus compras y viajes.
-                        </p>
-                    </article>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="testimonials" style="background-color: #373636;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h2 style="color: #ffffff;">Registros de <em>Tarjetas Personales</em></h2>
-                    <span style="color: #ffffff;">Tarjetas Mastercard Registradas</span> <!-- Esto deberia de cambiar (Visa-Mastercard) -->
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="owl-testimonials owl-carousel">
-                    <div class="testimonial-item">
-                        <!-- se debe de crear un objeto por consulta -->
-                        <div class="inner-content">
-                            <h4>Deberia de mostrar el tipo</h4>
-                            <span>Datos de consulta de tarjeta</span>
-                            <img style=" max-width: 210px; border-radius: 10%;" src="~/Content/Images/VisaMastercard.png" alt="">
-                        </div>
-                        <img src="~/Content/Images/PandaUser.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script language="text/Javascript">
-
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-</script>
-<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script type="text/javascript">
+Highcharts.chart('container2', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Historic World Population by Region'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
+    }]
+});</script>
