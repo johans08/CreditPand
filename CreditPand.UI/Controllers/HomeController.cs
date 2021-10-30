@@ -47,5 +47,17 @@ namespace CreditPand.UI.Controllers
 
             return View();
         }
+        public ActionResult AdminCards()
+        {
+            ViewBag.Message = "Administracion de Tarjetas.";
+
+            return View();
+        }
+        public ActionResult AdminCharts()
+        {
+            ViewBag.Message = "Administracion de Reportes.";
+
+            return View();
+        }
     }
 }

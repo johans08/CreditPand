@@ -188,6 +188,7 @@
     <Content Include="Scripts\MainJs\jquery.singlePageNav.min.js" />
     <Content Include="Scripts\MainJs\owl.js" />
     <Content Include="Scripts\MainJs\slick.js" />
+    <Content Include="Views\Shared\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -218,6 +219,8 @@
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\ClientCards.cshtml" />
+    <Content Include="Views\Home\AdminCards.cshtml" />
+    <Content Include="Views\Home\AdminCharts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

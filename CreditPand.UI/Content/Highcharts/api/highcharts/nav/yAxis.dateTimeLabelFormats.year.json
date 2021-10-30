@@ -1,0 +1,1 @@
+{"typeList":{"names":["string","*"]},"children":[{"name":"main","fullname":"yAxis.dateTimeLabelFormats.year.main","isLeaf":true,"default":"%Y","typeMap":{"string":1},"typeList":{"names":["string"]},"filename":"js/Core/Axis/AxisDefaults.js","line":514,"lineEnd":514,"version":"fb2231ee7c"}]}

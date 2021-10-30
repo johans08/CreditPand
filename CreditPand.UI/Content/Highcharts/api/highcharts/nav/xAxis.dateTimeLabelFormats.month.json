@@ -1,0 +1,1 @@
+{"typeList":{"names":["string","*"]},"children":[{"name":"main","fullname":"xAxis.dateTimeLabelFormats.month.main","isLeaf":true,"default":"%b '%y","typeMap":{"string":1},"typeList":{"names":["string"]},"filename":"js/Core/Axis/AxisDefaults.js","line":507,"lineEnd":507,"version":"fb2231ee7c"}]}
