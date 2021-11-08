@@ -17,6 +17,7 @@ namespace CreditPand.BD.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
+            this.Solicitud = new HashSet<Solicitud>();
             this.Tarjeta = new HashSet<Tarjeta>();
         }
     
@@ -31,6 +32,8 @@ namespace CreditPand.BD.Modelo
         public int Rol { get; set; }
     
         public virtual Rol Rol1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Solicitud> Solicitud { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tarjeta> Tarjeta { get; set; }
     }

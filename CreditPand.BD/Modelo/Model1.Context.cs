@@ -27,6 +27,7 @@ namespace CreditPand.BD.Modelo
     
         public virtual DbSet<Interes> Interes { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<Solicitud> Solicitud { get; set; }
         public virtual DbSet<Tarjeta> Tarjeta { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
     }

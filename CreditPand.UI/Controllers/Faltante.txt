@@ -1,0 +1,44 @@
+﻿Faltantes del Proyecto
+-----------------------------------------------------------------------------------------
+1- Login: las sesiones funcionan solo en una pantalla y no en la barra de opciones como se debería. Se deben acomodar los elementos 
+gráficos. Manejo de código entre Controller y Gestor.
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+2- Solicitud Tarjeta de Crédito: se pueden crear tarjetas de forma directa, pero no enviar como 
+solicitud para ser aprobada.
+--La tabla de Interes no tiene relación con ninguna.
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+3- Pantalla de activación de solicitudes: falta del todo.
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+4- Consulta de Tarjetas Activas: se visualiza un grid que se puede descargar en Excel, faltan los filtros de búsqueda
+está la parte gráfica, no permite filtrar. No se puede ordenar el grid.
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+5- CRUD: funciona de forma completa, pero se deben acomodar los elementos gráficos. 
+Se puede mejorar la lista de los usuarios con un 
+grid igual al de la vista de tarjetas activas
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+6- Barras de opciones: las opciones de admin solo deben visualizarse cuando este entra en sesión, al igual que 
+algunas de clientes solo deben estar disponibles una vez que se loguea
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+7- Perfil de Usuario: falta del todo
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+8- Verificar que todo sea responsive
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+8- Falta solo Gráfica 1
+-----------------------------------------------------------------------------------------
+

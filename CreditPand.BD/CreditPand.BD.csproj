@@ -74,6 +74,9 @@
     <Compile Include="Modelo\Rol.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Solicitud.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Tarjeta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

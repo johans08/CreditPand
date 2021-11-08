@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e5c9a20dbe20440aaca42dadb24aa307" Name="Diagram1">
-        <EntityTypeShape EntityType="CreditPandModel.Interes" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CreditPandModel.Rol" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CreditPandModel.Tarjeta" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CreditPandModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="b3efd6496cc14f87b69350b7163c68c2" Name="Diagram1">
+        <EntityTypeShape EntityType="CreditPandModel.Interes" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CreditPandModel.Rol" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CreditPandModel.Solicitud" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CreditPandModel.Tarjeta" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CreditPandModel.Usuario" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="CreditPandModel.FK__Usuario__Rol__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="CreditPandModel.FK__Solicitud__IdUsu__70DDC3D8" ManuallyRouted="false" />
         <AssociationConnector Association="CreditPandModel.FK__Tarjeta__IdUsuar__6477ECF3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
