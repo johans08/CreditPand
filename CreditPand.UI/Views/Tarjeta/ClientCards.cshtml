@@ -1,0 +1,152 @@
+﻿<!-- Se debe de agregar el modelo -->
+
+@{
+    ViewBag.Title = "Client Cards";
+
+}
+
+<!-- Page Content -->
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Registro de Tarjetas</h1>
+                <span>Verifica tus Tarjetas Personales</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="single-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Solicitar tarjeta</h2>
+                        <span>Llena los datos para solicitar una nueva tarjeta</span>
+                    </div>
+                </div>
+                <div class="callback-form" style="margin-top: 0px;">
+                    <div class="col-md-12">
+                        <div class="contact-form">
+                            <form id="contact" action="RegistroTarjeta" controller="Tarjeta" method="post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <input name="Id" type="hidden" class="form-control" id="id" placeholder="">
+                                        </fieldset>
+                                    </div>
+                                    <br>
+
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <select name="Marca" id="marca" class="form-control">
+                                                <option value="Visa">Visa</option>
+                                                <option value="Mastercard">Mastercard</option>
+                                            </select>
+                                            <!--<input name="Marca" type="text" class="form-control" id="marca" placeholder="Marca" required="">-->
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="Límite" type="text" class="form-control" id="limite" placeholder="Limite" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="Monto_extra" type="text" class="form-control" id="monto" placeholder="Monto_extra-financiamiento" required="">
+                                        </fieldset>
+                                    </div>
+
+                                    
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="Fecha_activación" type="date" class="form-control" id="fecha" placeholder="Fecha" required="">
+                                        </fieldset>
+                                    </div>
+
+                                    <!--Reacomodar formulario-->
+                                    <div class="col-lg-4 col-md-12 col-sm-12 text-light">
+                                        <fieldset>
+                                            <label>Internacional</label>
+                                            <input name="Internacional" type="radio" id="InternacionalYes" value=true> Si
+                                            <input name="Internacional" type="radio" id="InternacionalNo" value=false> No
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="IdUsuario" type="text" class="form-control" id="id_user" placeholder="IdUsuario" value="1007">
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="border-button">Enviar Solicitud</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br>
+                <h4>Beneficios Mastercard</h4>
+                <p>
+                    Ya sea al hacer pagos en línea o mediante un dispositivo móvil,
+                    Mastercard te brinda valiosos beneficios de seguridad que te mantendrán protegido.
+                    <br>Contamos con sofisticadas herramientas que monitorean, detectan y luchan contra el fraude en cada paso del proceso de pago, incluso antes de que hagas tu compra.
+                </p>
+
+                <br>
+
+                <h4>Beneficios Visa</h4>
+                <p>
+                    ¿Qué es la tarjeta Visa Infinite?
+                    La tarjeta Visa Infinite te brinda gama de beneficios creados para personas como tú.
+                    <br>Desde un asistente personal las 24 horas, a la cobertura de seguros más amplia para tus compras y viajes.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="testimonials" style="background-color: #373636;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2 style="color: #ffffff;">Registros de <em>Tarjetas Personales</em></h2>
+                    <span style="color: #ffffff;">Tarjetas Mastercard Registradas</span> <!-- Esto deberia de cambiar (Visa-Mastercard) -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="owl-testimonials owl-carousel">
+                    <div class="testimonial-item">
+                        <!-- se debe de crear un objeto por consulta -->
+                        <div class="inner-content">
+                            <h4>Deberia de mostrar el tipo</h4>
+                            <span>Datos de consulta de tarjeta</span>
+                            <img style=" max-width: 210px; border-radius: 10%;" src="~/Content/Images/VisaMastercard.png" alt="">
+                        </div>
+                        <img src="~/Content/Images/PandaUser.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="text/Javascript">
+
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
+            cleared[t.id] = 1;  // you could use true and false, but that's more typing
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
+        }
+    }
+</script>

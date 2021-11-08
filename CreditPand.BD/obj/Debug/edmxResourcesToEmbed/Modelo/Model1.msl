@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CreditPandModelStoreContainer" CdmEntityContainer="CreditPandEntities">
+    <EntitySetMapping Name="Interes">
+      <EntityTypeMapping TypeName="CreditPandModel.Interes">
+        <MappingFragment StoreEntitySet="Interes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Monto_regular" ColumnName="Monto_regular" />
+          <ScalarProperty Name="Monto_morosidad" ColumnName="Monto_morosidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="CreditPandModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarjeta">
+      <EntityTypeMapping TypeName="CreditPandModel.Tarjeta">
+        <MappingFragment StoreEntitySet="Tarjeta">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Límite" ColumnName="Límite" />
+          <ScalarProperty Name="Monto_extra" ColumnName="Monto_extra" />
+          <ScalarProperty Name="Fecha_activación" ColumnName="Fecha_activación" />
+          <ScalarProperty Name="Internacional" ColumnName="Internacional" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="CreditPandModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Ide" ColumnName="Ide" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

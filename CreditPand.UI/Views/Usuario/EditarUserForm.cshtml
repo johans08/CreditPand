@@ -1,0 +1,120 @@
+﻿@model CreditPand.BD.Modelo.Usuario
+
+@{
+    ViewBag.Title = "EditarUserForm";
+}
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Formulario para modificar la información de un cliente</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+@using (Html.BeginForm("ModificarUsuario", "Usuario", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <div class="contact-form">
+                        <div class="row">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="row justify-content-around">
+
+                                <!--DA ERROR PORQUE NO PUEDE ALMACENAR UN CAMPO NULO-->
+                                <div class="" col-4">
+                                    @Html.LabelFor(model => model.Ide, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Ide, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Ide, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="" col-4">
+                                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="" col-4">
+                                    @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+
+
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.SegundoApellido, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SegundoApellido, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="" col-lg-4 col-md-12 col-sm-12">
+                                    @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <select name="Rol" id="rol">
+                                        <option value="1">Cliente</option>
+                                        <option value="2">Administrador</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Actualizar" class="btn btn-default" />
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div>
+                                    @Html.ActionLink("Regresar a la lista de clientes", "Mantenimientos")
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+    </div>
+}
+
+

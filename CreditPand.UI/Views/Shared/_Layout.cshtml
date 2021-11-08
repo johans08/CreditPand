@@ -30,16 +30,18 @@
 
                         @{
                             string nombre = "Johans"; <!-- Debe de ir el nombre del que inicio la sesión -->
-                        }
+                            //string session = @Session["Username"].ToString();
 
+                        }
+                        <!--Welcome //Session["Username"].ToString()-->
                         <li><a><i class="fa fa-laptop"></i> Opciones de Usuario</a></li> <!-- Perfil del Usuario -->
-                        <li><a href="@Url.Action("User", "Home")"><i class="fa fa-user"></i> Usuario : @nombre</a></li> <!-- Perfil de Administrador -->
+                        <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i> Usuario : @nombre</a></li> <!-- Perfil de Administrador -->
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
-                        <li><a href="@Url.Action("ClientCards", "Home")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
-                        <li><a href="@Url.Action("Login", "Home")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
+                        <li><a href="@Url.Action("ClientCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito CLIENTE -->
+                        <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
                     </ul>
                 </div>
             </div>
@@ -52,15 +54,16 @@
                 <div class="col-md-8 col-xs-12">
                     <ul class="left-info">
                         <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                        <li><a href="@Url.Action("User", "Home")"><i class="fa fa-user"></i> Admin : @nombre</a></li> <!-- Perfil de Administrador -->
+                        <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i> Admin : @nombre</a></li> <!-- Perfil de Administrador -->
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
                         <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
-                        <li><a href="@Url.Action("AdminList", "Home")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
-                        <li><a href="@Url.Action("AdminCards", "Home")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
-                        <li><a href="@Url.Action("Login", "Home")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
+                        <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
+                        <li><a href="@Url.Action("AdminCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito ADMIN -->
+                        <li><a href="@Url.Action("InteresesForm", "Tarjeta")"><i class="fa fa-usd"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
+                        <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Salir -->
                     </ul>
                 </div>
             </div>
@@ -89,7 +92,7 @@
                             <a class="nav-link" href="@Url.Action("Contact", "Home")">Contactenos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Register", "Home")">Registrar Usuario</a>
+                            <a class="nav-link" href="@Url.Action("Register", "Usuario")">Registrar Usuario</a>
                         </li>
                     </ul>
                 </div>
@@ -132,7 +135,7 @@
                     <ul class="menu-list">
                         <li><a href="https://github.com/johans08">GitHub Johans Valverde Díaz</a></li>
                         <li><a href="#">GitHub Simón Segura Castro</a></li>
-                        <li><a href="#">GitHub Katherine Loaiza Jarquín</a></li>
+                        <li><a href="https://github.com/KatheLJ">GitHub Katherine Loaiza Jarquín</a></li>
                         <li><a href="#">GitHub María Fernanda Cortes</a></li>
                         <li><a href="https://github.com/johans08/CreditPand">GitHub Repositorio del Proyecto</a></li>
                     </ul>
@@ -140,11 +143,11 @@
                 <div class="col-md-3 footer-item">
                     <h4>Paginas Adicionales</h4>
                     <ul class="menu-list">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">How We Work</a></li>
-                        <li><a href="#">Quick Support</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="@Url.Action("About", "Home")">Sobre Nosotros</a></li>
+                        <li><a href="@Url.Action("Register", "Usuario")">Registrarse</a></li>
+                        <li><a href="@Url.Action("Support", "Home")">Soporte</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contáctanos</a></li>
+                        <li><a href="@Url.Action("PrivacyPolicy", "Home")">Políticas de Privacidad</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-item last-item">
