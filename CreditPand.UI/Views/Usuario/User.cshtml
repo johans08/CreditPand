@@ -1,0 +1,42 @@
+﻿@model CreditPand.BD.Modelo.Usuario
+
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@HttpContext.Current.Session["Username"].ToString()</h2>
+
+
+<!--Código para traer solos los datos del usuario que se loguea en su perfil-->
+<!--
+Querying with Object Services and Entity SQL
+string sqlString = "SELECT VALUE st FROM CreditPandEntities.Usuario " +
+                    "AS st WHERE st.StudentName == 'Bill'";
+
+var objctx = (ctx as IObjectContextAdapter).ObjectContext;
+
+ObjectQuery<Student> student = objctx.CreateQuery<Student>(sqlString);
+Student newStudent = student.First<Student>();
+
+
+
+using (var con = new EntityConnection("name=SchoolDBEntities"))
+{
+    con.Open();
+    EntityCommand cmd = con.CreateCommand();
+    cmd.CommandText = "SELECT VALUE st FROM SchoolDBEntities.Students as st where st.StudentName='Bill'";
+    Dictionary<int, string>
+    dict = new Dictionary<int, string>
+        ();
+        using (EntityDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess | CommandBehavior.CloseConnection))
+        {
+        while (rdr.Read())
+        {
+        int a = rdr.GetInt32(0);
+        var b = rdr.GetString(1);
+        dict.Add(a, b);
+        }
+        }
+        }
+-->

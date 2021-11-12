@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CreditPandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Interes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Monto_regular" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Monto_morosidad" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Límite" Type="int" Nullable="false" />
+    <Property Name="Monto_extra" Type="int" Nullable="false" />
+    <Property Name="Fecha_activación" Type="date" Nullable="false" />
+    <Property Name="Internacional" Type="bit" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Límite" Type="int" Nullable="false" />
+    <Property Name="Monto_extra" Type="int" Nullable="false" />
+    <Property Name="Fecha_activación" Type="date" Nullable="false" />
+    <Property Name="Internacional" Type="bit" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Ide" />
+    </Key>
+    <Property Name="Ide" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="SegundoApellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pass" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Rol" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Solicitud__IdUsu__70DDC3D8">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Ide" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarjeta__IdUsuar__6477ECF3">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Ide" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__Rol__4E88ABD4">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CreditPandModelStoreContainer">
+    <EntitySet Name="Interes" EntityType="Self.Interes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Solicitud__IdUsu__70DDC3D8" Association="Self.FK__Solicitud__IdUsu__70DDC3D8">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarjeta__IdUsuar__6477ECF3" Association="Self.FK__Tarjeta__IdUsuar__6477ECF3">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__Rol__4E88ABD4" Association="Self.FK__Usuario__Rol__4E88ABD4">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
