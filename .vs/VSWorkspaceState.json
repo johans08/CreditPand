@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CreditPand.BD",
+    "\\CreditPand.BD\\Interface",
+    "\\CreditPand.BD\\Repositorios",
+    "\\CreditPand.UI",
+    "\\CreditPand.UI\\Controllers",
+    "\\CreditPand.UI\\Views",
+    "\\CreditPand.UI\\Views\\Shared",
+    "\\CreditPand.UI\\Views\\Tarjeta",
+    "\\CreditPand.UI\\Views\\Usuario"
   ],
-  "SelectedNode": "\\CreditPand.UI.sln",
+  "SelectedNode": "\\CreditPand.UI\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

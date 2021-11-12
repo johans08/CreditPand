@@ -8,11 +8,13 @@ namespace CreditPand.UI.Controllers
 {
     public class HomeController : Controller
     {
+        //Action del Index, inicio de la página de CreditPand
         public ActionResult Index()
         {
             return View();
         }
 
+        //Muestra la información relacionada a la empresa
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +22,7 @@ namespace CreditPand.UI.Controllers
             return View();
         }
 
+        //Muestra el formulario y demás datos de contacto
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -27,38 +30,28 @@ namespace CreditPand.UI.Controllers
             return View();
         }
 
-       
-
-        public ActionResult Register()
+        //Muestra las políticas de privacidad de la empresa
+        public ActionResult PrivacyPolicy()
         {
-            ViewBag.Message = "One Page transform.";
+            ViewBag.Message = "Your policy page.";
 
             return View();
         }
 
-        public ActionResult ClientCards()
+        //Muestra la parte de soporte de la empresa 
+        public ActionResult Support()
         {
-            ViewBag.Message = "One Page transform.";
+            ViewBag.Message = "Your support page.";
 
             return View();
         }
-        public ActionResult AdminCards()
-        {
-            ViewBag.Message = "Administracion de Tarjetas.";
 
-            return View();
-        }
-        public ActionResult AdminCharts()
+        public ActionResult AdminCharts() //En otro Controlador
         {
             ViewBag.Message = "Administracion de Reportes.";
 
             return View();
         }
-        public ActionResult User()
-        {
-            ViewBag.Message = "Administracion de usuarios.";
 
-            return View();
-        }
     }
 }
