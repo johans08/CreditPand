@@ -90,7 +90,7 @@ namespace CreditPand.UI.Controllers
 
         }
 
-
+        //Permite eliminar de sesión a un usuario y regresarlo al Login
         public ActionResult Logout()
         {
             Session.Remove("Username");
@@ -98,33 +98,27 @@ namespace CreditPand.UI.Controllers
         }
 
 
-        //Muestra el nombre del usuario que ingreso en sesión //ELIMINAR CUANDO TODO EL LOGIN FUNCIONE
-        /*public ActionResult UserDashBoard()
+        public ActionResult LoginAdmin()
         {
-            if (Session["Username"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }*/
-
+            Session["Username"] = null;
+            return RedirectToAction("Index","Home");
+        }
 
 
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
+        public ActionResult User()
+        {
+            return View();
+
+        }
+
+
+        //Trae los datos del usuario para que este pueda visualizarlos
         public ActionResult UserProfile(int id, Usuario pUsuario)
         {
-            using (CreditPandEntities ContextoBD = new CreditPandEntities())
-            {
-                var info = from Usuario in ContextoBD.Usuario
-                           where pUsuario.Ide == id
-                           select Usuario;
-                var user = info.FirstOrDefault<Usuario>();
-                return View(user);
-            }
-            
+            int registros = _oGestorUsuario.Profile(id, pUsuario);
+            return RedirectToAction("Perfil");
+
         }
 
 
@@ -139,11 +133,11 @@ namespace CreditPand.UI.Controllers
 
         //********************************************************
         //Para crear un usuario en los mantenimientos, falta crear la vista del form para usarla
-        public ActionResult CrearUsuario(Usuario pUsuario)
+        /*public ActionResult CrearUsuario(Usuario pUsuario)
         {
             int registros = _oGestorUsuario.CrearUsuario(pUsuario);
             return RedirectToAction("Mantenimientos");
-        }
+        }*/
         //********************************************************
 
 
@@ -173,7 +167,7 @@ namespace CreditPand.UI.Controllers
         }
 
 
-        //Para la asignación de roles a los usuarios
+        //Para la asignación de roles a los usuarios, ¿QUITAR? LOS ROLES SE PUEDEN ASIGNAR DESDE EL UPDATE DEL USUARIO
         public ActionResult Roles()
         {
             IEnumerable<Usuario> Clientes = _oGestorUsuario.ListadoUsuarios();

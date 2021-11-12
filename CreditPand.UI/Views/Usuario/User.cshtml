@@ -1,24 +1,21 @@
-﻿
+﻿@model CreditPand.BD.Modelo.Usuario
+
 @{
     ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-<h1>Perfil de Usuario</h1>
-<span>Verifique su información </span>
-
+<h2>@HttpContext.Current.Session["Username"].ToString()</h2>
 
 
 <!--Código para traer solos los datos del usuario que se loguea en su perfil-->
-
-<!-- 
+<!--
 Querying with Object Services and Entity SQL
-string sqlString = "SELECT VALUE st FROM SchoolDBEntities.Students " +
+string sqlString = "SELECT VALUE st FROM CreditPandEntities.Usuario " +
                     "AS st WHERE st.StudentName == 'Bill'";
-    
+
 var objctx = (ctx as IObjectContextAdapter).ObjectContext;
-                
+
 ObjectQuery<Student> student = objctx.CreateQuery<Student>(sqlString);
 Student newStudent = student.First<Student>();
 

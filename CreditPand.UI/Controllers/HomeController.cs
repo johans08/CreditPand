@@ -53,11 +53,5 @@ namespace CreditPand.UI.Controllers
             return View();
         }
 
-        /*public ActionResult User() //En otro Controlador, 
-        {
-            ViewBag.Message = "Administracion de usuarios.";
-
-            return View();
-        }*/
     }
 }
