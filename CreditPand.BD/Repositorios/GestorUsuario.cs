@@ -73,19 +73,20 @@ namespace CreditPand.BD.Repositorios
 
         }
 
-        //Método para ingresar en sesión
+        //Método para ingresar en sesión, QUITAR 
         public int Login(Usuario pUsuario)
         {
             int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
             {
                     var obj = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && a.Pass.Equals(pUsuario.Pass)).FirstOrDefault();
+                
             }
             return n;
         }
 
 
-        //Método para mostrar los datos del usuario que ingreso en sesión
+        //Método para mostrar los datos del usuario que ingreso en sesión, QUITAR
         public int Profile(int id, Usuario pUsuario)
         {
             int n = 0;

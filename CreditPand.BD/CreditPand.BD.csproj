@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IGestorInteres.cs" />
     <Compile Include="Interface\IGestorTarjeta.cs" />
     <Compile Include="Interface\IGestorUsuario.cs" />
     <Compile Include="Modelo\Interes.cs">

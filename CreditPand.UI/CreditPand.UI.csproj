@@ -240,7 +240,6 @@
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\Support.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
-    <Content Include="Views\Usuario\UserDashBoard.cshtml" />
     <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
     <Content Include="Views\Usuario\Mantenimientos.cshtml" />
     <Content Include="Views\Usuario\EditarUserForm.cshtml" />

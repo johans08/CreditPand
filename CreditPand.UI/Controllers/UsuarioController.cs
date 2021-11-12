@@ -51,22 +51,29 @@ namespace CreditPand.UI.Controllers
         //Permite el Login del usuario
         public ActionResult LoginUser(Usuario pUsuario) 
         {
-
-
             if (ModelState.IsValid) 
             {
+
                 using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
                 {
                    
                 var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && 
                 a.Pass.Equals(pUsuario.Pass)).ToList();
 
-                
+
+                Session["Username"]=null; 
+               
+
+
+
                 if (data.Count() > 0)
                 {
-                    Session["Username"] = data.FirstOrDefault().Username;
-                    return RedirectToAction("UserDashBoard");
+
+                        Session["Username"] = data.FirstOrDefault().Username;
+                        return RedirectToAction("Index","Home");
+
                 }
+
                 else
                 {
                     ViewBag.error = "Fallo";
@@ -75,14 +82,24 @@ namespace CreditPand.UI.Controllers
                         return RedirectToAction("Login");
                 }
 
+
+
                 }
             }
             return View();
 
         }
 
-        //Muestra el nombre del usuario que ingreso en sesión, CAMBIAR
-        public ActionResult UserDashBoard()
+
+        public ActionResult Logout()
+        {
+            Session.Remove("Username");
+            return RedirectToAction("Login");
+        }
+
+
+        //Muestra el nombre del usuario que ingreso en sesión //ELIMINAR CUANDO TODO EL LOGIN FUNCIONE
+        /*public ActionResult UserDashBoard()
         {
             if (Session["Username"] != null)
             {
@@ -92,7 +109,9 @@ namespace CreditPand.UI.Controllers
             {
                 return RedirectToAction("Login");
             }
-        }
+        }*/
+
+
 
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
         public ActionResult UserProfile(int id, Usuario pUsuario)
