@@ -175,3 +175,11 @@ C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\CreditPand.BD.dll.conf
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\EntityFramework.xml
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\EntityFramework.SqlServer.dll
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\EntityFramework.SqlServer.xml
+C:\CreditPand\CreditPand.UI\bin\CreditPand.BD.dll
+C:\CreditPand\CreditPand.UI\bin\EntityFramework.dll
+C:\CreditPand\CreditPand.UI\bin\EntityFramework.SqlServer.dll
+C:\CreditPand\CreditPand.UI\bin\CreditPand.BD.pdb
+C:\CreditPand\CreditPand.UI\bin\CreditPand.BD.dll.config
+C:\CreditPand\CreditPand.UI\bin\EntityFramework.xml
+C:\CreditPand\CreditPand.UI\bin\EntityFramework.SqlServer.xml
+C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.csproj.CopyComplete

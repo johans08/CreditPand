@@ -9,3 +9,15 @@ C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.xml
 C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.SqlServer.xml
+C:\CreditPand\CreditPand.BD\bin\Debug\CreditPand.BD.dll.config
+C:\CreditPand\CreditPand.BD\bin\Debug\CreditPand.BD.dll
+C:\CreditPand\CreditPand.BD\bin\Debug\CreditPand.BD.pdb
+C:\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.dll
+C:\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.SqlServer.dll
+C:\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.xml
+C:\CreditPand\CreditPand.BD\bin\Debug\EntityFramework.SqlServer.xml
+C:\CreditPand\CreditPand.BD\obj\Debug\CreditPand.BD.csproj.AssemblyReference.cache
+C:\CreditPand\CreditPand.BD\obj\Debug\CreditPand.BD.csproj.CoreCompileInputs.cache
+C:\CreditPand\CreditPand.BD\obj\Debug\CreditPand.BD.csproj.CopyComplete
+C:\CreditPand\CreditPand.BD\obj\Debug\CreditPand.BD.dll
+C:\CreditPand\CreditPand.BD\obj\Debug\CreditPand.BD.pdb
