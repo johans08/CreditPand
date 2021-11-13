@@ -33,7 +33,7 @@
 
                             <li><a><i class="fa fa-laptop"></i> Opciones de Usuario</a></li> <!-- Opciones de Usuario -->
                             <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i> Bienvenido @HttpContext.Current.Session["Username"].ToString()</a> </li> <!-- Perfil de Usuario -->
-                    
+
                         }
 
                     </ul>
@@ -43,17 +43,17 @@
                     <ul class="right-icons">
                         <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Iniciar sesión -->
                     </ul>
-                        @if (Session["Username"] != null)
-                        {
-                            <ul class="right-icons">
-                                <li><a href="@Url.Action("ClientCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Solicitar tarjeta de crédito -->
-                                <li><a href="@Url.Action("ConsultCards", "Tarjeta")"><i class="fa fa-list"></i></a></li> <!-- Consultar tarjetas -->
+                    @if (Session["Username"] != null)
+                    {
+                        <ul class="right-icons">
+                            <li><a href="@Url.Action("ClientCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Solicitar tarjeta de crédito -->
+                            <li><a href="@Url.Action("ConsultCards", "Tarjeta")"><i class="fa fa-list"></i></a></li> <!-- Consultar tarjetas -->
 
-                                <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Iniciar sesión -->
-                                <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li> <!-- Salir -->
+                            <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Iniciar sesión -->
+                            <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li> <!-- Salir -->
 
-                            </ul>
-                        }
+                        </ul>
+                    }
                 </div>
 
             </div>
@@ -67,19 +67,20 @@
                     <ul class="left-info">
 
                         @if (Session["Username"] != null)
-                        { 
-                             <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                             <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i></a></li> <!-- Perfil de Administrador -->
-                        
-                        
-                        
+                        {
+                            <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
+                            <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i></a></li> <!-- Perfil de Administrador -->
+
+
+
                         }
-                       
+
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    @if (Session["Username"] != null) { 
-                    
+                    @if (Session["Username"] != null)
+                    {
+
                         <ul class="right-icons">
                             <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
                             <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
@@ -223,7 +224,8 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sweetalert2")
     @RenderSection("scripts", required: false)
-    
+
 </body>
 </html>

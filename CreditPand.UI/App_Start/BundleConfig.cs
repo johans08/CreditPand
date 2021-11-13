@@ -33,6 +33,12 @@ namespace CreditPand.UI
                       "~/Content/MainCss/owl.css",
                       "~/Content/MainCss/templatemo-finance-business.css",
                       "~/Content/MainCss/flex-slider.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/sweetalert2").Include(
+                      "~/Scripts/SweetAlert/sweetalert2.all.min.js"));
+
+
+
         }
     }
 }

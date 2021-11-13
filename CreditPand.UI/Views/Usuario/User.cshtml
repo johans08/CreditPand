@@ -5,7 +5,101 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@HttpContext.Current.Session["Username"].ToString()</h2>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>@HttpContext.Current.Session["Username"].ToString()</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="callback-form contact-us" style="background-color: #373636;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2 style="color: #ffffff;">Su <em>información</em></h2>
+                    <span style="color: #ffffff;">Actualice sus datos personales</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="contact-form">
+                    <form id="registro" action="UserProfile" controller="Usuario" method="get">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="Nombre" type="text" class="form-control" id="nombre" placeholder=" Nombre" value="@ViewBag.nombre">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="Apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="SegundoApellido" type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="Telefono" type="tel" class="form-control" id="numero" placeholder="Teléfono">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="Email" type="email" class="form-control" id="email" placeholder="E-Mail Address">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <fieldset>
+                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input name="rol" type="hidden" class="form-control" id="contrasena" placeholder="" required="" value=1>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="filled-button">Guardar cambios</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script language="text/Javascript">
+
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
+            cleared[t.id] = 1;  // you could use true and false, but that's more typing
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
+        }
+    }
+</script>
+
+
 
 
 <!--Código para traer solos los datos del usuario que se loguea en su perfil-->
@@ -21,8 +115,10 @@ Student newStudent = student.First<Student>();
 
 
 
-using (var con = new EntityConnection("name=SchoolDBEntities"))
+using (CreditPandEntities ContextoBD = new CreditPandEntities())
 {
+
+
     con.Open();
     EntityCommand cmd = con.CreateCommand();
     cmd.CommandText = "SELECT VALUE st FROM SchoolDBEntities.Students as st where st.StudentName='Bill'";

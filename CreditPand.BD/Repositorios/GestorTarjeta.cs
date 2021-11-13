@@ -41,7 +41,7 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-        //Método para borrar la infomración de una tarjeta en los mantenimientos
+        //Método para borrar la información de una tarjeta en los mantenimientos
         int IGestorTarjeta.BorrarTarjeta(int pIdTarjeta)
         {
             int n = 0;

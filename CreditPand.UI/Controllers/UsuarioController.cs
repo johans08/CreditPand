@@ -53,27 +53,19 @@ namespace CreditPand.UI.Controllers
         {
             if (ModelState.IsValid) 
             {
-
                 using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
                 {
-                   
                 var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && 
                 a.Pass.Equals(pUsuario.Pass)).ToList();
 
-
                 Session["Username"]=null; 
-               
-
-
 
                 if (data.Count() > 0)
                 {
-
                         Session["Username"] = data.FirstOrDefault().Username;
                         return RedirectToAction("Index","Home");
 
                 }
-
                 else
                 {
                     ViewBag.error = "Fallo";
@@ -108,6 +100,8 @@ namespace CreditPand.UI.Controllers
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
         public ActionResult User()
         {
+
+
             return View();
 
         }
@@ -116,8 +110,20 @@ namespace CreditPand.UI.Controllers
         //Trae los datos del usuario para que este pueda visualizarlos
         public ActionResult UserProfile(int id, Usuario pUsuario)
         {
+
             int registros = _oGestorUsuario.Profile(id, pUsuario);
-            return RedirectToAction("Perfil");
+           /* using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
+            {
+                var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
+                a.Pass.Equals(pUsuario.Pass)).ToList();
+
+                string nombre = pUsuario.Nombre;
+                ViewBag.nombre = nombre;
+                string apellido = pUsuario.Apellido;
+                string segundoApellido = pUsuario.SegundoApellido;
+
+            }*/
+                return RedirectToAction("User");
 
         }
 

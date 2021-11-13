@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IGestorSolicitud.cs" />
     <Compile Include="Interface\IGestorTarjeta.cs" />
     <Compile Include="Interface\IGestorUsuario.cs" />
     <Compile Include="Modelo\Interes.cs">
@@ -83,6 +84,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\GestorSolicitud.cs" />
     <Compile Include="Repositorios\GestorTarjeta.cs" />
     <Compile Include="Repositorios\GestorUsuario.cs" />
   </ItemGroup>

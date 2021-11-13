@@ -205,6 +205,7 @@
     <Content Include="Scripts\MainJs\owl.js" />
     <Content Include="Scripts\MainJs\slick.js" />
     <Content Include="Scripts\SweetAlert\sweetalert2.all.min.js" />
+    <Content Include="Views\Usuario\DatosUsuario.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -244,10 +245,10 @@
     <Content Include="Views\Usuario\EditarUserForm.cshtml" />
     <Content Include="Views\Usuario\Roles.cshtml" />
     <Content Include="Views\Tarjeta\AdminCards.cshtml" />
-    <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
     <Content Include="Views\Tarjeta\EditarTarjetaForm.cshtml" />
     <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
+    <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditPand.BD\CreditPand.BD.csproj">

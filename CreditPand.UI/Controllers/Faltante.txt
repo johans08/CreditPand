@@ -16,8 +16,7 @@ https://social.msdn.microsoft.com/Forums/es-ES/ca61d147-558d-4cf1-8eda-198b70160
 
 
 -----------------------------------------------------------------------------------------
-2- Solicitud Tarjeta de Crédito: se pueden crear tarjetas de forma directa, pero no enviar como 
-solicitud para ser aprobada.
+2- Solicitud Tarjeta de Crédito: metodo para aprobar solicitud (que envie los datos de una tabla a otra)
 --La tabla de Interes no tiene relación con ninguna.
 -----------------------------------------------------------------------------------------
 
@@ -50,7 +49,7 @@ Acomodar la barra de opciones
 
 
 -----------------------------------------------------------------------------------------
-7- Perfil de Usuario: falta del todo
+7- Perfil de Usuario: está vista, falta la carga de datos 
 -----------------------------------------------------------------------------------------
 
 
