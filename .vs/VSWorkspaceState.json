@@ -11,6 +11,6 @@
     "\\CreditPand.UI\\Views\\Tarjeta",
     "\\CreditPand.UI\\Views\\Usuario"
   ],
-  "SelectedNode": "\\CreditPand.UI\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\CreditPand.UI\\Views\\Usuario\\User.cshtml",
   "PreviewInSolutionExplorer": false
 }

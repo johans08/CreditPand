@@ -23,6 +23,7 @@ namespace CreditPand.UI.Controllers
             _oGestorUsuario = new GestorUsuario();
         }
 
+
         // GET: Usuario
         //Muestra el formulario para el registro de un cliente
         public ActionResult Register() 
@@ -32,20 +33,22 @@ namespace CreditPand.UI.Controllers
             return View();
         }
 
+
         //Realiza el registro del cliente en la BD
         public ActionResult RegistroUsuario(Usuario pUsuario)
         {
             int registros = _oGestorUsuario.CrearUsuario(pUsuario);
-            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
             return RedirectToAction("Register");
 
         }
+
 
         //Muestra el formulario para ingresar sesión
         public ActionResult Login()
         {
             return View();
         }
+
 
 
         //Permite el Login del usuario
@@ -73,14 +76,12 @@ namespace CreditPand.UI.Controllers
                         MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
                         return RedirectToAction("Login");
                 }
-
-
-
                 }
             }
             return View();
 
         }
+
 
         //Permite eliminar de sesión a un usuario y regresarlo al Login
         public ActionResult Logout()
@@ -90,21 +91,53 @@ namespace CreditPand.UI.Controllers
         }
 
 
-        public ActionResult LoginAdmin()
+
+        //Vista del login de administrador
+        public ActionResult LoginAdministrador()
         {
-            Session["Username"] = null;
-            return RedirectToAction("Index","Home");
+            return View();
         }
+
+
+
+        //Para el ingreso en sesión del admin
+        public ActionResult LoginAdmin(Usuario pUsuario)
+        {
+            if (ModelState.IsValid)
+            {
+                using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
+                {
+                    var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
+                    a.Pass.Equals(pUsuario.Pass)).ToList();
+
+                    Session["Admin"] = null;
+
+                    if (data.Count() > 0)
+                    {
+                        Session["Admin"] = data.FirstOrDefault().Username;
+                        return RedirectToAction("Index", "Home");
+
+                    }
+                    else
+                    {
+                        ViewBag.error = "Fallo";
+
+                        MessageBox.Show("Datos incorrectos o sin permiso de administrador", "Intente denuevo");//Cambiar por SweetAlert
+                        return RedirectToAction("LoginAdministrador");
+                    }
+                }
+            }
+            return View();
+        }
+
 
 
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
         public ActionResult User()
         {
-
-
             return View();
-
         }
+
 
 
         //Trae los datos del usuario para que este pueda visualizarlos
@@ -112,20 +145,10 @@ namespace CreditPand.UI.Controllers
         {
 
             int registros = _oGestorUsuario.Profile(id, pUsuario);
-           /* using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
-            {
-                var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
-                a.Pass.Equals(pUsuario.Pass)).ToList();
-
-                string nombre = pUsuario.Nombre;
-                ViewBag.nombre = nombre;
-                string apellido = pUsuario.Apellido;
-                string segundoApellido = pUsuario.SegundoApellido;
-
-            }*/
                 return RedirectToAction("User");
 
         }
+
 
 
         //Muestra la tabla con todos los clientes a los que se les puede dar mantenimiento

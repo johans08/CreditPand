@@ -1,55 +1,48 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
-1- Login: Falta login para admins
+1- Login: falta login admin
+USAR LOS ROLES PARA EL MANEJO DE INGRESO COMO CLIENTE O ADMIN (SI NO USAR LOGINADMINISTRADOR)
 Manejo de código entre Controller y Gestor.
-
-Sesiones
-https://docs.microsoft.com/es-es/dotnet/api/system.web.httpcontext.session?view=netframework-4.8
-https://social.msdn.microsoft.com/Forums/sqlserver/es-ES/0b2b05d5-92bd-4217-abc6-f0b47c1ba4ea/como-obtener-el-nombre-del-usuario-logueado-en-asp-net-mvc-5?forum=aspnetmvces
-https://social.msdn.microsoft.com/Forums/en-US/9a2a1870-d092-4f0d-b1ae-2833e3be0d83/session-values-in-httpcontextcurrentsession-in-c-set-and-get?forum=aspwebforms
-https://docs.microsoft.com/en-us/aspnet/core/fundamentals/app-state?view=aspnetcore-6.0
-
-Eliminar Sesiones
-https://docs.microsoft.com/en-us/dotnet/api/system.web.sessionstate.httpsessionstate.remove?view=netframework-4.8
-https://social.msdn.microsoft.com/Forums/es-ES/ca61d147-558d-4cf1-8eda-198b70160faf/eliminar-una-variable-de-sesion?forum=netfxwebes
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
-2- Solicitud Tarjeta de Crédito: metodo para aprobar solicitud (que envie los datos de una tabla a otra)
---La tabla de Interes no tiene relación con ninguna.
+2- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
-3- Pantalla de activación de solicitudes: falta del todo.
+3- Pantalla de activación de solicitudes: metodo para aprobar solicitud (que envie los datos de una tabla a otra).
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
 4- Consulta de Tarjetas Activas: parte 2 lista, faltan los filtros de búsqueda,
 está la parte gráfica, pero no permite filtrar. No se puede ordenar el grid.
+Es para que el cliente lo vea o para que lo vea el admin?
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
 5- CRUD: funciona de forma completa, pero se deben acomodar los elementos gráficos. 
 Se puede mejorar la lista de los usuarios con un grid igual al de la vista de tarjetas activas
-NO dejar valores quemados en los formularios de update, que no se pueda cambiar el id por ser identity, 
-que el formulario de interes no reciba valores quemados (Id y Marca)
------------------------------------------------------------------------------------------
-
+NO dejar valores quemados en los formularios de update
+que el formulario de interes no reciba valores quemados (Id y Marca), 
 
 -----------------------------------------------------------------------------------------
-6- Barras de opciones: las opciones de admin solo deben visualizarse cuando este entra en sesión, al igual que 
-algunas de clientes solo deben estar disponibles una vez que se loguea
-Acomodar la barra de opciones
 
+
+-----------------------------------------------------------------------------------------
+6- Barras de opciones: 
+Admin: 
+Login: falta
+Intereses: cuando se desplaza por la página la barra de opciones desaparece **ARREGLAR**
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
 7- Perfil de Usuario: está vista, falta la carga de datos 
+Para la solicitud el cliente tiene que tener su id, debe aparecer en su perfil
 -----------------------------------------------------------------------------------------
 
 
@@ -65,4 +58,12 @@ Acomodar la barra de opciones
 
 -----------------------------------------------------------------------------------------
 10- Cambiar los Message-Box por SW en el Login y CRUD
+--Login: datos incorrectos.
+--Registro de Cliente y Solicitud: Registro Exitoso.
+--Update o Delete de Cliente, Tarjeta o Solicitud: Registro actualizado/borrado.
+--Interes Update: Interes actualizado.
 -----------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------
+11-Optimizar el código para que sea lo menos repetitivo posible, quitar código que no se uso

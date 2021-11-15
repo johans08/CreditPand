@@ -1,5 +1,9 @@
-﻿@{
+﻿@model CreditPand.BD.Modelo.Usuario
+
+@{
     ViewBag.Title = "Register User";
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
 }
 
 <!-- Page Content -->
@@ -109,7 +113,7 @@
 
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Registrar Usuario</button>
+                                    <button type="submit" id="btn-registro" class="filled-button">Registrar Usuario</button>
                                 </fieldset>
                             </div>
                         </div>
@@ -119,7 +123,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script language="text/Javascript">

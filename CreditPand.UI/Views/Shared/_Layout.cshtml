@@ -48,8 +48,6 @@
                         <ul class="right-icons">
                             <li><a href="@Url.Action("ClientCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Solicitar tarjeta de crédito -->
                             <li><a href="@Url.Action("ConsultCards", "Tarjeta")"><i class="fa fa-list"></i></a></li> <!-- Consultar tarjetas -->
-
-                            <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Iniciar sesión -->
                             <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li> <!-- Salir -->
 
                         </ul>
@@ -66,10 +64,10 @@
                 <div class="col-md-8 col-xs-12">
                     <ul class="left-info">
 
-                        @if (Session["Username"] != null)
+                        @if (Session["Admin"] != null)
                         {
                             <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                            <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i></a></li> <!-- Perfil de Administrador -->
+                            <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li> <!-- Perfil de Administrador -->
 
 
 
@@ -78,16 +76,17 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    @if (Session["Username"] != null)
+                    <ul class="right-icons">
+                        <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Ingresar -->
+                    </ul>
+                    @if (Session["Admin"] != null)
                     {
-
                         <ul class="right-icons">
                             <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
                             <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
                             <li><a href="@Url.Action("AdminCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
                             <li><a href="@Url.Action("InteresesForm", "Tarjeta")"><i class="fa fa-usd"></i></a></li> <!-- Manejo de Intereses -->
-                            <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Ingresar -->
-                            <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-out"></i></a></li><!-- Salir -->
+                            <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li><!-- Salir -->
                         </ul>
 
                     }

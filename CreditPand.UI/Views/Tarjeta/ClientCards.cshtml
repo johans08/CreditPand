@@ -1,11 +1,11 @@
-﻿<!-- Se debe de agregar el modelo -->
+﻿@model CreditPand.BD.Modelo.Tarjeta
 
 @{
     ViewBag.Title = "Client Cards";
 
-  // <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  // <script src="sweetalert2.all.min.js"></script>
-  //El bundle del SweetAlert no quiere funcionar
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    //El bundle del SweetAlert no quiere funcionar
 
 
 
@@ -95,14 +95,21 @@
                                     </div>
 
                                     <!--<script LANGUAGE="javascript">
-                                    Swal.fire("Registro Exitoso");
-                                    </script>-->
+                                         Swal.fire("Registro Exitoso");
+                                     </script>-->
 
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+                <script LANGUAGE="javascript">
+                    function mensaje(x) {
+                        x = Swal.fire("Solicitud enviada");
+                    }
+                </script>
+
 
                 <br><br>
                 <h4>Beneficios Mastercard</h4>

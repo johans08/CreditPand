@@ -29,7 +29,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
                                 @Html.LabelFor(model => model.Ide, htmlAttributes: new { @class = "control-label col-md-2" })
-                                @Html.EditorFor(model => model.Ide, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Ide, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                                 @Html.ValidationMessageFor(model => model.Ide, "", new { @class = "text-danger" })
 
                             </div>
