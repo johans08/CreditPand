@@ -37,11 +37,7 @@ Restricciones de tipos de dato y longitudes
 
 
 -----------------------------------------------------------------------------------------
-6- Barras de opciones: 
-Admin: 
-Login: falta
-Intereses: cuando se desplaza por la página la barra de opciones desaparece **ARREGLAR**
-En User pasa lo mismo
+6- Barras de opciones: Admin: Login: falta
 -----------------------------------------------------------------------------------------
 
 
