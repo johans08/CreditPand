@@ -205,6 +205,7 @@
     <Content Include="Scripts\MainJs\owl.js" />
     <Content Include="Scripts\MainJs\slick.js" />
     <Content Include="Scripts\SweetAlert\sweetalert2.all.min.js" />
+    <Content Include="Views\Usuario\Alertas.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -239,15 +240,16 @@
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\Home\Support.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
-    <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
     <Content Include="Views\Usuario\Mantenimientos.cshtml" />
     <Content Include="Views\Usuario\EditarUserForm.cshtml" />
     <Content Include="Views\Usuario\Roles.cshtml" />
     <Content Include="Views\Tarjeta\AdminCards.cshtml" />
-    <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
     <Content Include="Views\Tarjeta\EditarTarjetaForm.cshtml" />
     <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
+    <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
+    <Content Include="Views\Usuario\LoginAdministrador.cshtml" />
+    <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditPand.BD\CreditPand.BD.csproj">

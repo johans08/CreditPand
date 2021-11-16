@@ -20,5 +20,8 @@ namespace CreditPand.BD.Interface
             int BorrarTarjeta(int pIdTarjeta);
         
             int ActualizarInteres(Interes objInteres);
+
+            int Aprobar(Solicitud pSolicitud);
+
     }
 }

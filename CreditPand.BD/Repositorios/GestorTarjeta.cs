@@ -28,7 +28,7 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-        //Método para agregar una tarjeta si se acepta la solicitud
+        //Método para agregar una tarjeta de forma directa
         int IGestorTarjeta.CrearTarjeta(Tarjeta pTarjeta)
         {
             int n = 0;
@@ -41,7 +41,7 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-        //Método para borrar la infomración de una tarjeta en los mantenimientos
+        //Método para borrar la información de una tarjeta en los mantenimientos
         int IGestorTarjeta.BorrarTarjeta(int pIdTarjeta)
         {
             int n = 0;
@@ -91,5 +91,58 @@ namespace CreditPand.BD.Repositorios
                     return n;
             }
         }
+
+
+        //Método para aprobar, cuando la tarjeta no se realiza de manera directa
+        int IGestorTarjeta.Aprobar(Solicitud pSolicitud)
+        {
+            int n = 0;
+            using (CreditPandEntities ContextoBD = new CreditPandEntities())
+            {
+               // ContextoBD.Tarjeta.Add();
+                n = ContextoBD.SaveChanges();
+            }
+            return n;
+
+
+            /*CadenaConexion = ConfigurationManager.ConnectionStrings["CreditPand"].ConnectionString;
+
+            int Resultado = 0;
+            using (SqlConnection objConexion = new SqlConnection(CadenaConexion))
+            {
+                SqlCommand objComando = new SqlCommand();
+                objComando.Connection = objConexion;
+                objComando.CommandType = System.Data.CommandType.Text;
+                objComando.CommandText = "Insert into Tarjeta (id,Marca,CostoProducto)" +
+                                         "Values (@NomProducto,@MarcaProducto,@CostoProducto)";
+
+
+
+                SqlParameter oParametro = new SqlParameter();
+                oParametro.ParameterName = "@NomProducto";
+                oParametro.SqlDbType = System.Data.SqlDbType.VarChar;
+                oParametro.Size = 50;
+                oParametro.Value = oProducto.NomProducto;
+
+                objComando.Parameters.Add(oParametro);
+
+                objComando.Parameters.Add(new SqlParameter("@MarcaProducto", oProducto.MarcaProducto));
+
+                objComando.Parameters.Add(new SqlParameter("@CostoProducto", oProducto.CostoProducto));
+
+                objConexion.Open();
+                Resultado = await objComando.ExecuteNonQueryAsync();
+                objConexion.Close();
+
+            }
+
+            return Resultado;*/
+
+
+
+
+        }
+
+
     }
 }
