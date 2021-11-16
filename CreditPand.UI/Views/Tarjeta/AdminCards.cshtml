@@ -82,16 +82,7 @@
 
     </table>
 
-    <!--Arreglar el botón para ir al registro de un nuevo tarjeta-->
-    <div class="contact-form">
-        <form action="ClientCards" controller="Tarjeta" method="post">
-            <div class="col-lg-12">
-                <fieldset>
-                    <button type="submit" class="filled-button">Crear nueva Tarjeta</button>
-                </fieldset>
-            </div>
+    @Html.ActionLink("Crear Tarjeta", "ClientCards", "Tarjeta", new { @class = "btn btn-secondary" }) <!--Arreglar así los demás botones-->
 
-        </form>
-    </div>
-
+   
 </div>

@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<CreditPand.BD.Modelo.Solicitud>
+
 @{
     ViewBag.Title = "SolicitudesTarjetas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -8,9 +10,65 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Solicitudes por Aprobar</h1>
+                <h1>Solicitudes por aprobar</h1>
             </div>
         </div>
     </div>
 </div>
 
+
+<br>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Límite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto_extra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_activación)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Internacional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Límite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto_extra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha_activación)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Internacional)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.ActionLink("Aprobar", "RegistroTarjeta", new { id = item.Id }) | <!--Falta que se puede aprobar-->
+                    @Html.ActionLink("Denegar", "BorrarSolicitud", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -80,7 +80,7 @@
                     @Html.DisplayFor(modelItem => item.Rol)
                 </td>
                 <td>
-                    @Html.ActionLink("Modificar Usuario", "EditarUserForm", new { Id = item.Ide }) |
+                    @Html.ActionLink("Modificar", "EditarUserForm", new { Id = item.Ide }) |
                     @Html.ActionLink("Eliminar", "BorrarUsuario", new { Username = item.Username }) |
                     @Html.ActionLink("Asignar Rol", "Roles", new { Id = item.Ide })
                 </td>
@@ -96,7 +96,7 @@
         <form action="Register" controller="Usuario" method="post">
             <div class="col-lg-12">
                 <fieldset>
-                    <button type="submit" class="filled-button">Crear nuevo usuario</button>
+                    <button type="submit" class="filled-button btn btn-info">Crear nuevo usuario</button>
                 </fieldset>
             </div>
 

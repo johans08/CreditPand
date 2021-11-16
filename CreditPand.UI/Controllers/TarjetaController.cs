@@ -15,10 +15,14 @@ namespace CreditPand.UI.Controllers
     {
         private readonly IGestorTarjeta _oGestorTarjeta;
 
+        private readonly IGestorSolicitud _oGestorSolicitud;
+
+
         //Constructor de la tarjeta
         public TarjetaController()
         {
             _oGestorTarjeta = new GestorTarjeta();
+            _oGestorSolicitud = new GestorSolicitud();
         }
 
 
@@ -48,22 +52,48 @@ namespace CreditPand.UI.Controllers
 
 
         //Para enviar la solicitud de una tarjeta de crédito por parte de un cliente
-        public ActionResult EnviarSolicitud(Tarjeta pTarjeta)
+        public ActionResult EnviarSolicitud(Solicitud pSolicitud)
         {
-            //FALTA CÓDIGO PARA PASAR LOS DATOS DE UNA VISTA A OTRA
-            return View();
+            int registros = _oGestorSolicitud.CrearSolicitud(pSolicitud);
+            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
+            return RedirectToAction("ClientCards");
         }
 
 
         //Vista que muestra las solicitudes de tarjetas 
         public ActionResult SolicitudesTarjetas()
         {
-            return View();
+            IEnumerable<Solicitud> Solicitudes = _oGestorSolicitud.ListadoSolicitud();
+            return View(Solicitudes);
+        }
+
+
+        //Para eliminar una solicitud, si está no puede aprobarse
+        public ActionResult BorrarSolicitud(int Id)
+        {
+            int registro = _oGestorSolicitud.BorrarSolicitud(Id);
+            return RedirectToAction("SolicitudesTarjetas");
+
+        }
+
+
+        //Para aprobar la solicitud de una tarjeta de crédito
+        public ActionResult AprobarSolicitud(Tarjeta pTarjeta)
+        {
+            int registros = _oGestorTarjeta.CrearTarjeta(pTarjeta);
+            //INSERT INTO tablaDestino(nom_empleados)
+           //SELECT nom_empleados FROM tablaOrigen
+            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
+            return RedirectToAction("SolicitudesTarjetas");
+
+
+
         }
 
 
 
-        //Para registrar una tarjeta de credito
+
+        //Para registrar una tarjeta de credito de forma directa 
         public ActionResult RegistroTarjeta(Tarjeta pTarjeta)
         {
             int registros = _oGestorTarjeta.CrearTarjeta(pTarjeta);
@@ -71,7 +101,10 @@ namespace CreditPand.UI.Controllers
             return RedirectToAction("ClientCards");
         }
 
-        //Muestra todas las tarjetas registradas a las que se les puede dar mantenimiento
+
+
+
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes
         public ActionResult ConsultCards(DateTime? Fecha_activación= null, string Marca =  null, int? Límite = null)
         {
            
@@ -83,6 +116,8 @@ namespace CreditPand.UI.Controllers
             return View(Cards);
 
         }
+        
+
 
         //Método que permite exportar la información de las tarjetas a Excel
         public void DescargarExcel()
