@@ -133,20 +133,21 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
-        public ActionResult User()
+        public ActionResult User(string Username)
         {
-            return View();
+            Usuario obj = _oGestorUsuario.ListadoUsuarios().Where(x => x.Username == Username).FirstOrDefault();
+            return View(obj);
         }
 
 
 
         //Trae los datos del usuario para que este pueda visualizarlos
-        public ActionResult UserProfile(int id, Usuario pUsuario)
+        public ActionResult UserProfile(string Username, Usuario pUsuario)
         {
 
-            int registros = _oGestorUsuario.Profile(id, pUsuario);
-                return RedirectToAction("User");
-
+            // int registros = _oGestorUsuario.Profile(id, pUsuario);
+            // return RedirectToAction("User");
+            return View();
         }
 
 

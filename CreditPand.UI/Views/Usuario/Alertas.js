@@ -1,4 +1,4 @@
-﻿$("#btn-registro").click(function () {
+﻿$('#btn-registro').click(function () {
     Swal.fire("Registro Exitoso");
 });
 

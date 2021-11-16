@@ -24,10 +24,14 @@ Es para que el cliente lo vea o para que lo vea el admin?
 
 
 -----------------------------------------------------------------------------------------
-5- CRUD: funciona de forma completa, pero se deben acomodar los elementos gráficos. 
+5- CRUD: acomodar elementos gráficos(colores, formatos). 
+Mejorar formulario de solicitud de Tarjeta
+
 Se puede mejorar la lista de los usuarios con un grid igual al de la vista de tarjetas activas
-NO dejar valores quemados en los formularios de update
-que el formulario de interes no reciba valores quemados (Id y Marca), 
+
+que el formulario de interes no reciba valores quemados (Id y Marca), ni el de Registro con el Rol (Default o 0 no definido)
+
+Restricciones de tipos de dato y longitudes
 
 -----------------------------------------------------------------------------------------
 
@@ -37,12 +41,12 @@ que el formulario de interes no reciba valores quemados (Id y Marca),
 Admin: 
 Login: falta
 Intereses: cuando se desplaza por la página la barra de opciones desaparece **ARREGLAR**
+En User pasa lo mismo
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
 7- Perfil de Usuario: está vista, falta la carga de datos 
-Para la solicitud el cliente tiene que tener su id, debe aparecer en su perfil
 -----------------------------------------------------------------------------------------
 
 
