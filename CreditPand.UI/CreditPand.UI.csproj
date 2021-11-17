@@ -174,6 +174,7 @@
     <Content Include="Content\MainCss\fontawesome.css" />
     <Content Include="Content\MainCss\owl.css" />
     <Content Include="Content\MainCss\templatemo-finance-business.css" />
+    <Content Include="Content\SweetAlert\sweetalert2.css" />
     <Content Include="Controllers\Faltante.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -250,6 +251,7 @@
     <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
     <Content Include="Views\Usuario\LoginAdministrador.cshtml" />
     <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
+    <Content Include="Views\Tarjeta\AprobarForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditPand.BD\CreditPand.BD.csproj">

@@ -1,7 +1,8 @@
 ﻿@model CreditPand.BD.Modelo.Usuario
 
 @{
-    ViewBag.Title = "EditarUserForm";
+        ViewBag.Title = "EditarUserForm";
+        CreditPand.BD.Modelo.Rol objrol = new CreditPand.BD.Modelo.Rol();
 }
 
 <div class="page-heading header-text">
@@ -85,11 +86,13 @@
                             <br>
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
                             @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <select name="Rol" id="rol">
-                                <option value="1">Cliente</option>
-                                <option value="2">Administrador</option>
+                            <!--Html.DropDownListFor(model => model.Rol, new SelectList(Model.Rol1.ToString()) , htmlAttributes: new { class = "control-label col-md-2" })-->
+
+                            <select name="Rol" id="rol" class="form-control">
+                                <option class="form-control" value="1">Cliente</option>
+                                <option class="form-control" value="2">Administrador</option>
                             </select>
                             @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
                             <br>
@@ -98,28 +101,12 @@
                         <!--</div>-->
                         <br>
 
-
-                        <!--Arreglar botones-->
-                        <div class="row justify-content-center">
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Actualizar" class="btn btn-info" />
-                                    <!--Html.ActionLink("Regresar", "Mantenimientos")-->
-                                </div>
-                                <br>
-                            </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <input type="submit" value="Actualizar" class="btn btn-info" />
+                            @Html.ActionLink("Regresar", "Mantenimientos", "Usuario", new { @class = "btn btn-success" })
                         </div>
 
 
-                       <div class="contact-form">
-                            <form action="Mantenimientos" controller="Usuario">
-                                <div class="col-lg-12">
-                                    <fieldset>
-                                        <button type="submit" class="filled-button btn btn-secondary">Regresar</button>
-                                    </fieldset>
-                                </div>
-                            </form>
-                        </div>
 
                     </div>
                 </div>

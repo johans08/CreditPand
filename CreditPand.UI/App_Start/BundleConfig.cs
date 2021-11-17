@@ -32,10 +32,11 @@ namespace CreditPand.UI
                       "~/Content/MainCss/fontawesome.css",
                       "~/Content/MainCss/owl.css",
                       "~/Content/MainCss/templatemo-finance-business.css",
-                      "~/Content/MainCss/flex-slider.css"));
+                      "~/Content/MainCss/flex-slider.css",
+                      "~/Content/SweetAlert/sweetalert2.css")); //Para las alertas
 
             bundles.Add(new StyleBundle("~/bundles/sweetalert2").Include(
-                      "~/Scripts/SweetAlert/sweetalert2.all.min.js"));
+                      "~/Scripts/SweetAlert/sweetalert2.all.min.js")); //Para las alertas
 
 
 

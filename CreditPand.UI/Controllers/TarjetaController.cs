@@ -14,7 +14,6 @@ namespace CreditPand.UI.Controllers
     public class TarjetaController : Controller
     {
         private readonly IGestorTarjeta _oGestorTarjeta;
-
         private readonly IGestorSolicitud _oGestorSolicitud;
 
 
@@ -26,6 +25,7 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
         // GET: Tarjeta
         //Muestra el formulario para el ajuste de los intereses morosos y regulares
         public ActionResult InteresesForm()
@@ -34,14 +34,15 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
         //Permite guardar los interes ajustados en la base de datos
         public ActionResult InteresesConfigure(Interes objInteres)
         {
             int intereses = _oGestorTarjeta.ActualizarInteres(objInteres);
-            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso del interes
             MessageBox.Show("Intereses cambiados");//Cambiar por el sweetalert
             return RedirectToAction("InteresesForm");
         }
+
 
 
         //Formulario para la solicitud de una tarjeta de crédito por parte de un cliente
@@ -51,11 +52,11 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
         //Para enviar la solicitud de una tarjeta de crédito por parte de un cliente
         public ActionResult EnviarSolicitud(Solicitud pSolicitud)
         {
             int registros = _oGestorSolicitud.CrearSolicitud(pSolicitud);
-            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
             return RedirectToAction("ClientCards");
         }
 
@@ -68,6 +69,7 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
         //Para eliminar una solicitud, si está no puede aprobarse
         public ActionResult BorrarSolicitud(int Id)
         {
@@ -77,34 +79,70 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //Para aprobar la solicitud de una tarjeta de crédito
-        public ActionResult AprobarSolicitud(Tarjeta pTarjeta)
+        public ActionResult AprobarSolicitud(Solicitud pSolicitud, Tarjeta oTarjeta, int id, 
+            string Marca, int Límite, int Monto_extra, System.DateTime Fecha_activación, Boolean Internacional, int IdUsuario, FormCollection collection)
         {
-            int registros = _oGestorTarjeta.CrearTarjeta(pTarjeta);
-            //INSERT INTO tablaDestino(nom_empleados)
-           //SELECT nom_empleados FROM tablaOrigen
-            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
+            oTarjeta.Marca = collection["Marca"];
+            oTarjeta.Límite = Convert.ToInt32(collection["Límite"]);
+            oTarjeta.Monto_extra = Convert.ToInt32(collection["Monto_extra"]);
+            oTarjeta.Fecha_activación = Convert.ToDateTime(collection["Fecha_activación"]);
+            oTarjeta.Internacional = Convert.ToBoolean(Convert.ToInt16(collection["IdUsuario"]));
+            oTarjeta.IdUsuario = Convert.ToInt32(collection["IdUsuario"]);
+
+            int resulta =_oGestorTarjeta.Aprobar(pSolicitud, oTarjeta, id, Marca, Límite, Monto_extra, Fecha_activación, Internacional, IdUsuario);
+            int registro = _oGestorSolicitud.BorrarSolicitud(id);
+
             return RedirectToAction("SolicitudesTarjetas");
 
+        }
 
+
+        public ActionResult AprobarForm(int? id)
+        {
+
+            Solicitud obj = _oGestorSolicitud.ListadoSolicitud().Where(x => x.Id == id).FirstOrDefault();
+            return View(obj);
 
         }
 
 
 
 
-        //Para registrar una tarjeta de credito de forma directa 
+
+
+
+
+
+
+
+
+
+
+        //Para registrar una tarjeta de credito de forma directa , QUITAR?????
         public ActionResult RegistroTarjeta(Tarjeta pTarjeta)
         {
             int registros = _oGestorTarjeta.CrearTarjeta(pTarjeta);
-            //Swal.fire("Registro Exitoso"); //Alert de registro exitoso
             return RedirectToAction("ClientCards");
         }
 
 
 
-
-        //Muestra todas las tarjetas registradas que pueden analizar los clientes
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
         public ActionResult ConsultCards(DateTime? Fecha_activación= null, string Marca =  null, int? Límite = null)
         {
            

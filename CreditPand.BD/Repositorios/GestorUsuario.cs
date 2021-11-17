@@ -73,6 +73,24 @@ namespace CreditPand.BD.Repositorios
 
         }
 
+
+
+
+
+
+
+
+
+
+        //Para encontrar a una persona específica, para el perfil de usuario, QUITAR
+        /*int Find(string Username)
+        {
+            IEnumerable<Tarjeta> cards = ListadoUsuarios();
+            Tarjeta oTarjeta = Listado.Where(x => x.IdProducto == Id).FirstOrDefault();
+            return auxProducto;
+        }*/
+
+
         //Método para ingresar en sesión, QUITAR 
         public int Login(Usuario pUsuario)
         {
