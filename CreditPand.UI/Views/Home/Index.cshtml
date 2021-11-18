@@ -10,10 +10,30 @@
         <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>Estamos listos para ayudarle</h6>
-                    <h4>Solicitar <br> Asesoría Financiera</h4>
-                    <p>This finance HTML template is 100% free of charge provided by TemplateMo for everyone. This is a multiple-page version with different HTML pages. <a href="one-page.html">One-page version</a> is available as of 2021 February.</p>
-                    <a href="Contact" class="filled-button">Contáctenos</a>
+
+
+                    @if (Session["Admin"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Bienvenido Admin!</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Es hora <br>de ayudar </h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">Llegar juntos es el principio. Mantenerse juntos, es el progreso. Trabajar juntos es el éxito. <a style="color: #4cff00"> Henry Ford.</a></p>
+                        <a class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Bienvenido  @HttpContext.Current.Session["Admin"].ToString()!  </a>
+                    }
+                    else if (Session["Username"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Estamos listos para ayudarle</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Solicitar <br> Asesoría Financiera</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">This finance HTML template is 100% free of charge provided by TemplateMo for everyone. This is a multiple-page version with different HTML pages. <a href="one-page.html">One-page version</a> is available as of 2021 February.</p>
+                        <a class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Bienvenido  @HttpContext.Current.Session["Username"].ToString()!  </a>
+                    }
+                    else
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Estamos listos para ayudarle</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Solicita <br> Asesoría Financiera</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">Somos <a style="color: #4cff00"> CREDIT PAND. </a> La mejor compañia financiera para resolver tus problemas.<br> ¿Ya te registraste?</p>
+                        <a href="@Url.Action("Login", "Usuario")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Inicia Sesión!  </a>
+                    }
+
                 </div>
             </div>
         </div>
@@ -22,10 +42,29 @@
         <div class="item item-2">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>Estamos listos para ayudarle</h6>
-                    <h4>Solicitar <br>tarjeta de crédito</h4>
-                    <p>You are allowed to use this template for your company websites. You are NOT allowed to re-distribute this template ZIP file on any template download website. Please contact TemplateMo for more detail.</p>
-                    <a href="Services" class="filled-button">Solicitar</a>
+
+                    @if (Session["Admin"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Admin tienes problemas?</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Necesitas ver<br>las tarjetas?</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">La gente consigue más como resultado de trabajar con otros que contra ellos.  <a style="color: #4cff00">Dr.Allan Fromme.</a></p>
+                        <a href="@Url.Action("AdminCards", "Tarjeta")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Ver Tarjetas</a>
+                    }
+                    else if (Session["Username"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Necesitas una nueva tarjeta?</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Solicitar <br> una tarjeta</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">Somos <a style="color: #4cff00"> CREDIT PAND. </a> La mejor compañia financiera para resolver tus problemas.<br> Solicita tu tarjeta ¡AHORA!</p>
+                        <a href="@Url.Action("ClientCards", "Tarjeta")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Solicita tu tarjeta</a>
+                    }
+                    else
+                    {
+                <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Necesitas una nueva tarjeta?</h6>
+                <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Solicita<br> una tarjeta</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">Somos <a style="color: #4cff00"> CREDIT PAND. </a> La mejor compañia financiera para resolver tus problemas.<br> ¿Ya te registraste?</p>
+                        <a href="@Url.Action("Login", "Usuario")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Inicia Sesión!  </a>
+                    }
+
                 </div>
             </div>
         </div>
@@ -34,10 +73,29 @@
         <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>Estamos listos para ayudarle</h6>
-                    <h4>Solicitar <br> un préstamo</h4>
-                    <p>You can download, edit and use this layout for your business website. Phasellus lacinia ac sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
-                    <a href="About" class="filled-button">Solicitar</a>
+
+                    @if (Session["Admin"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Admin tienes dudas?</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Vamos ehcale un ojo<br>a las estadisticas</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">No hay problema que no podamos resolver juntos, y muy pocos que podamos resolver por nosotros mismos. <a style="color: #4cff00">Lyndon Johnson.</a></p>
+                        <a href="@Url.Action("AdminCharts", "Home")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Ver estadisticas</a>
+                    }
+                    else if (Session["Username"] != null)
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Tienes problemas con nuestros Usuarios</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Contactanos <br> en este momento</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">En <a style="color: #4cff00">CREDIT PAND. </a>Queremos resolver tus problemas, no generarte mas problemas<br>Lo sentimos</p>
+                        <a href="@Url.Action("Contact", "Home")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Contactanos</a>
+                    }
+                    else
+                    {
+                        <h6 class="animate__animated animate__fadeInTopLeft animate__delay-3s">¿Ya viste nuestras estadisticas?</h6>
+                        <h4 class="animate__animated animate__fadeInTopLeft animate__delay-3s">Somos los mejores <br> en Asesoría Financiera</h4>
+                        <p class="animate__animated animate__fadeInTopLeft animate__delay-3s">Somos <a style="color: #4cff00"> CREDIT PAND. </a> La mejor compañia financiera para resolver tus problemas.<br> ¿Ya te registraste?</p>
+                        <a href="@Url.Action("Login", "Usuario")" class="filled-button animate__animated animate__fadeInTopLeft animate__delay-3s">Inicia Sesión!  </a>
+                    }
+
                 </div>
             </div>
         </div>
@@ -51,7 +109,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h4>Requiere de servicios financieros?</h4>
-                <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
+                <span>Somos los mejores resolviendo problemas financieros.</span>
             </div>
             <div class="col-md-4">
                 <a href="Contact" class="border-button">Contáctenos</a>
@@ -74,8 +132,7 @@
                     <img src="~/Content/Images/service_01.jpg" alt="">
                     <div class="down-content">
                         <h4>Préstamos</h4>
-                        <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
-                        <a href="" class="filled-button">Conocer más</a>
+                        <p>Te prestamos el dinero que <br>necesites.</p>
                     </div>
                 </div>
             </div>
@@ -84,8 +141,7 @@
                     <img src="~/Content/Images/service_02.jpg" alt="">
                     <div class="down-content">
                         <h4>Tarjetas de Crédito</h4>
-                        <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
-                        <a href="" class="filled-button">Conocer más</a>
+                        <p>Financiamos planes para sus tarjetas de credito.</p>
                     </div>
                 </div>
             </div>
@@ -94,8 +150,7 @@
                     <img src="~/Content/Images/service_03.jpg" alt="">
                     <div class="down-content">
                         <h4>Asesoría Financiera</h4>
-                        <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
-                        <a href="" class="filled-button">Conocer más</a>
+                        <p>Puedes hablar con nuestros agentes mediante el chat online.</p>
                     </div>
                 </div>
             </div>
@@ -111,10 +166,9 @@
                     <span>Contáctenos</span>
                     <h2>Las mejores soluciones económicas <em>según sus necesidades</em></h2>
                     <p>
-                        Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue.
-                        <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut posuere ante tortor ut neque.
+                        Credit Pand es una empresa de caracter financiero que pretende resolver todos sus problemas financieros con diferentes servicios.
+                        <br><br>Nuestra prioridad es solventar sus consultas lo más rápido posible, por eso contamos con servicios de chat las 24 horas al día y robots programados.
                     </p>
-                    <a href="" class="filled-button">Conocer más</a>
                 </div>
             </div>
             <div class="col-md-6 align-self-center">
@@ -164,8 +218,10 @@
                             <div class="right-content">
                                 <span>¿Quienes somos?</span>
                                 <h2>Conózca nuestra <em>compañia Credit Pand</em></h2>
-                                <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat tellus nibh, id molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus<br><br>Praes end at dictum metus. Morbi id hendrerit lectus, nec dapibus ex. Etiam ipsum quam, luctus eu egestas eget, tincidunt</p>
-                                <a href="#" class="filled-button">Leer más</a>
+                                <p> Credit Pand se creo desde la necesidad de dar soluciones a los usuarios, dandoles facilidad a la hora de conseguir tarjetas de crédito.
+                                    <br><br>Debido a la problematica por la pandemia, se han visto afectadas muchas empresas fisicas, por lo tanto se le ha falicitado al usuario tramites desde una página web amigable con el usuario.
+                                </p>
+                                <a href="@Url.Action("Login", "Usuario")" class="filled-button">Leer más</a>
                             </div>
                         </div>
                     </div>
@@ -191,7 +247,7 @@
                         <div class="inner-content">
                             <h4>George Walker</h4>
                             <span>Analista Financiero</span>
-                            <p style="color: #000000;">"Nulla ullamcorper, ipsum vel condimentum congue, mi odio vehicula tellus, sit amet malesuada justo sem sit amet quam. Pellentesque in sagittis lacus."</p>
+                            <p style="color: #000000;">"Increíble la manera en que resuelven los problemas, excelente trabajo."</p>
                         </div>
                         <img src="~/Content/Images/PandaUser.jpg" alt="">
                     </div>
@@ -199,8 +255,8 @@
                     <div class="testimonial-item">
                         <div class="inner-content">
                             <h4>John Smith</h4>
-                            <span>Economista</span>
-                            <p style="color: #000000;">"In eget leo ante. Sed nibh leo, laoreet accumsan euismod quis, scelerisque a nunc. Mauris accumsan, arcu id ornare malesuada, est nulla luctus nisi."</p>
+                            <span>Ingeniero Informatico</span>
+                            <p style="color: #000000;">"Excelente Trabajo sus programadores <br> merecen un 100 en su nota."</p>
                         </div>
                         <img src="~/Content/Images/PandaUser.jpg" alt="">
                     </div>
@@ -209,7 +265,7 @@
                         <div class="inner-content">
                             <h4>David Wood</h4>
                             <span>Chief Accountant</span>
-                            <p style="color: #000000;">"Ut ultricies maximus turpis, in sollicitudin ligula posuere vel. Donec finibus maximus neque, vitae egestas quam imperdiet nec. Proin nec mauris eu tortor consectetur tristique."</p>
+                            <p style="color: #000000;">"Imposible no querer ser parte de Credit Pand, tienen un equipo espectacular!."</p>
                         </div>
                         <img src="~/Content/Images/PandaUser.jpg" alt="">
                     </div>
@@ -217,8 +273,8 @@
                     <div class="testimonial-item">
                         <div class="inner-content">
                             <h4>Andrew Boom</h4>
-                            <span>Marketing Head</span>
-                            <p style="color: #000000;">"Curabitur sollicitudin, tortor at suscipit volutpat, nisi arcu aliquet dui, vitae semper sem turpis quis libero. Quisque vulputate lacinia nisl ac lobortis."</p>
+                            <span>Analista</span>
+                            <p style="color: #000000;">"La manera en que solventan las consultas es increíble, gracias por este servicio."</p>
                         </div>
                         <img src="~/Content/Images/PandaUser.jpg" alt="">
                     </div>

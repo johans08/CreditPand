@@ -226,6 +226,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Politicas de Privacidad.pdf" />
     <None Include="packages.config" />
     <Content Include="Scripts\BootstrapJs\bootstrap.bundle.js.map" />
     <Content Include="Scripts\BootstrapJs\bootstrap.bundle.min.js.map" />
@@ -233,12 +234,10 @@
     <Content Include="Scripts\BootstrapJs\bootstrap.min.js.map" />
     <Content Include="Scripts\JqueryJs\jquery.min.map" />
     <Content Include="Scripts\JqueryJs\jquery.slim.min.map" />
-    <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Usuario\Register.cshtml" />
     <Content Include="Views\Tarjeta\ClientCards.cshtml" />
     <Content Include="Views\Home\AdminCharts.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
-    <Content Include="Views\Home\Support.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Mantenimientos.cshtml" />
     <Content Include="Views\Usuario\EditarUserForm.cshtml" />

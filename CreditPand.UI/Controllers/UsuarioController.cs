@@ -15,8 +15,8 @@ namespace CreditPand.UI.Controllers
     {
 
 
-        private readonly IGestorUsuario _oGestorUsuario; 
-        
+        private readonly IGestorUsuario _oGestorUsuario;
+
         //Constructor del Usuario
         public UsuarioController() 
         {
@@ -58,24 +58,33 @@ namespace CreditPand.UI.Controllers
             {
                 using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
                 {
-                var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && 
-                a.Pass.Equals(pUsuario.Pass)).ToList();
+                    var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && 
+                    a.Pass.Equals(pUsuario.Pass) && a.Rol.Equals(pUsuario.Rol)).ToList();
 
-                Session["Username"]=null; 
+                    var data2 = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
+                    a.Pass.Equals(pUsuario.Pass) && a.Rol.Equals(pUsuario.Rol)).ToList();
 
-                if (data.Count() > 0)
-                {
+                    Session["Admin"] = null;
+                    Session["Username"] = null;
+
+                    if (data.Count() > 0 && pUsuario.Rol.Equals(1))
+                    {
                         Session["Username"] = data.FirstOrDefault().Username;
                         return RedirectToAction("Index","Home");
+                        
+                    }
+                    else if (data.Count() > 0 && pUsuario.Rol.Equals(2))
+                    {
+                        Session["Admin"] = data.FirstOrDefault().Username;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Fallo";
 
-                }
-                else
-                {
-                    ViewBag.error = "Fallo";
-
-                        MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
-                        return RedirectToAction("Login");
-                }
+                            MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
+                            return RedirectToAction("Login");
+                    }
                 }
             }
             return View();
@@ -87,6 +96,7 @@ namespace CreditPand.UI.Controllers
         public ActionResult Logout()
         {
             Session.Remove("Username");
+            Session.Remove("Admin");
             return RedirectToAction("Login");
         }
 

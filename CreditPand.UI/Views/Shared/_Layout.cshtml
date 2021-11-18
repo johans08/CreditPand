@@ -7,6 +7,20 @@
     <title>@ViewBag.Title - Credit Pand</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'bb3ad70d5084880f1776dacc038b16e2fa6ccdb6';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -22,63 +36,43 @@
     <!-- ***** Preloader End ***** -->
     <!-- Header -->
     <!-- Sub Header opciones de usuario -->
-    <div class="sub-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <ul class="left-info">
-
-                        @if (Session["Username"] != null)
-                        {
-
+    @if (Session["Username"] != null)
+    {
+        <div class="sub-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <ul class="left-info">
                             <li><a><i class="fa fa-laptop"></i> Opciones de Usuario</a></li> <!-- Opciones de Usuario -->
                             <li><a href="@Url.Action("User", "Usuario")"><i class="fa fa-user"></i> Bienvenido @HttpContext.Current.Session["Username"].ToString()</a> </li> <!-- Perfil de Usuario -->
-                        }
-
-                    </ul>
-                </div>
-
-                <div class="col-md-4">
-                    <ul class="right-icons">
-                        <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Iniciar sesión -->
-                    </ul>
-                    @if (Session["Username"] != null)
-                    {
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
                         <ul class="right-icons">
                             <li><a href="@Url.Action("ClientCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Solicitar tarjeta de crédito -->
                             <li><a href="@Url.Action("ConsultCards", "Tarjeta")"><i class="fa fa-list"></i></a></li> <!-- Consultar tarjetas -->
                             <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li> <!-- Salir -->
-
                         </ul>
-                    }
+                    </div>
                 </div>
-
             </div>
         </div>
-    </div>
-    <!-- Sub Header opciones de Administrador -->
-    <div class="sub-header " style="background-color: #808080; ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <ul class="left-info">
-
-                        @if (Session["Admin"] != null)
-                        {
-                            <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                            <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li> <!-- Perfil de Administrador -->
-
-
-                        }
-
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="right-icons">
-                        <li><a href="@Url.Action("Login", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Ingresar -->
-                    </ul>
-                    @if (Session["Admin"] != null)
-                    {
+    }
+    @if (Session["Admin"] != null)
+    {
+        <!-- Sub Header opciones de Administrador -->
+        <div class="sub-header " style="background-color: #808080; ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <ul class="left-info">
+                            <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li>
+                            <!-- Opciones de Administrador -->
+                            <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li>
+                            <!-- Perfil de Administrador -->
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
                         <ul class="right-icons">
                             <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
                             <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
@@ -86,14 +80,14 @@
                             <li><a href="@Url.Action("InteresesForm", "Tarjeta")"><i class="fa fa-money"></i></a></li> <!-- Manejo de Intereses -->
                             <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li><!-- Salir -->
                         </ul>
-
-                    }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 
-    <header class="">
+    <!-- NavBar -->
+    <header class="navbar-expand">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="Index"><h2>Credit Pand</h2></a>
@@ -147,7 +141,7 @@
                     <h4>Credit Pand</h4>
                     <p>Siguenos en nuestras redes sociales.</p>
                     <ul class="social-icons">
-                        <li><a rel="nofollow" href="https://fb.com/templatemo" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-behance"></i></a></li>
@@ -168,7 +162,6 @@
                     <ul class="menu-list">
                         <li><a href="@Url.Action("About", "Home")">Sobre Nosotros</a></li>
                         <li><a href="@Url.Action("Register", "Usuario")">Registrarse</a></li>
-                        <li><a href="@Url.Action("Support", "Home")">Soporte</a></li>
                         <li><a href="@Url.Action("Contact", "Home")">Contáctanos</a></li>
                         <li><a href="@Url.Action("PrivacyPolicy", "Home")">Políticas de Privacidad</a></li>
                     </ul>
@@ -211,9 +204,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        Copyright &copy; 2020 Financial Business Co., Ltd.
+                        Copyright &copy; 2021 Credit Pand., Ltd.
 
-                        - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        - Design: <a rel="nofollow noopener" href="https://github.com/johans08/CreditPand" target="_blank">CreditPand</a>
                     </p>
                 </div>
             </div>
