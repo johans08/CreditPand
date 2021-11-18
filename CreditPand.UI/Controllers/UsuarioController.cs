@@ -82,9 +82,24 @@ namespace CreditPand.UI.Controllers
                     {
                         ViewBag.error = "Fallo";
 
+<<<<<<< HEAD
                             MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
                             return RedirectToAction("Login");
                     }
+=======
+                }
+                else
+                {
+                    ViewBag.error = "Fallo";
+
+                        MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
+                        //ViewBag.ErrorMessage = "Usuario o contraseña incorrectos, Intente denuevo";
+
+                        return RedirectToAction("Login");
+
+
+                }
+>>>>>>> origin/Katherine
                 }
             }
             return View();
@@ -143,10 +158,40 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
-        public ActionResult User(string Username)
+        public ActionResult User(string Username, Usuario pUsuario)
         {
-            Usuario obj = _oGestorUsuario.ListadoUsuarios().Where(x => x.Username == Username).FirstOrDefault();
-            return View(obj);
+
+            /*if (Username == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }*/
+            
+            /*Usuario objUsuario = _oGestorUsuario.Find(Username);
+            if (objUsuario == null)
+            {
+                return HttpNotFound();
+            }*/
+
+
+            /*public ObtenerProductoAsync(int? Id)
+        {
+            List<Producto> Listado = await ObtenerProductosAsync();
+            Producto auxProducto = Listado.Where(x => x.IdProducto == Id).FirstOrDefault();
+            return auxProducto;
+        }*/
+
+
+            //return View(objUsuario);
+            
+
+
+
+
+                ViewBag.User = Session["Username"];
+                Usuario obj = _oGestorUsuario.ListadoUsuarios().Where(x => x.Username == Username).FirstOrDefault();
+                return View(obj);
+                
+            
         }
 
 
@@ -171,6 +216,9 @@ namespace CreditPand.UI.Controllers
         }
 
 
+
+
+
         //********************************************************
         //Para crear un usuario en los mantenimientos, falta crear la vista del form para usarla
         /*public ActionResult CrearUsuario(Usuario pUsuario)
@@ -179,6 +227,11 @@ namespace CreditPand.UI.Controllers
             return RedirectToAction("Mantenimientos");
         }*/
         //********************************************************
+
+
+
+
+
 
 
         //Muestra el formulario que permite modificar a un usuario
@@ -205,6 +258,14 @@ namespace CreditPand.UI.Controllers
             return RedirectToAction("Mantenimientos");
 
         }
+
+
+
+
+
+
+
+
 
 
         //Para la asignación de roles a los usuarios, ¿QUITAR? LOS ROLES SE PUEDEN ASIGNAR DESDE EL UPDATE DEL USUARIO

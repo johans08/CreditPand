@@ -10,7 +10,7 @@ namespace CreditPand.BD.Repositorios
 {
     public class GestorSolicitud : IGestorSolicitud
     {
-
+        //Lista todas las solicitudes a tarjetas
         IEnumerable<Solicitud> IGestorSolicitud.ListadoSolicitud()
         {
             List<Solicitud> solicituds = new List<Solicitud>();
@@ -23,7 +23,7 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-        //Método para agregar una tarjeta si se acepta la solicitud
+        //Método para enviar una solicitud para una tarjeta
         int IGestorSolicitud.CrearSolicitud(Solicitud pSolicitud)
         {
             int n = 0;
@@ -36,7 +36,7 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-        //Método para borrar la infomración de una tarjeta en los mantenimientos
+        //Método para borrar una solicitud, en caso de que sea denegada
         int IGestorSolicitud.BorrarSolicitud(int pIdSolicitud)
         {
             int n = 0;

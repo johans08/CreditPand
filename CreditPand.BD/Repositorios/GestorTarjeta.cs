@@ -2,8 +2,10 @@
 using CreditPand.BD.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Diagnostics;
 
 using System.Linq;
@@ -93,56 +95,68 @@ namespace CreditPand.BD.Repositorios
         }
 
 
+
+
+
+
+
+
+
+
         //Método para aprobar, cuando la tarjeta no se realiza de manera directa
-        int IGestorTarjeta.Aprobar(Solicitud pSolicitud)
+        int IGestorTarjeta.Aprobar(Solicitud pSolicitud, Tarjeta oTarjeta, int id,
+            string Marca, int Límite, int Monto_extra, System.DateTime Fecha_activación, Boolean Internacional, int IdUsuario)
         {
             int n = 0;
-            using (CreditPandEntities ContextoBD = new CreditPandEntities())
-            {
-               // ContextoBD.Tarjeta.Add();
+
+           /* using (CreditPandEntities ContextoBD = new CreditPandEntities())
+
+                ContextoBD.Tarjeta.Add(pSolicitud);
                 n = ContextoBD.SaveChanges();
             }
-            return n;
+        }*/
 
-
-            /*CadenaConexion = ConfigurationManager.ConnectionStrings["CreditPand"].ConnectionString;
-
-            int Resultado = 0;
+            string CadenaConexion;
+            CadenaConexion = ConfigurationManager.ConnectionStrings["CreditPandEntities"].ConnectionString.Split('"')[1];
             using (SqlConnection objConexion = new SqlConnection(CadenaConexion))
+
             {
+                // ContextoBD.Tarjeta.Add();
+
+                
+
                 SqlCommand objComando = new SqlCommand();
                 objComando.Connection = objConexion;
                 objComando.CommandType = System.Data.CommandType.Text;
-                objComando.CommandText = "Insert into Tarjeta (id,Marca,CostoProducto)" +
-                                         "Values (@NomProducto,@MarcaProducto,@CostoProducto)";
+                objComando.CommandText = "Insert into Tarjeta (Marca, Límite, Monto_extra, Fecha_activación, Internacional ,IdUsuario)" +
+                                          "Values (@Marca, @Límite, @Monto_extra, @Fecha_activación, @Internacional, @IdUsuario)";
+                                         //"Select Marca, Límite, Monto_extra, Fecha_activación, Internacional ,IdUsuario from Solicitud";
+                //"Values (@NomProducto,@MarcaProducto,@CostoProducto)";
 
 
 
-                SqlParameter oParametro = new SqlParameter();
-                oParametro.ParameterName = "@NomProducto";
-                oParametro.SqlDbType = System.Data.SqlDbType.VarChar;
-                oParametro.Size = 50;
-                oParametro.Value = oProducto.NomProducto;
+                objComando.Parameters.Add(new SqlParameter("@Id", id));
+                objComando.Parameters.Add(new SqlParameter("@Marca", Marca));
 
-                objComando.Parameters.Add(oParametro);
+                objComando.Parameters.Add(new SqlParameter("@Límite", Límite));
+                objComando.Parameters.Add(new SqlParameter("@Monto_extra", Monto_extra));
 
-                objComando.Parameters.Add(new SqlParameter("@MarcaProducto", oProducto.MarcaProducto));
+                SqlParameter oParametro2 = new SqlParameter();
+                oParametro2.ParameterName = "@Fecha_activación";
+                oParametro2.SqlDbType = System.Data.SqlDbType.DateTime;
+                oParametro2.Value = Fecha_activación;
+                objComando.Parameters.Add(oParametro2);
 
-                objComando.Parameters.Add(new SqlParameter("@CostoProducto", oProducto.CostoProducto));
+                objComando.Parameters.Add(new SqlParameter("@Internacional", Internacional));
+                objComando.Parameters.Add(new SqlParameter("@IdUsuario", IdUsuario));
 
                 objConexion.Open();
-                Resultado = await objComando.ExecuteNonQueryAsync();
+                n = objComando.ExecuteNonQuery();
                 objConexion.Close();
 
             }
 
-            return Resultado;*/
-
-
-
-
+            return n;
         }
-
-
     }
 }

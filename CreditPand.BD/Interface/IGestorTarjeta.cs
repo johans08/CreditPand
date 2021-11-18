@@ -21,7 +21,9 @@ namespace CreditPand.BD.Interface
         
             int ActualizarInteres(Interes objInteres);
 
-            int Aprobar(Solicitud pSolicitud);
+            int Aprobar(Solicitud pSolicitud, Tarjeta oTarjeta, int id, 
+                string Marca, int Límite, int Monto_extra, System.DateTime 
+                Fecha_activación, Boolean Internacional, int IdUsuario);
 
     }
 }

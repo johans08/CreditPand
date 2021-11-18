@@ -12,11 +12,6 @@ Manejo de código entre Controller y Gestor.
 
 
 -----------------------------------------------------------------------------------------
-3- Pantalla de activación de solicitudes: metodo para aprobar solicitud (que envie los datos de una tabla a otra).
------------------------------------------------------------------------------------------
-
-
------------------------------------------------------------------------------------------
 4- Consulta de Tarjetas Activas: parte 2 lista, faltan los filtros de búsqueda,
 está la parte gráfica, pero no permite filtrar. No se puede ordenar el grid.
 Es para que el cliente lo vea o para que lo vea el admin?
@@ -30,14 +25,15 @@ Mejorar formulario de solicitud de Tarjeta
 Se puede mejorar la lista de los usuarios con un grid igual al de la vista de tarjetas activas
 
 que el formulario de interes no reciba valores quemados (Id y Marca), ni el de Registro con el Rol (Default o 0 no definido)
+Solicitud con el IdUsuario****
 
 Restricciones de tipos de dato y longitudes
+Update Tarjeta: Marca y Fecha de activación
+Update Usuario y Registro Usuario: Nombre, Apellido, SegundoApellido
 
------------------------------------------------------------------------------------------
-
-
------------------------------------------------------------------------------------------
-6- Barras de opciones: Admin: Login: falta
+ClientCards: Select y Radio Button Formato   *****SELECT CON SELECCIONE COMO DEFAULT
+EditUser: Select Rol con HTML Helper
+EditTarjeta: Marca y Fecha activación 
 -----------------------------------------------------------------------------------------
 
 
@@ -67,3 +63,85 @@ Restricciones de tipos de dato y longitudes
 
 -----------------------------------------------------------------------------------------
 11-Optimizar el código para que sea lo menos repetitivo posible, quitar código que no se uso
+
+
+
+
+
+
+
+
+
+
+        public async Task<ActionResult> Edit(int? id)
+        {
+            objGestionBD = new GestionBD();
+            Producto obj = new Producto();
+            obj = await objGestionBD.ObtenerProductoAsync(id);
+            return View(obj);
+
+        }
+
+
+
+
+        // POST: Producto/Edit/5
+        [HttpPost]
+        public async Task<ActionResult> Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                objGestionBD = new GestionBD();
+                Producto auxProducto = new Producto();
+                auxProducto.NomProducto = collection["NomProducto"];
+                auxProducto.MarcaProducto = Convert.ToInt32(collection["MarcaProducto"]);
+                auxProducto.CostoProducto = Convert.ToDecimal(collection["CostoProducto"]);
+                int resulta= await objGestionBD.ActualizarProductoAsync(auxProducto, id);
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                
+                return View();
+            }
+        } 
+
+
+
+
+
+
+        public async Task<int> ActualizarProductoAsync(Producto auxProducto, int id)
+        {
+            int Resultado = 0;
+            using (SqlConnection objConexion = new SqlConnection(CadenaConexion))
+            {
+                
+                SqlCommand objComando = new SqlCommand();
+                objComando.Connection = objConexion;
+                objComando.CommandType = System.Data.CommandType.Text;
+                objComando.CommandText = "Update Producto set NomProducto = @NomProducto, MarcaProducto = @MarcaProducto, CostoProducto = @CostoProducto where IdProducto = @IdProducto";
+
+
+                objComando.Parameters.Add(new SqlParameter("@IdProducto", id));
+
+                SqlParameter oParametro = new SqlParameter();
+                oParametro.ParameterName = "@NomProducto";
+                oParametro.SqlDbType = System.Data.SqlDbType.VarChar;
+                oParametro.Size = 50;
+                oParametro.Value = auxProducto.NomProducto;
+                objComando.Parameters.Add(oParametro);
+
+                objComando.Parameters.Add(new SqlParameter("@MarcaProducto", auxProducto.MarcaProducto));
+
+                objComando.Parameters.Add(new SqlParameter("@CostoProducto", auxProducto.CostoProducto));
+                objConexion.Open();
+                Resultado = await objComando.ExecuteNonQueryAsync();
+                objConexion.Close();
+                
+            }
+           
+           return Resultado;
+        
+        }

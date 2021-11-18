@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Login";
-    
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
 }
 
 <div class="page-heading header-text">
@@ -23,6 +26,7 @@
                     <span style="color: #ffffff;">Asegurese que el usuario y la contraseña sean los que colocó en el registro</span>
                 </div>
             </div>
+<<<<<<< HEAD
                 <div class="col-md-12">
                     <div class="contact-form">
                         <form id="login" action="LoginUser" controller="Usuario" method="get">
@@ -54,14 +58,47 @@
                                     <button type="submit" id="form-submit" class="filled-button">Ingresar</button>
                                 </fieldset>
 
+=======
+            <div class="col-md-12">
+                <div class="contact-form">
+                    <form id="login" action="LoginUser" controller="Usuario" method="get">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario" required="">
+                                </fieldset>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="">
+                                </fieldset>
+>>>>>>> origin/Katherine
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="filled-button">Ingresar</button>
+                            </fieldset>
+
+                        </div>
+                    </form>
                 </div>
             </div>
-       
         </div>
+
+    </div>
 </div>
+
+
+<!--<script language="text/Javascript">
+    if(ViewBag.ErrorMensaje != null){
+        Swal.fire('ViewBag.ErrorMensaje','','success');
+    }
+</script>-->
+
+
 
 <script language="text/Javascript">
 

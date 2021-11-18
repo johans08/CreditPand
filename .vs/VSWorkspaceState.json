@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\CreditPand.BD",
+    "\\CreditPand.BD\\Repositorios",
     "\\CreditPand.UI",
     "\\CreditPand.UI\\Controllers",
     "\\CreditPand.UI\\Views",
@@ -9,6 +10,6 @@
     "\\CreditPand.UI\\Views\\Tarjeta",
     "\\CreditPand.UI\\Views\\Usuario"
   ],
-  "SelectedNode": "\\CreditPand.UI\\Views\\Usuario\\Login.cshtml",
+  "SelectedNode": "\\CreditPand.UI\\Controllers\\TarjetaController.cs",
   "PreviewInSolutionExplorer": false
 }
