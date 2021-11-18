@@ -79,7 +79,7 @@ namespace CreditPand.BD.Repositorios
             int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
             {
-                    var obj = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && a.Pass.Equals(pUsuario.Pass)).FirstOrDefault();
+                    var obj = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && a.Pass.Equals(pUsuario.Pass) && (a.Rol.Equals(pUsuario.Rol.Equals(1)) || a.Rol.Equals(pUsuario.Rol.Equals(2))) ).FirstOrDefault();
                 
             }
             return n;
