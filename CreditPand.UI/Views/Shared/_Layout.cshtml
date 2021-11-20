@@ -58,7 +58,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     }
     @if (Session["Admin"] != null)
     {
@@ -68,47 +67,25 @@
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
                         <ul class="left-info">
-                            <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li>
-                            <!-- Opciones de Administrador -->
-                            <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li>
-                            <!-- Perfil de Administrador -->
+                            @if (Session["Admin"] != null)
+                            {
+                                <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li>
+                                <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li>
+                            }
                         </ul>
                     </div>
                     <div class="col-md-4">
-=======
-    </div>
-    <!-- Sub Header opciones de Administrador -->
-    <div class="sub-header " style="background-color: #808080; ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <ul class="left-info">
-
                         @if (Session["Admin"] != null)
                         {
-                            <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li> <!-- Opciones de Administrador -->
-                            <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li> <!-- Perfil de Administrador -->
-
-
+                            <ul class="right-icons">
+                                <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
+                                <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
+                                <li><a href="@Url.Action("AdminCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
+                                <li><a href="@Url.Action("InteresesForm", "Tarjeta")"><i class="fa fa-money"></i></a></li> <!-- Manejo de Intereses -->
+                                <li><a href="@Url.Action("SolicitudesTarjetas", "Tarjeta")"><i class="fa fa-file"></i></a></li> <!-- Manejo de Intereses -->
+                                <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li><!-- Salir -->
+                            </ul>
                         }
-
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="right-icons">
-                        <li><a href="@Url.Action("LoginAdministrador", "Usuario")"><i class="fa fa-sign-in"></i></a></li> <!-- Ingresar -->
-                    </ul>
-                    @if (Session["Admin"] != null)
-                    {
->>>>>>> origin/Katherine
-                        <ul class="right-icons">
-                            <li><a href="@Url.Action("AdminCharts", "Home")"><i class="fa fa-bar-chart"></i></a></li> <!-- Graficas de las diferentes tablas -->
-                            <li><a href="@Url.Action("Mantenimientos", "Usuario")"><i class="fa fa-list"></i></a></li> <!-- Lista de Usuarios -->
-                            <li><a href="@Url.Action("AdminCards", "Tarjeta")"><i class="fa fa-credit-card"></i></a></li> <!-- Manejo de Tarjetas de Credito -->
-                            <li><a href="@Url.Action("InteresesForm", "Tarjeta")"><i class="fa fa-money"></i></a></li> <!-- Manejo de Intereses -->
-                            <li><a href="@Url.Action("SolicitudesTarjetas", "Tarjeta")"><i class="fa fa-file"></i></a></li> <!-- Manejo de Intereses -->
-                            <li><a href="@Url.Action("Logout", "Usuario")"><i class="fa fa-sign-out"></i></a></li><!-- Salir -->
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -247,4 +224,4 @@
     @RenderSection("scripts", required: false)
 
 </body>
-</html>
+    </html>

@@ -7,78 +7,87 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Consulta de Tarjetas</h1>
-                <span>Listado de Tarjetas activas</span>
+                <h1>Consulta de Tarjetas Personales</h1>
+                <span>Listado de Tarjetas Personales</span>
             </div>
         </div>
     </div>
 </div>
 
-<br>
+<div class="single-services">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="section-heading">
+                <h2>Listado de <em>tarjeta</em></h2>
+                <span>Lista de tarjetas activas personales</span>
+            </div>
+        </div>
+        @using (Html.BeginForm(null, null, FormMethod.Get))
+        {
+            <fieldset>
+                <legend>Criterios de búsqueda</legend>
+                @Html.Label("Fecha_activación", "Fecha activación:")
+                @Html.TextBox("Fecha_activación")
 
-<div class="container">
-    @using (Html.BeginForm(null, null, FormMethod.Get))
-    {
-    <fieldset>
-        <legend>Criterios de búsqueda</legend>
-        @Html.Label("Fecha_activación", "Fecha activación:")
-        @Html.TextBox("Fecha_activación")
+
+                @Html.Label("Marca", "Marca:")
+                <select name="Marca" id="marca">
+                    <option value="Visa">Visa</option>
+                    <option value="Mastercard">Mastercard</option>
+                </select>
+
+                @Html.Label("Límite", "Monto Límite:")
+                @Html.TextBox("Límite")
+
+                <!--<input type="submit" value="Buscar" />-->
+                @Html.ActionLink("Buscar", "", "", new { @class = "btn btn-secondary" })
+
+            </fieldset>
+        }
+    </div>
+
+    <br>
 
 
-        @Html.Label("Marca", "Marca:")
-        <select name="Marca" id="marca">
-            <option value="Visa">Visa</option>
-            <option value="Mastercard">Mastercard</option>
-        </select>
+    @{
 
-        @Html.Label("Límite", "Monto Límite:")
-        @Html.TextBox("Límite")
-
-        <!--<input type="submit" value="Buscar" />-->
-        @Html.ActionLink("Buscar","","", new { @class = "btn btn-secondary"})
-
-    </fieldset>
+        WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2);
+        //webGrid.Bind(source: Model, autoSortAndPage: false);
     }
-</div>
 
-<br>
-
-
-@{
-
-    WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2);
-    //webGrid.Bind(source: Model, autoSortAndPage: false);
-}
-
-<!--Darle color verde a los títulos-->
-<div class="container">
+    <!--Darle color verde a los títulos-->
+    <div class="container">
 
 
-    @webGrid.GetHtml(tableStyle: "table table-bordered table-stripe", htmlAttributes: new { id = "webGrid" },
-    columns: webGrid.Columns(
-        webGrid.Column(columnName: "Id", header: "ID"),
-        webGrid.Column(columnName: "Marca", header: "Marca"),
-        webGrid.Column(columnName: "Límite", header: "Límite"),
-        webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),
-        webGrid.Column(columnName: "Fecha_activación", header: "Fecha"),
-        webGrid.Column(columnName: "Internacional", header: "Internacional")
+        @webGrid.GetHtml(tableStyle: "table table-bordered table-stripe", htmlAttributes: new { id = "webGrid" },
+        columns: webGrid.Columns(
+            webGrid.Column(columnName: "Id", header: "ID"),
+            webGrid.Column(columnName: "Marca", header: "Marca"),
+            webGrid.Column(columnName: "Límite", header: "Límite"),
+            webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),
+            webGrid.Column(columnName: "Fecha_activación", header: "Fecha"),
+            webGrid.Column(columnName: "Internacional", header: "Internacional")
 
-        //webGrid.Column(header: "Edit", format: @<a href="" class="btn-primary">Editar</a>) //Para usar en el mantenimiento de Clientes
-        //webGrid.Column(header: "Delete", format: @<a href="" class="btn-secondary">Delete</a>) //Para usar en el mantenimiento de Clientes
-        //https://www.aspsnippets.com/Articles/Export-WebGrid-with-Formatting-to-Excel-file-in-ASPNet-MVC.aspx
-        //https://www.c-sharpcorner.com/blogs/export-webgrid-data-to-microsoft-excel-in-asp-net-mvc-5
-        //https://www.variablenotfound.com/2011/10/aspnet-mvc-webgrid-con-filtro.html
+            //webGrid.Column(header: "Edit", format: @<a href="" class="btn-primary">Editar</a>) //Para usar en el mantenimiento de Clientes
+            //webGrid.Column(header: "Delete", format: @<a href="" class="btn-secondary">Delete</a>) //Para usar en el mantenimiento de Clientes
+            //https://www.aspsnippets.com/Articles/Export-WebGrid-with-Formatting-to-Excel-file-in-ASPNet-MVC.aspx
+            //https://www.c-sharpcorner.com/blogs/export-webgrid-data-to-microsoft-excel-in-asp-net-mvc-5
+            //https://www.variablenotfound.com/2011/10/aspnet-mvc-webgrid-con-filtro.html
 
+            )
         )
-    )
 
-    <!--Response.ContentType = "application/excel";
-    Response.Write(webGrid);
-    Response.End();-->
+        <!--Response.ContentType = "application/excel";
+        Response.Write(webGrid);
+        Response.End();-->
 
+    </div>
+
+    <div class="container">
+        @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
+
+    </div>
+    <br><br><br><br><br>
 </div>
 
-<div class="container">
-        @Html.ActionLink("Exportar a Excel","DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
-
-</div>
+    

@@ -52,13 +52,13 @@ namespace CreditPand.UI.Controllers
 
 
         //Permite el Login del usuario
-        public ActionResult LoginUser(Usuario pUsuario) 
+        public ActionResult LoginUser(Usuario pUsuario)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
                 {
-                    var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) && 
+                    var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
                     a.Pass.Equals(pUsuario.Pass) && a.Rol.Equals(pUsuario.Rol)).ToList();
 
                     var data2 = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
@@ -70,8 +70,8 @@ namespace CreditPand.UI.Controllers
                     if (data.Count() > 0 && pUsuario.Rol.Equals(1))
                     {
                         Session["Username"] = data.FirstOrDefault().Username;
-                        return RedirectToAction("Index","Home");
-                        
+                        return RedirectToAction("Index", "Home");
+
                     }
                     else if (data.Count() > 0 && pUsuario.Rol.Equals(2))
                     {
@@ -82,24 +82,9 @@ namespace CreditPand.UI.Controllers
                     {
                         ViewBag.error = "Fallo";
 
-<<<<<<< HEAD
-                            MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
-                            return RedirectToAction("Login");
-                    }
-=======
-                }
-                else
-                {
-                    ViewBag.error = "Fallo";
-
                         MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
-                        //ViewBag.ErrorMessage = "Usuario o contraseña incorrectos, Intente denuevo";
-
                         return RedirectToAction("Login");
-
-
-                }
->>>>>>> origin/Katherine
+                    }
                 }
             }
             return View();
@@ -260,14 +245,6 @@ namespace CreditPand.UI.Controllers
         }
 
 
-
-
-
-
-
-
-
-
         //Para la asignación de roles a los usuarios, ¿QUITAR? LOS ROLES SE PUEDEN ASIGNAR DESDE EL UPDATE DEL USUARIO
         public ActionResult Roles()
         {
@@ -277,4 +254,5 @@ namespace CreditPand.UI.Controllers
 
         
     }
+
 }

@@ -1,20 +1,19 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
-1- Login: falta login admin
-USAR LOS ROLES PARA EL MANEJO DE INGRESO COMO CLIENTE O ADMIN (SI NO USAR LOGINADMINISTRADOR)
-Manejo de código entre Controller y Gestor.
------------------------------------------------------------------------------------------
 
 
------------------------------------------------------------------------------------------
 2- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
+
+
 -----------------------------------------------------------------------------------------
 
 
 -----------------------------------------------------------------------------------------
+
 4- Consulta de Tarjetas Activas: parte 2 lista, faltan los filtros de búsqueda,
 está la parte gráfica, pero no permite filtrar. No se puede ordenar el grid.
 Es para que el cliente lo vea o para que lo vea el admin?
+
 -----------------------------------------------------------------------------------------
 
 
