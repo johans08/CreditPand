@@ -68,33 +68,50 @@ namespace CreditPand.UI.Controllers
                     Session["Admin"] = null;
                     Session["Username"] = null;
 
-                    //Para los datos del perfil del usuario y admin
-                    Session["Ide"]=data.FirstOrDefault().Ide;
-                    Session["Nombre"] = data.FirstOrDefault().Nombre;
-                    Session["Apellido"] = data.FirstOrDefault().Apellido;
-                    Session["SegundoApellido"] = data.FirstOrDefault().SegundoApellido;
-                    Session["Telefono"] = data.FirstOrDefault().Telefono;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["Pass"] = data.FirstOrDefault().Pass;
+                    
 
 
 
                     if (data.Count() > 0 && pUsuario.Rol.Equals(1))
                     {
                         Session["Username"] = data.FirstOrDefault().Username;
+                        
+                        //Para los datos del perfil del usuario y admin
+                        Session["Ide"]=data.FirstOrDefault().Ide;
+                        Session["Nombre"] = data.FirstOrDefault().Nombre;
+                        Session["Apellido"] = data.FirstOrDefault().Apellido;
+                        Session["SegundoApellido"] = data.FirstOrDefault().SegundoApellido;
+                        Session["Telefono"] = data.FirstOrDefault().Telefono;
+                        Session["Email"] = data.FirstOrDefault().Email;
+                        Session["Pass"] = data.FirstOrDefault().Pass;
+
                         return RedirectToAction("Index", "Home");
 
                     }
                     else if (data.Count() > 0 && pUsuario.Rol.Equals(2))
                     {
+
                         Session["Admin"] = data.FirstOrDefault().Username;
+
+                        //Para los datos del perfil del usuario y admin
+                        Session["Ide"] = data.FirstOrDefault().Ide;
+                        Session["Nombre"] = data.FirstOrDefault().Nombre;
+                        Session["Apellido"] = data.FirstOrDefault().Apellido;
+                        Session["SegundoApellido"] = data.FirstOrDefault().SegundoApellido;
+                        Session["Telefono"] = data.FirstOrDefault().Telefono;
+                        Session["Email"] = data.FirstOrDefault().Email;
+                        Session["Pass"] = data.FirstOrDefault().Pass;
+
+
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        ViewBag.error = "Fallo";
+                       
 
-                        MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");
+                        ViewBag.ErrorMessage = "Usuario o contraseña incorrectos, Intente denuevo";
+
+                        //MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");
                         return RedirectToAction("Login");
                     }
 

@@ -22,6 +22,18 @@ $(".form-submit").click(function () {
 
 
 //Alerta para login, si la contraseña o el usuario son incorrectos
+    <script>
+
+        @if(ViewBag.ErrorMensaje != null){
+            Swal.fire(
+                '@ViewBag.ErrorMensaje',
+                '',
+                'success')
+	}
+
+    </script>
+
+
 $(document).ready(function () {
 $("#btn-log").click(function () {
     Swal.fire("Usuario o contraseña incorrecta");

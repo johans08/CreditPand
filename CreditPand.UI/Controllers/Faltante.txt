@@ -9,27 +9,22 @@ Es para que el cliente lo vea o para que lo vea el admin?
 EXTRAS
 -----------------------------------------------------------------------------------------
 1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+
 3- CRUD: acomodar elementos gráficos
 Se puede mejorar la lista de los usuarios con un grid igual al de la vista de tarjetas activas
 que el formulario de interes no reciba valores quemados (Id y Marca), ni el de Registro con el Rol (Default o 0 no definido)
 
-Update Tarjeta: Marca y Fecha de activación
-ClientCards: Select, required
-EditTarjeta: Marca y Fecha activación 
-Solicitud de Tarjeta con Fecha_actual y en Actualizar se pone la fecha real de activación
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
-4- Perfil de Usuario: no se pueden actualizar datos, el boton guardar cambios no funciona
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+Update Tarjeta: Marca,required, que no cambie el valor al hacer update
+ClientCards: Select con formato redondeado 
+Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
+[Display(Name = "")] PARA LAS TABLAS DE LOS MANTENIMIENTOS
+
+4- Perfil de Usuario: no se pueden actualizar datos, el boton guardar cambios no funciona, separar de Login
+
 5- Verificar que todo sea responsive, Optimizar el código , quitar código que no se uso
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
-6- Falta solo Gráfica 1
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+
+6- Falta solo Gráfica 1*******
+
 7- Cambiar los Message-Box por SW en el Login y CRUD
 --Login: datos incorrectos.
 --Registro de Cliente y Solicitud: Registro Exitoso.

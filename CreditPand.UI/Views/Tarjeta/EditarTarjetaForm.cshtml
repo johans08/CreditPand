@@ -41,7 +41,12 @@
 
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
+                        <select name="Marca" id="marca" class="form-control" required>
+                            <option class="form-control" value="">Seleccione</option>
+                            <option class="form-control" value="Visa">Visa</option>
+                            <option class="form-control" value="Mastercard">Mastercard</option>
+                        </select>
+                        <!--Html.EditorFor(model => model.Marca, new { htmlAttributes = new { class = "form-control" } })-->
                         @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
                         <br>
                     </div>
@@ -64,7 +69,7 @@
 
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         @Html.LabelFor(model => model.Fecha_activación, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.Fecha_activación, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Fecha_activación, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Fecha_activación, "", new { @class = "text-danger" })
                         <br>
                     </div>
