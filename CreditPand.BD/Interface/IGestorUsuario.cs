@@ -19,8 +19,8 @@ namespace CreditPand.BD.Interface
 
         int BorrarUsuario(string Username);
 
-        int Login(Usuario pUsuario); 
+        //int Login(Usuario pUsuario); 
 
-        int Profile(int id, Usuario pUsuario);
+       // Usuario Profile(string Username, Usuario pUsuario);
     }
 }

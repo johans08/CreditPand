@@ -48,14 +48,12 @@
                                     <br>
 
                                     <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <fieldset>
-                                            <select name="Marca" id="marca" class="form-control">
-                                                <!--<option class="form-control" value="0">Seleccione una tarjeta</option>-->
-                                                <option class="form-control" value="Visa">Visa</option>
-                                                <option class="form-control" value="Mastercard">Mastercard</option>
+                                            <select name="Marca" type="text" id="marca" class="form-control", required="">
+                                                <<option value="Select">Seleccione</option>
+                                                <option value="Visa">Visa</option>
+                                                <option value="Mastercard">Mastercard</option>
                                             </select>
-                                            <!--<input name="Marca" type="text" class="form-control" id="marca" placeholder="Marca" required="">-->
-                                        </fieldset>
+                                        
                                     </div>
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         <fieldset>
@@ -75,18 +73,16 @@
                                         </fieldset>
                                     </div>
 
-                                    <!--Reacomodar formulario-->
                                     <div class="col-lg-4 col-md-12 col-sm-12 text-light">
                                         <fieldset>
-                                            <label >Internacional</label>
-                                            <input name="Internacional" type="radio" id="InternacionalYes" value=true> Si
-                                            <input name="Internacional" type="radio" id="InternacionalNo" value=false> No
+                                            <label>Internacional</label>
+                                            <input name="Internacional" type="radio" id="InternacionalYes" value=true required=""> Si
+                                            <input name="Internacional" type="radio" id="InternacionalNo" value=false required=""> No
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="IdUsuario" type="number" class="form-control" id="id_user" placeholder="IdUsuario" value="4010"> 
-                                            <!--El valor lo tiene que digitar el cliente, no así-->
+                                            <input name="IdUsuario" type="number" class="form-control" id="id_user" placeholder="IdUsuario"> 
                                         </fieldset>
                                     </div>
 

@@ -31,6 +31,7 @@ namespace CreditPand.BD.Repositorios
             {
                 ContextoBD.Solicitud.Add(pSolicitud);
                 n = ContextoBD.SaveChanges();
+
             }
             return n;
         }

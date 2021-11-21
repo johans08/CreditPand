@@ -51,7 +51,7 @@ namespace CreditPand.UI.Controllers
 
 
 
-        //Permite el Login del usuario
+        //Permite el Login del usuario y del administrador
         public ActionResult LoginUser(Usuario pUsuario)
         {
             if (ModelState.IsValid)
@@ -64,8 +64,20 @@ namespace CreditPand.UI.Controllers
                     var data2 = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
                     a.Pass.Equals(pUsuario.Pass) && a.Rol.Equals(pUsuario.Rol)).ToList();
 
+                    
                     Session["Admin"] = null;
                     Session["Username"] = null;
+
+                    //Para los datos del perfil del usuario y admin
+                    Session["Ide"]=data.FirstOrDefault().Ide;
+                    Session["Nombre"] = data.FirstOrDefault().Nombre;
+                    Session["Apellido"] = data.FirstOrDefault().Apellido;
+                    Session["SegundoApellido"] = data.FirstOrDefault().SegundoApellido;
+                    Session["Telefono"] = data.FirstOrDefault().Telefono;
+                    Session["Email"] = data.FirstOrDefault().Email;
+                    Session["Pass"] = data.FirstOrDefault().Pass;
+
+
 
                     if (data.Count() > 0 && pUsuario.Rol.Equals(1))
                     {
@@ -82,9 +94,11 @@ namespace CreditPand.UI.Controllers
                     {
                         ViewBag.error = "Fallo";
 
-                        MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");//Cambiar por SweetAlert
+                        MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");
                         return RedirectToAction("Login");
                     }
+
+
                 }
             }
             return View();
@@ -102,91 +116,17 @@ namespace CreditPand.UI.Controllers
 
 
 
-        //Vista del login de administrador
-        public ActionResult LoginAdministrador()
-        {
-            return View();
-        }
-
-
-
-        //Para el ingreso en sesión del admin
-        public ActionResult LoginAdmin(Usuario pUsuario)
-        {
-            if (ModelState.IsValid)
-            {
-                using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
-                {
-                    var data = ContextoBD.Usuario.Where(a => a.Username.Equals(pUsuario.Username) &&
-                    a.Pass.Equals(pUsuario.Pass)).ToList();
-
-                    Session["Admin"] = null;
-
-                    if (data.Count() > 0)
-                    {
-                        Session["Admin"] = data.FirstOrDefault().Username;
-                        return RedirectToAction("Index", "Home");
-
-                    }
-                    else
-                    {
-                        ViewBag.error = "Fallo";
-
-                        MessageBox.Show("Datos incorrectos o sin permiso de administrador", "Intente denuevo");//Cambiar por SweetAlert
-                        return RedirectToAction("LoginAdministrador");
-                    }
-                }
-            }
-            return View();
-        }
-
-
-
         //Muestra el perfil del usuario que se encuentra en sesión en ese momento
-        public ActionResult User(string Username, Usuario pUsuario)
+        public ActionResult User()
         {
-
-            /*if (Username == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }*/
-            
-            /*Usuario objUsuario = _oGestorUsuario.Find(Username);
-            if (objUsuario == null)
-            {
-                return HttpNotFound();
-            }*/
-
-
-            /*public ObtenerProductoAsync(int? Id)
-        {
-            List<Producto> Listado = await ObtenerProductosAsync();
-            Producto auxProducto = Listado.Where(x => x.IdProducto == Id).FirstOrDefault();
-            return auxProducto;
-        }*/
-
-
-            //return View(objUsuario);
-            
-
-
-
-
-                ViewBag.User = Session["Username"];
-                Usuario obj = _oGestorUsuario.ListadoUsuarios().Where(x => x.Username == Username).FirstOrDefault();
-                return View(obj);
-                
-            
+                return View();
         }
 
 
 
-        //Trae los datos del usuario para que este pueda visualizarlos
-        public ActionResult UserProfile(string Username, Usuario pUsuario)
+        //Muestra el perfil del admin que está en sesión en ese momento
+        public ActionResult AdminProfile()
         {
-
-            // int registros = _oGestorUsuario.Profile(id, pUsuario);
-            // return RedirectToAction("User");
             return View();
         }
 
@@ -203,7 +143,6 @@ namespace CreditPand.UI.Controllers
 
 
 
-
         //********************************************************
         //Para crear un usuario en los mantenimientos, falta crear la vista del form para usarla
         /*public ActionResult CrearUsuario(Usuario pUsuario)
@@ -212,7 +151,15 @@ namespace CreditPand.UI.Controllers
             return RedirectToAction("Mantenimientos");
         }*/
         //********************************************************
-
+        //Para modificar el perfil de un usuario o un admin
+        /*public ActionResult ModificarUserProfile(Usuario pUsuario)
+        {
+            int registros = _oGestorUsuario.ActualizarUsuario(pUsuario);
+            return RedirectToAction("Index", "Home");
+        }
+         * 
+         * 
+         */
 
 
 

@@ -248,9 +248,9 @@
     <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
-    <Content Include="Views\Usuario\LoginAdministrador.cshtml" />
     <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
     <Content Include="Views\Tarjeta\AprobarForm.cshtml" />
+    <Content Include="Views\Usuario\AdminProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditPand.BD\CreditPand.BD.csproj">

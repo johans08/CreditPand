@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>@HttpContext.Current.Session["Username"].ToString()</h1>
+                <h1>@HttpContext.Current.Session["Admin"].ToString()</h1>
                 <span>Perfil de Usuario</span>
             </div>
         </div>
@@ -69,7 +69,7 @@
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario" readonly = "readonly" value=@HttpContext.Current.Session["Username"].ToString()>>
+                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario" readonly = "readonly" value=@HttpContext.Current.Session["Admin"].ToString()>>
                                 </fieldset>
                             </div>
 

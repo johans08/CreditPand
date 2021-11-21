@@ -1,146 +1,44 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
-
-
-2- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
-
-
------------------------------------------------------------------------------------------
-
-
------------------------------------------------------------------------------------------
-
-4- Consulta de Tarjetas Activas: parte 2 lista, faltan los filtros de búsqueda,
-está la parte gráfica, pero no permite filtrar. No se puede ordenar el grid.
+VALE % DEL PROYECTO
+2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda, No se puede ordenar el grid.
 Es para que el cliente lo vea o para que lo vea el admin?
-
 -----------------------------------------------------------------------------------------
 
 
+EXTRAS
 -----------------------------------------------------------------------------------------
-5- CRUD: acomodar elementos gráficos(colores, formatos). 
-Mejorar formulario de solicitud de Tarjeta
-
+1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+3- CRUD: acomodar elementos gráficos
 Se puede mejorar la lista de los usuarios con un grid igual al de la vista de tarjetas activas
-
 que el formulario de interes no reciba valores quemados (Id y Marca), ni el de Registro con el Rol (Default o 0 no definido)
-Solicitud con el IdUsuario****
 
-Restricciones de tipos de dato y longitudes
 Update Tarjeta: Marca y Fecha de activación
-Update Usuario y Registro Usuario: Nombre, Apellido, SegundoApellido
-
-ClientCards: Select y Radio Button Formato   *****SELECT CON SELECCIONE COMO DEFAULT
-EditUser: Select Rol con HTML Helper
+ClientCards: Select, required
 EditTarjeta: Marca y Fecha activación 
+Solicitud de Tarjeta con Fecha_actual y en Actualizar se pone la fecha real de activación
 -----------------------------------------------------------------------------------------
-
-
 -----------------------------------------------------------------------------------------
-7- Perfil de Usuario: está vista, falta la carga de datos 
+4- Perfil de Usuario: no se pueden actualizar datos, el boton guardar cambios no funciona
 -----------------------------------------------------------------------------------------
-
-
 -----------------------------------------------------------------------------------------
-8- Verificar que todo sea responsive
+5- Verificar que todo sea responsive, Optimizar el código , quitar código que no se uso
 -----------------------------------------------------------------------------------------
-
-
 -----------------------------------------------------------------------------------------
-9- Falta solo Gráfica 1
+6- Falta solo Gráfica 1
 -----------------------------------------------------------------------------------------
-
-
 -----------------------------------------------------------------------------------------
-10- Cambiar los Message-Box por SW en el Login y CRUD
+7- Cambiar los Message-Box por SW en el Login y CRUD
 --Login: datos incorrectos.
 --Registro de Cliente y Solicitud: Registro Exitoso.
 --Update o Delete de Cliente, Tarjeta o Solicitud: Registro actualizado/borrado.
 --Interes Update: Interes actualizado.
+
+Mensajes por si datos se repiten y no se pueden actualizar
+Mensaje si el id de usuario no existe y no se puede procesar la solicitud o si el cliente ya tiene tarjeta
 -----------------------------------------------------------------------------------------
 
 
------------------------------------------------------------------------------------------
-11-Optimizar el código para que sea lo menos repetitivo posible, quitar código que no se uso
 
-
-
-
-
-
-
-
-
-
-        public async Task<ActionResult> Edit(int? id)
-        {
-            objGestionBD = new GestionBD();
-            Producto obj = new Producto();
-            obj = await objGestionBD.ObtenerProductoAsync(id);
-            return View(obj);
-
-        }
-
-
-
-
-        // POST: Producto/Edit/5
-        [HttpPost]
-        public async Task<ActionResult> Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                objGestionBD = new GestionBD();
-                Producto auxProducto = new Producto();
-                auxProducto.NomProducto = collection["NomProducto"];
-                auxProducto.MarcaProducto = Convert.ToInt32(collection["MarcaProducto"]);
-                auxProducto.CostoProducto = Convert.ToDecimal(collection["CostoProducto"]);
-                int resulta= await objGestionBD.ActualizarProductoAsync(auxProducto, id);
-                return RedirectToAction("Index");
-
-            }
-            catch
-            {
-                
-                return View();
-            }
-        } 
-
-
-
-
-
-
-        public async Task<int> ActualizarProductoAsync(Producto auxProducto, int id)
-        {
-            int Resultado = 0;
-            using (SqlConnection objConexion = new SqlConnection(CadenaConexion))
-            {
-                
-                SqlCommand objComando = new SqlCommand();
-                objComando.Connection = objConexion;
-                objComando.CommandType = System.Data.CommandType.Text;
-                objComando.CommandText = "Update Producto set NomProducto = @NomProducto, MarcaProducto = @MarcaProducto, CostoProducto = @CostoProducto where IdProducto = @IdProducto";
-
-
-                objComando.Parameters.Add(new SqlParameter("@IdProducto", id));
-
-                SqlParameter oParametro = new SqlParameter();
-                oParametro.ParameterName = "@NomProducto";
-                oParametro.SqlDbType = System.Data.SqlDbType.VarChar;
-                oParametro.Size = 50;
-                oParametro.Value = auxProducto.NomProducto;
-                objComando.Parameters.Add(oParametro);
-
-                objComando.Parameters.Add(new SqlParameter("@MarcaProducto", auxProducto.MarcaProducto));
-
-                objComando.Parameters.Add(new SqlParameter("@CostoProducto", auxProducto.CostoProducto));
-                objConexion.Open();
-                Resultado = await objComando.ExecuteNonQueryAsync();
-                objConexion.Close();
-                
-            }
-           
-           return Resultado;
-        
-        }
