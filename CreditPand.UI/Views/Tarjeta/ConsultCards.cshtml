@@ -26,7 +26,7 @@
         {
             <fieldset>
                 <legend>Criterios de búsqueda</legend>
-                @Html.Label("Fecha_activación", "Fecha activación:")
+                @Html.Label("Fecha_activacion", "Fecha activación:")
                 @Html.TextBox("Fecha_activación")
 
 
@@ -40,7 +40,7 @@
                 @Html.TextBox("Límite")
 
                 <!--<input type="submit" value="Buscar" />-->
-                @Html.ActionLink("Buscar", "", "", new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Buscar", "ConsultCards", "Tarjeta", new { @class = "btn btn-secondary" })
 
             </fieldset>
         }
@@ -51,7 +51,7 @@
 
     @{
 
-        WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2);
+        WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2, sortFieldName:"Id");
         //webGrid.Bind(source: Model, autoSortAndPage: false);
     }
 

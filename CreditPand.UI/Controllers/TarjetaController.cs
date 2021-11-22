@@ -79,20 +79,6 @@ namespace CreditPand.UI.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Para aprobar la solicitud de una tarjeta de crédito
         public ActionResult AprobarSolicitud(Solicitud pSolicitud, Tarjeta oTarjeta, int id, 
             string Marca, int Límite, int Monto_extra, System.DateTime Fecha_activación, Boolean Internacional, int IdUsuario, FormCollection collection)
@@ -121,40 +107,125 @@ namespace CreditPand.UI.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         //Para registrar una tarjeta de credito de forma directa , QUITAR?????
-        public ActionResult RegistroTarjeta(Tarjeta pTarjeta)
+        /*public ActionResult RegistroTarjeta(Tarjeta pTarjeta)
         {
             int registros = _oGestorTarjeta.CrearTarjeta(pTarjeta);
             return RedirectToAction("ClientCards");
-        }
+        }*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
         //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
-        public ActionResult ConsultCards(DateTime? Fecha_activación= null, string Marca =  null, int? Límite = null)
+        public ActionResult ConsultCards(DateTime? Fecha_activación = null, string Marca = null, int? Límite = null,string buscar=null)
         {
-           
-            /*var tarjetas = _services.ObtenerPaginaDePersonasFiltrada(page, PERSONAS_POR_PAGINA,
-                                   sort, sortDir, buscar, minHijos, maxHijos);*/
+
+            /* int _TotalRegistros = 0;
+             int _TotalPaginas = 0;
+
+             // FILTRO DE BÚSQUEDA
+             using (_DbContext = new AppDbContext())
+             {
+                 // Recuperamos el 'DbSet' completo
+                 _Customers = _DbContext.Customers.ToList();
+
+                 // Filtramos el resultado por el 'texto de búqueda'
+                 if (!string.IsNullOrEmpty(buscar))
+                 {
+                     foreach (var item in buscar.Split(new char[] { ' ' },
+                              StringSplitOptions.RemoveEmptyEntries))
+                     {
+                         _Customers = _Customers.Where(x => x.ContactName.Contains(item) ||
+                                                       x.CompanyName.Contains(item) ||
+                                                       x.Email.Contains(item))
+                                                       .ToList();
+                     }
+                 }
+             }
+
+             // SISTEMA DE PAGINACIÓN
+             using (_DbContext = new AppDbContext())
+             {
+                 // Número total de registros de la tabla Customers
+                 _TotalRegistros = _Customers.Count();
+                 // Obtenemos la 'página de registros' de la tabla Customers
+                 _Customers = _Customers.OrderBy(x => x.ContactName)
+                                                  .Skip((pagina - 1) * _RegistrosPorPagina)
+                                                  .Take(_RegistrosPorPagina)
+                                                  .ToList();
+                 // Número total de páginas de la tabla Customers
+                 _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+
+                 // Instanciamos la 'Clase de paginación' y asignamos los nuevos valores
+                 _PaginadorCustomers = new PaginadorGenerico<Customer>()
+                 {
+                     RegistrosPorPagina = _RegistrosPorPagina,
+                     TotalRegistros = _TotalRegistros,
+                     TotalPaginas = _TotalPaginas,
+                     PaginaActual = pagina,
+                     BusquedaActual = buscar,
+                     Resultado = _Customers
+                 };
+             }
+
+             // Enviamos a la Vista la 'Clase de paginación'
+             return View(_PaginadorCustomers);*/
+
+            /*  var tarjetas = _GestorTarjeta.ObtenerPaginaDePersonasFiltrada(page, PERSONAS_POR_PAGINA,
+                                     sort, sortDir, buscar, minHijos, maxHijos);
+            */
+
+            
+                IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
 
 
-            IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
             return View(Cards);
+
+
+
 
         }
         
+
+        //Método para buscar en el Grid
+        public void Buscar(Tarjeta pTarjeta, DateTime? Fecha_activación = null, string Marca = null, int? Límite = null, string buscar = null)
+        {
+            using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
+            {
+                var bFecha = ContextoBD.Tarjeta.Where(a => a.Fecha_activación.Equals(pTarjeta.Fecha_activación)).ToList();
+                var bMarca = ContextoBD.Tarjeta.Where(a => a.Marca.Equals(pTarjeta.Marca)).ToList();
+                var bLimite = ContextoBD.Tarjeta.Where(a => a.Límite.Equals(pTarjeta.Límite)).ToList();
+
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //Método que permite exportar la información de las tarjetas a Excel

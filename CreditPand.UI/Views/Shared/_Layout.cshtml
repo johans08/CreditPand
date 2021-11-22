@@ -70,7 +70,7 @@
                             @if (Session["Admin"] != null)
                             {
                                 <li><a><i class="fa fa-laptop"></i> Opciones de Administrador </a></li>
-                                <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li>
+                                <li><a href="@Url.Action("AdminProfile", "Usuario")"><i class="fa fa-user"></i>Bienvenido @HttpContext.Current.Session["Admin"].ToString()</a></li>
                             }
                         </ul>
                     </div>

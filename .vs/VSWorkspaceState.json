@@ -6,10 +6,11 @@
     "\\CreditPand.UI",
     "\\CreditPand.UI\\Controllers",
     "\\CreditPand.UI\\Views",
+    "\\CreditPand.UI\\Views\\Home",
     "\\CreditPand.UI\\Views\\Shared",
     "\\CreditPand.UI\\Views\\Tarjeta",
     "\\CreditPand.UI\\Views\\Usuario"
   ],
-  "SelectedNode": "\\CreditPand.UI\\Controllers\\TarjetaController.cs",
+  "SelectedNode": "\\CreditPand.UI\\Controllers\\Faltante.txt",
   "PreviewInSolutionExplorer": false
 }
