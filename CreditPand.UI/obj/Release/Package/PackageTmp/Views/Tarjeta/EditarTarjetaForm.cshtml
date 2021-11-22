@@ -1,0 +1,120 @@
+﻿@model CreditPand.BD.Modelo.Tarjeta
+
+@{
+    ViewBag.Title = "EditarTarjetaForm";
+    CreditPand.BD.Modelo.Tarjeta oTarjeta = new CreditPand.BD.Modelo.Tarjeta();
+
+
+    <datalist id="Tarjetas">
+        <option value="Visa">
+        <option value="Mastercard">
+    </datalist>
+
+}
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Formulario para modificar la información de una tarjeta</h1>
+                <span>Los datos del Id de la Tarjeta y la Marca no pueden modificarse</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+@using (Html.BeginForm("ActualizarTarjeta", "Tarjeta", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-form">
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <!--<select name="Marca" id="marca" class="form-control" required>
+                                <option class="form-control" value="">Seleccione</option>
+                                <option class="form-control" value="Visa">Visa</option>
+                                <option class="form-control" value="Mastercard">Mastercard</option>
+                            </select>-->
+                            @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Límite, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Límite, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Límite, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Monto_extra, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Monto_extra, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Monto_extra, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Fecha_activación, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Fecha_activación, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_activación, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Internacional, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Internacional)
+                                @Html.ValidationMessageFor(model => model.Internacional, "", new { @class = "text-danger" })
+                            </div>
+                            <br>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.IdUsuario, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
+                            <br>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <input type="submit" value="Guardar Cambios" class="btn btn-info" />
+                            @Html.ActionLink("Regresar", "AdminCards", "Tarjeta", new { @class = "btn btn-success" })
+                            <br>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

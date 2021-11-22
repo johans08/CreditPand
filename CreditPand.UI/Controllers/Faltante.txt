@@ -18,7 +18,7 @@ Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
 
 4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
 
-5- Verificar que todo sea responsive: Index, barra de opciones, ConsultCards, Mantenimientos, ListadoSolicitudes
+5- Verificar que todo sea responsive: Index, barra de opciones, ConsultCards
 
 
 Optimizar el código , quitar código que no se uso

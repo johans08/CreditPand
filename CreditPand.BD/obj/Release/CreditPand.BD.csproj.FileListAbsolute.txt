@@ -1,0 +1,12 @@
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\CreditPand.BD.dll.config
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\CreditPand.BD.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\CreditPand.BD.pdb
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\EntityFramework.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\EntityFramework.xml
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\obj\Release\CreditPand.BD.csproj.AssemblyReference.cache
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\obj\Release\CreditPand.BD.csproj.CoreCompileInputs.cache
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\obj\Release\CreditPand.BD.csproj.CopyComplete
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\obj\Release\CreditPand.BD.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.BD\obj\Release\CreditPand.BD.pdb

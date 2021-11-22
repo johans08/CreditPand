@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CreditPandModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Interes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Monto_regular" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Monto_morosidad" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__Rol__4E88ABD4" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Límite" Type="Int32" Nullable="false" />
+    <Property Name="Monto_extra" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_activación" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Internacional" Type="Boolean" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Solicitud__IdUsu__70DDC3D8" FromRole="Solicitud" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Límite" Type="Int32" Nullable="false" />
+    <Property Name="Monto_extra" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_activación" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Internacional" Type="Boolean" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Tarjeta__IdUsuar__6477ECF3" FromRole="Tarjeta" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Ide" />
+    </Key>
+    <Property Name="Ide" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rol" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rol1" Relationship="Self.FK__Usuario__Rol__4E88ABD4" FromRole="Usuario" ToRole="Rol" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK__Solicitud__IdUsu__70DDC3D8" FromRole="Usuario" ToRole="Solicitud" />
+    <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__IdUsuar__6477ECF3" FromRole="Usuario" ToRole="Tarjeta" />
+  </EntityType>
+  <Association Name="FK__Usuario__Rol__4E88ABD4">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Solicitud__IdUsu__70DDC3D8">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Ide" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarjeta__IdUsuar__6477ECF3">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Ide" />
+      </Principal>
+      <Dependent Role="Tarjeta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CreditPandEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Interes" EntityType="Self.Interes" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Solicitud" EntityType="Self.Solicitud" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Usuario__Rol__4E88ABD4" Association="Self.FK__Usuario__Rol__4E88ABD4">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Solicitud__IdUsu__70DDC3D8" Association="Self.FK__Solicitud__IdUsu__70DDC3D8">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarjeta__IdUsuar__6477ECF3" Association="Self.FK__Tarjeta__IdUsuar__6477ECF3">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Tarjeta" EntitySet="Tarjeta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
