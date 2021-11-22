@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<CreditPand.BD.Modelo.Tarjeta>//Para traer los datos de la BD
+
 @{
     ViewBag.Title = "AdminCharts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -31,8 +32,8 @@
                         <figure class="highcharts-figure">
                             <div id="container1"></div>
                             <p class="highcharts-description">
-                                El gráfico muestra que la preferencia de los clientes por Visa es muy similar a la preferencia de los clientes por Mastercard, ya que los 
-                                datos obtenidos son muy similares entre sí. 
+                                El gráfico muestra que la preferencia de los clientes por Visa es muy similar a la preferencia de los clientes por Mastercard, ya que los
+                                datos obtenidos son muy similares entre sí.
                             </p>
                         </figure>
                     </article>
@@ -57,63 +58,63 @@
 
 <script language="text/Javascript">
 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
+            cleared[t.id] = 1;  // you could use true and false, but that's more typing
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
+        }
+    }
 </script>
 <script src="https://code.highcharts.com/highcharts.src.js"></script>
 
 
 <!--Datos del gráfico 1--><!--FALTAN LOS DATOS DEL GRÁFICO, CON LA BASE DE DATOS-->
 <script type="text/javascript">
-// Set up the chart
-const chart = new Highcharts.Chart({
-    chart: {
-        renderTo: 'container1',
-        type: 'column',
-        options3d: {
-            enabled: true,
-            alpha: 15,
-            beta: 15,
-            depth: 50,
-            viewDistance: 25
-        }
-    },
-    title: {
-        text: 'Clientes por tarjeta'
-    },
-    subtitle: {
-        text: 'Fuente: <a>Base de Datos de CreditPand</a>'
-    },
-    plotOptions: {
-        column: {
-            depth: 25
-        }
-    },
-    series: [{
-        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-    }]
-});
+    // Set up the chart
+    const chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container1',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
+        },
+        title: {
+            text: 'Clientes por tarjeta'
+        },
+        subtitle: {
+            text: 'Fuente: <a>Base de Datos de CreditPand</a>'
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
+        },
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    });
 
-function showValues() {
-    document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
-    document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
-    document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
-}
+    function showValues() {
+        document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
+        document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
+        document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
+    }
 
-// Activate the sliders
-document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
-    chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
-    showValues();
-    chart.redraw(false);
-}));
+    // Activate the sliders
+    document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
+        chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
+        showValues();
+        chart.redraw(false);
+    }));
 
-showValues();</script>
+    showValues();</script>
 
 <script src="~/Content/Highcharts/Code/Modules/accessibility.js"></script>
 <script src="~/Content/Highcharts/Code/Modules/export-data.js"></script>
@@ -123,67 +124,68 @@ showValues();</script>
 
 
 
+
 <!--Datos del Gráfico 2-->
 <script type="text/javascript">
-Highcharts.chart('container2', {
-    chart: {
-        type: 'bar'
-    },
-    title: {
-        text: 'Gastos de los clientes por año por tarjeta(en dólares)'
-    },
-    subtitle: {
-        text: 'Fuente: <a>Base de Datos de CreditPand</a>'
-    },
-    xAxis: {
-        categories: ['Visa', 'Mastercard'],
-        title: {
-            text: null
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Doláres (miles)',
-            align: 'high'
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'bar'
         },
-        labels: {
-            overflow: 'justify'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' miles'
-    },
-    plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true
+        title: {
+            text: 'Gastos de los clientes por año por tarjeta(en dólares)'
+        },
+        subtitle: {
+            text: 'Fuente: <a>Base de Datos de CreditPand</a>'
+        },
+        xAxis: {
+            categories: ['Visa', 'Mastercard'],
+            title: {
+                text: null
             }
-        }
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'top',
-        x: -40,
-        y: 130,
-        floating: true,
-        borderWidth: 1,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-        shadow: true
-    },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        name: 'Año 2019',
-        data: [307000, 310000]
-    }, {
-        name: 'Año 2020',
-        data: [233000, 156000]
-    }, {
-        name: 'Año 2021',
-        data: [114000, 141000]
-    }]
-});</script>
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Doláres (miles)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' miles'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 130,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Año 2019',
+            data: [307000, 310000]
+        }, {
+            name: 'Año 2020',
+            data: [233000, 156000]
+        }, {
+            name: 'Año 2021',
+            data: [114000, 141000]
+        }]
+    });</script>

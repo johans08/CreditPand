@@ -44,8 +44,10 @@ namespace CreditPand.BD.Repositorios
             int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
             {
+
                 ContextoBD.Entry<Usuario>(pUsuario).State = System.Data.Entity.EntityState.Modified;
                 n = ContextoBD.SaveChanges();
+
             }
             return n;
 

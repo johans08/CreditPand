@@ -167,19 +167,17 @@ namespace CreditPand.UI.Controllers
             int registros = _oGestorUsuario.CrearUsuario(pUsuario);
             return RedirectToAction("Mantenimientos");
         }*/
+
+
+
+
         //********************************************************
         //Para modificar el perfil de un usuario o un admin
-        /*public ActionResult ModificarUserProfile(Usuario pUsuario)
+        public ActionResult ModificarUserProfile(Usuario pUsuario)
         {
             int registros = _oGestorUsuario.ActualizarUsuario(pUsuario);
             return RedirectToAction("Index", "Home");
         }
-         * 
-         * 
-         */
-
-
-
 
 
 
@@ -195,8 +193,10 @@ namespace CreditPand.UI.Controllers
         //Para modificar un usuario en los mantenimientos
         public ActionResult ModificarUsuario(Usuario pUsuario)
         {
+            
             int registros = _oGestorUsuario.ActualizarUsuario(pUsuario);
             return RedirectToAction("Mantenimientos");
+
         }
 
 

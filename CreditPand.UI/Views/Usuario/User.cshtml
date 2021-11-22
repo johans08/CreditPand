@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-12">
                 <div class="contact-form">
-                    <form id="registro" action="ModificarUsuario" controller="Usuario" method="get">
+                    <form id="registro" action="ModificarUserProfile" controller="Usuario" method="get">
                         <div class="row">
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
@@ -57,13 +57,13 @@
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Telefono" type="tel" class="form-control" id="numero" placeholder="Teléfono" readonly = "readonly" value=@HttpContext.Current.Session["Telefono"].ToString()>
+                                    <input name="Telefono" type="tel" class="form-control" id="numero" placeholder="Teléfono" value=@HttpContext.Current.Session["Telefono"].ToString()>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Email" type="email" class="form-control" id="email" placeholder="E-Mail Address" readonly = "readonly" value=@HttpContext.Current.Session["Email"].ToString()>
+                                    <input name="Email" type="email" class="form-control" id="email" placeholder="E-Mail Address" value=@HttpContext.Current.Session["Email"].ToString()>
                                 </fieldset>
                             </div>
 
@@ -75,7 +75,7 @@
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña" readonly = "readonly" value=@HttpContext.Current.Session["Pass"].ToString()>
+                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña" value=@HttpContext.Current.Session["Pass"].ToString()>
                                 </fieldset>
                             </div>
 
