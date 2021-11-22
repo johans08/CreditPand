@@ -11,7 +11,8 @@ namespace CreditPand.BD.Modelo
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,11 +24,20 @@ namespace CreditPand.BD.Modelo
     
         public int Ide { get; set; }
         public string Nombre { get; set; }
+
+        [Display(Name = "Primer Apellido")]
         public string Apellido { get; set; }
+
+        [Display(Name = "Segundo Apellido")]
         public string SegundoApellido { get; set; }
+
+        [Display(Name = "Teléfono")]
         public int Telefono { get; set; }
         public string Email { get; set; }
+
         public string Username { get; set; }
+
+        [Display(Name = "Contraseña")]
         public string Pass { get; set; }
         public int Rol { get; set; }
     

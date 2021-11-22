@@ -48,6 +48,7 @@ namespace CreditPand.UI.Controllers
 
         public ActionResult AdminCharts() //En otro Controlador
         {
+
             ViewBag.Message = "Administracion de Reportes.";
 
             return View();

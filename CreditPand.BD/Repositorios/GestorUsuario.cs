@@ -44,8 +44,10 @@ namespace CreditPand.BD.Repositorios
             int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
             {
+
                 ContextoBD.Entry<Usuario>(pUsuario).State = System.Data.Entity.EntityState.Modified;
                 n = ContextoBD.SaveChanges();
+
             }
             return n;
 
@@ -81,18 +83,10 @@ namespace CreditPand.BD.Repositorios
 
 
 
-
-        //Para encontrar a una persona específica, para el perfil de usuario, QUITAR
-        /*int Find(string Username)
-        {
-            IEnumerable<Tarjeta> cards = ListadoUsuarios();
-            Tarjeta oTarjeta = Listado.Where(x => x.IdProducto == Id).FirstOrDefault();
-            return auxProducto;
-        }*/
-
+       
 
         //Método para ingresar en sesión, QUITAR 
-        public int Login(Usuario pUsuario)
+        /*public int Login(Usuario pUsuario)
         {
             int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
@@ -101,13 +95,19 @@ namespace CreditPand.BD.Repositorios
                 
             }
             return n;
-        }
+        }*/
 
 
         //Método para mostrar los datos del usuario que ingreso en sesión, QUITAR
-        public int Profile(int id, Usuario pUsuario)
+        /*public Usuario Profile(string Username, Usuario pUsuario)
         {
-            int n = 0;
+            Username = null;
+          //  IEnumerable<Usuario> Clientes = ListadoUsuarios();
+           /// Usuario aux = Clientes.Where(x => x.Username== Username).FirstOrDefault();
+            return Usuario;
+            
+            
+            /*int n = 0;
             using (CreditPandEntities ContextoBD = new CreditPandEntities())
             {
                 var info = from Usuario in ContextoBD.Usuario
@@ -116,8 +116,8 @@ namespace CreditPand.BD.Repositorios
                 var user = info.FirstOrDefault<Usuario>();
             }
 
-            return n;
-        }
+            return n;*/
+        //}
 
 
     

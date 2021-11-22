@@ -1,0 +1,138 @@
+﻿@model CreditPand.BD.Modelo.Tarjeta
+
+@{
+    ViewBag.Title = "ConsultCards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
+<div class="text-right form-inline">
+    <form method="get" action=@Url.Action("Index", "Customers" )>
+        <div class="form-group">
+            @Html.TextBox("buscar", null, new
+            {
+                placeholder = "texto de búsqueda",
+                                    @class = "form-control"
+            })
+        </div>
+        <button class="btn btn-default" type="submit">Buscar</button>
+    </form>
+</div>
+
+<br />
+@*CÓDIGO PARA LA TABLA DE DATOS*@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Contact Name
+            </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Resultado)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+@*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+@if (Model.Resultado.Count() > 0)
+{
+    <span>
+        <strong>@Model.TotalRegistros</strong> registros encontrados
+    </span>
+    <span>&nbsp;|&nbsp;</span>
+    <span>
+        Página <strong>@(Model.PaginaActual)</strong> de
+        <strong>@Model.TotalPaginas</strong>
+    </span>
+    <span>&nbsp;|&nbsp;</span>
+}
+else
+{
+    <span>No hay resultados para esta búsqueda</span>
+    <span>&nbsp;|&nbsp;</span>
+}
+
+@if (Model.PaginaActual > 1)
+{
+    @Html.ActionLink("<<", "Index", new { pagina = 1, buscar = Model.BusquedaActual },
+                        new { @class = "btn btn-sm btn-default" })
+    <span></span>
+    @Html.ActionLink("Anterior", "Index", new
+    {
+        pagina = Model.PaginaActual - 1,
+                                                buscar = Model.BusquedaActual
+    },
+                                          new { @class = "btn btn-sm btn-default" })
+}
+else
+{
+    @Html.ActionLink("<<", "Index", new
+    {
+        pagina = 1,
+                                          buscar = Model.BusquedaActual
+    },
+                                    new { @class = "btn btn-sm btn-default disabled" })
+    <span></span>
+    @Html.ActionLink("Anterior", "Index", new
+    {
+        pagina = 1,
+                                                buscar = Model.BusquedaActual
+    },
+                                          new { @class = "btn btn-sm btn-default disabled" })
+}
+
+<span></span>
+
+@if (Model.PaginaActual < Model.TotalPaginas)
+{
+    @Html.ActionLink("Siguiente", "Index", new
+    {
+        pagina = Model.PaginaActual + 1,
+                                                 buscar = Model.BusquedaActual
+    },
+                                           new { @class = "btn btn-sm btn-default" })
+    <span></span>
+    @Html.ActionLink(">>", "Index", new
+    {
+        pagina = Model.TotalPaginas,
+                                          buscar = Model.BusquedaActual
+    },
+                                    new { @class = "btn btn-sm btn-default" })
+}
+else
+{
+    @Html.ActionLink("Siguiente", "Index", new
+    {
+        pagina = Model.TotalPaginas - 1,
+                                                 buscar = Model.BusquedaActual
+    },
+                                           new { @class = "btn btn-sm btn-default disabled" })
+    <span></span>
+    @Html.ActionLink(">>", "Index", new
+    {
+        pagina = Model.TotalPaginas,
+                                          buscar = Model.BusquedaActual
+    },
+                                    new { @class = "btn btn-sm btn-default disabled" })
+}
+

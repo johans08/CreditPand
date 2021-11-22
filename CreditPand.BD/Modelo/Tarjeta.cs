@@ -11,15 +11,23 @@ namespace CreditPand.BD.Modelo
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Tarjeta
     {
         public int Id { get; set; }
+        
         public string Marca { get; set; }
         public int Límite { get; set; }
+
+        [Display(Name = "Extrafinanciamiento")]
         public int Monto_extra { get; set; }
+
+        [Display(Name = "Activación")]
         public System.DateTime Fecha_activación { get; set; }
         public bool Internacional { get; set; }
+
+        [Display(Name = "Usuario")]
         public int IdUsuario { get; set; }
     
         public virtual Usuario Usuario { get; set; }

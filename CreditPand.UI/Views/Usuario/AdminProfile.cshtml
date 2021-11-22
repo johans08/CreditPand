@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>@HttpContext.Current.Session["Username"].ToString()</h1>
+                <h1>@HttpContext.Current.Session["Admin"].ToString()</h1>
                 <span>Perfil de Usuario</span>
             </div>
         </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-12">
                 <div class="contact-form">
-                    <form id="registro" action="ModificarUserProfile" controller="Usuario" method="get">
+                    <form id="registro" action="ModificarUsuario" controller="Usuario" method="get">
                         <div class="row">
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
@@ -39,43 +39,43 @@
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Nombre" type="text" class="form-control" id="nombre" placeholder="Nombre" readonly = "readonly" value=@HttpContext.Current.Session["Nombre"].ToString()>
+                                    <input name="Nombre" type="text" class="form-control" id="nombre" placeholder="Nombre" readonly = "readonly" value=@HttpContext.Current.Session["Nombre"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Apellido" type="text" class="form-control" id="apellido" placeholder="Apellido" readonly = "readonly" value=@HttpContext.Current.Session["Apellido"].ToString()>
+                                    <input name="Apellido" type="text" class="form-control" id="apellido" placeholder="Apellido" readonly = "readonly" value=@HttpContext.Current.Session["Apellido"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="SegundoApellido" type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido" readonly = "readonly" value=@HttpContext.Current.Session["SegundoApellido"].ToString()>
+                                    <input name="SegundoApellido" type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido" readonly = "readonly" value=@HttpContext.Current.Session["SegundoApellido"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Telefono" type="tel" class="form-control" id="numero" placeholder="Teléfono" value=@HttpContext.Current.Session["Telefono"].ToString()>
+                                    <input name="Telefono" type="tel" class="form-control" id="numero" placeholder="Teléfono" readonly = "readonly" value=@HttpContext.Current.Session["Telefono"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Email" type="email" class="form-control" id="email" placeholder="E-Mail Address" value=@HttpContext.Current.Session["Email"].ToString()>
+                                    <input name="Email" type="email" class="form-control" id="email" placeholder="E-Mail Address" readonly = "readonly" value=@HttpContext.Current.Session["Email"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario" readonly = "readonly" value=@HttpContext.Current.Session["Username"].ToString()>
+                                    <input name="Username" type="text" class="form-control" id="usuario" placeholder="Usuario" readonly = "readonly" value=@HttpContext.Current.Session["Admin"].ToString()>>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña" value=@HttpContext.Current.Session["Pass"].ToString()>
+                                    <input name="Pass" type="password" class="form-control" id="contrasena" placeholder="Contraseña" readonly = "readonly" value=@HttpContext.Current.Session["Pass"].ToString()>>
                                 </fieldset>
                             </div>
 
