@@ -68,12 +68,19 @@
             webGrid.Column(columnName: "Fecha_activación", header: "Fecha"),
             webGrid.Column(columnName: "Internacional", header: "Internacional")
 
-            //webGrid.Column(header: "Edit", format: @<a href="" class="btn-primary">Editar</a>) //Para usar en el mantenimiento de Clientes
-            //webGrid.Column(header: "Delete", format: @<a href="" class="btn-secondary">Delete</a>) //Para usar en el mantenimiento de Clientes
+            //webGrid.Column(header: "Modificar", Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
+            //webGrid.Column(header: "Eliminar", Html.ActionLink("Eliminar", "BorrarTarjeta", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
             //https://www.aspsnippets.com/Articles/Export-WebGrid-with-Formatting-to-Excel-file-in-ASPNet-MVC.aspx
             //https://www.c-sharpcorner.com/blogs/export-webgrid-data-to-microsoft-excel-in-asp-net-mvc-5
             //https://www.variablenotfound.com/2011/10/aspnet-mvc-webgrid-con-filtro.html
 
+
+            /*grid.Column(columnName: "Edit", format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.id })),
+                grid.Column(columnName: "Delete", format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.id }, new { onclick = "return confirm('Are you sure you want to delete this record?');" }))
+                }
+            
+            @Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })
+            */
             )
         )
 
