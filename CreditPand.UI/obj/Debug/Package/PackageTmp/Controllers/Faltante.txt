@@ -1,0 +1,40 @@
+﻿Faltantes del Proyecto
+-----------------------------------------------------------------------------------------
+VALE % DEL PROYECTO
+2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda, No se puede ordenar el grid.
+Es para que el cliente lo vea o para que lo vea el admin?
+Update Client: Rol, required, que no cambie el rol al hacer update
+-----------------------------------------------------------------------------------------
+
+
+EXTRAS
+-----------------------------------------------------------------------------------------
+1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
+
+3- CRUD: Barra en mantenimientos, Agregar vista details, paginacion
+Se puede mejorar la lista de los usuarios y tarjetas con un grid igual al de la vista de tarjetas activas
+Registro no reciba quemado en el Rol (Default o 0 no definido)
+Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
+Cambiar las validaciones al modelo
+Maximo de caracters en Telefono
+
+4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
+
+5- Verificar que todo sea responsive: Barra de opciones, ConsultCards
+Optimizar el código , quitar código que no se uso
+
+6- Falta solo Gráfica 1*******
+
+7- Cambiar los Message-Box por SW en el Login y CRUD
+--Login: datos incorrectos.
+--Registro de Cliente y Solicitud: Registro Exitoso.
+--Update o Delete de Cliente, Tarjeta o Solicitud: Registro actualizado/borrado.
+--Interes Update: Interes actualizado.
+
+Mensajes por si datos se repiten y no se pueden actualizar ****
+Mensaje si el id de usuario no existe y no se puede procesar la solicitud o si el cliente ya tiene tarjeta
+Colocar try catch para las excepciones
+-----------------------------------------------------------------------------------------
+
+
+
