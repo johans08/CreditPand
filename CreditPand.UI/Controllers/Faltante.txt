@@ -15,6 +15,8 @@ EXTRAS
 Se puede mejorar la lista de los usuarios y tarjetas con un grid igual al de la vista de tarjetas activas
 Registro no reciba quemado en el Rol (Default o 0 no definido)
 Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
+Cambiar las validaciones al modelo
+Maximo de caracters en Telefono
 
 4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
 
