@@ -11,16 +11,16 @@ EXTRAS
 -----------------------------------------------------------------------------------------
 1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
 
-3- CRUD: acomodar elementos gráficos
+3- CRUD: Barra en mantenimientos, Agregar vista details, paginacion
 Se puede mejorar la lista de los usuarios y tarjetas con un grid igual al de la vista de tarjetas activas
 Registro no reciba quemado en el Rol (Default o 0 no definido)
 Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
+Cambiar las validaciones al modelo
+Maximo de caracters en Telefono
 
 4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
 
-5- Verificar que todo sea responsive: Index, barra de opciones, ConsultCards, Mantenimientos, ListadoSolicitudes
-
-
+5- Verificar que todo sea responsive: Barra de opciones, ConsultCards
 Optimizar el código , quitar código que no se uso
 
 6- Falta solo Gráfica 1*******

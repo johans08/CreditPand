@@ -128,72 +128,10 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
-        public ActionResult ConsultCards(DateTime? Fecha_activación = null, string Marca = null, int? Límite = null,string buscar=null)
+        public ActionResult ConsultCards()
         {
-
-            /* int _TotalRegistros = 0;
-             int _TotalPaginas = 0;
-
-             // FILTRO DE BÚSQUEDA
-             using (_DbContext = new AppDbContext())
-             {
-                 // Recuperamos el 'DbSet' completo
-                 _Customers = _DbContext.Customers.ToList();
-
-                 // Filtramos el resultado por el 'texto de búqueda'
-                 if (!string.IsNullOrEmpty(buscar))
-                 {
-                     foreach (var item in buscar.Split(new char[] { ' ' },
-                              StringSplitOptions.RemoveEmptyEntries))
-                     {
-                         _Customers = _Customers.Where(x => x.ContactName.Contains(item) ||
-                                                       x.CompanyName.Contains(item) ||
-                                                       x.Email.Contains(item))
-                                                       .ToList();
-                     }
-                 }
-             }
-
-             // SISTEMA DE PAGINACIÓN
-             using (_DbContext = new AppDbContext())
-             {
-                 // Número total de registros de la tabla Customers
-                 _TotalRegistros = _Customers.Count();
-                 // Obtenemos la 'página de registros' de la tabla Customers
-                 _Customers = _Customers.OrderBy(x => x.ContactName)
-                                                  .Skip((pagina - 1) * _RegistrosPorPagina)
-                                                  .Take(_RegistrosPorPagina)
-                                                  .ToList();
-                 // Número total de páginas de la tabla Customers
-                 _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
-
-                 // Instanciamos la 'Clase de paginación' y asignamos los nuevos valores
-                 _PaginadorCustomers = new PaginadorGenerico<Customer>()
-                 {
-                     RegistrosPorPagina = _RegistrosPorPagina,
-                     TotalRegistros = _TotalRegistros,
-                     TotalPaginas = _TotalPaginas,
-                     PaginaActual = pagina,
-                     BusquedaActual = buscar,
-                     Resultado = _Customers
-                 };
-             }
-
-             // Enviamos a la Vista la 'Clase de paginación'
-             return View(_PaginadorCustomers);*/
-
-            /*  var tarjetas = _GestorTarjeta.ObtenerPaginaDePersonasFiltrada(page, PERSONAS_POR_PAGINA,
-                                     sort, sortDir, buscar, minHijos, maxHijos);
-            */
-
-            
-                IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
-
-
+            IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
             return View(Cards);
-
-
-
 
         }
         
@@ -213,6 +151,129 @@ namespace CreditPand.UI.Controllers
         }
 
 
+        public ActionResult TarjetaGrid()
+        {
+
+            //IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
+           // return View(Cards);
+            using (CreditPandEntities ContextoBD = new CreditPandEntities())
+            {
+                List<Tarjeta> listTarjetas = new List<Tarjeta>();
+                List<Tarjeta> Marcas = ContextoBD.Tarjeta.ToList();
+                Marcas.ForEach(x =>
+                {
+                    Tarjeta oTarjeta = new Tarjeta();
+                    oTarjeta.Id = x.Id;
+                    oTarjeta.Marca = x.Marca;
+                    oTarjeta.Límite = x.Límite;
+                    oTarjeta.Monto_extra = x.Monto_extra;
+                    oTarjeta.Fecha_activación = x.Fecha_activación;
+                    oTarjeta.Internacional = x.Internacional;
+                    oTarjeta.IdUsuario = x.IdUsuario;
+                    listTarjetas.Add(oTarjeta);
+                });
+            
+            return View(Marcas);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult TarjetaGrid(string Marca)
+        {//,DateTime Fecha,int Limite
+
+            using (CreditPandEntities ContextoBD = new CreditPandEntities())
+            {
+               // IEnumerable<Tarjeta> listTarjetas = _oGestorTarjeta.ListadoTarjetas();
+                List<Tarjeta> listTarjetas = new List<Tarjeta>();
+                // IEnumerable<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca == Marca).ToList();
+
+
+
+                //List<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca == Marca).ToList();
+                List<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca.Contains(Marca)).ToList();
+                Marcas.ForEach(x =>
+                {
+                    Tarjeta oTarjeta = new Tarjeta();
+                    oTarjeta.Id = x.Id;
+                    oTarjeta.Marca = x.Marca;
+                    oTarjeta.Límite = x.Límite;
+                    oTarjeta.Monto_extra = x.Monto_extra;
+                    oTarjeta.Fecha_activación = x.Fecha_activación;
+                    oTarjeta.Internacional = x.Internacional;
+                    oTarjeta.IdUsuario = x.IdUsuario;
+                    listTarjetas.Add(oTarjeta);
+                });
+
+                //if (listTarjetas != null)
+                    if (listTarjetas.Count > 0)
+                {
+                    return View(listTarjetas);
+                }
+                else
+                {
+                    return Json("Sin Resultados");
+                }
+
+                /*List<Tarjeta> Fechas = ContextoBD.Tarjeta.Where(x => x.Fecha_activación.Contains(pTarjeta.Fecha_activación)).ToList();
+                Fechas.ForEach(x =>
+                {
+                    Tarjeta oTarjeta = new Tarjeta();
+                    oTarjeta.Id = x.Id;
+                    oTarjeta.Marca = x.Marca;
+                    oTarjeta.Límite = x.Límite;
+                    oTarjeta.Monto_extra = x.Monto_extra;
+                    oTarjeta.Fecha_activación = x.Fecha_activación;
+                    oTarjeta.Internacional = x.Internacional;
+                    oTarjeta.IdUsuario = x.IdUsuario;
+                    listTarjetas.Add(oTarjeta);
+                });
+
+                //if (listTarjetas != null)
+                if (listTarjetas.Count > 0)
+                {
+                    return View(listTarjetas);
+                }
+                else
+                {
+                    return Json("Sin Resultados");
+                }*/
+
+
+
+
+                /*List<Tarjeta> Montos = ContextoBD.Tarjeta.Where(x => x.Límite.Contains(pTarjeta.Límite)).ToList();
+            Limites.ForEach(x =>
+            {
+                Tarjeta oTarjeta = new Tarjeta();
+                oTarjeta.Id = x.Id;
+                oTarjeta.Marca = x.Marca;
+                oTarjeta.Límite = x.Límite;
+                oTarjeta.Monto_extra = x.Monto_extra;
+                oTarjeta.Fecha_activación = x.Fecha_activación;
+                oTarjeta.Internacional = x.Internacional;
+                oTarjeta.IdUsuario = x.IdUsuario;
+                listTarjetas.Add(oTarjeta);
+            });
+
+            //if (listTarjetas != null)
+            if (listTarjetas.Count > 0)
+            {
+                return View(listTarjetas);
+            }
+            else
+            {
+                return Json("Sin Resultados");
+            }*/
+
+
+
+
+
+
+
+            }
+        }
+    
 
 
 
@@ -227,9 +288,8 @@ namespace CreditPand.UI.Controllers
 
 
 
-
-        //Método que permite exportar la información de las tarjetas a Excel
-        public void DescargarExcel()
+    //Método que permite exportar la información de las tarjetas a Excel
+    public void DescargarExcel()
         {
             List<Tarjeta> exceldata = new List<Tarjeta>();
             using (CreditPandEntities ContextoDB = new CreditPandEntities())

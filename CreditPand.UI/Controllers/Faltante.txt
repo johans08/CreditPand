@@ -1,8 +1,9 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
 VALE % DEL PROYECTO
-2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda, No se puede ordenar el grid.
-Es para que el cliente lo vea o para que lo vea el admin?
+2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda
+El cliente solo puede sacar una tarjeta y por ende solo podría ver una tarjeta, Ahorita puede ver todas las tarjetas de todos los clientes.
+
 Update Client: Rol, required, que no cambie el rol al hacer update
 -----------------------------------------------------------------------------------------
 
@@ -15,13 +16,12 @@ EXTRAS
 Se puede mejorar la lista de los usuarios y tarjetas con un grid igual al de la vista de tarjetas activas
 Registro no reciba quemado en el Rol (Default o 0 no definido)
 Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
-Cambiar las validaciones al modelo
-Maximo de caracters en Telefono
+Cambiar las validaciones al modelo: required, readonly, pattern, maxlenght
+Colocar Post y Get sobre el action
 
 4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
 
-5- Verificar que todo sea responsive: Barra de opciones, ConsultCards
-Optimizar el código , quitar código que no se uso
+5- Verificar que todo sea responsive: Barra de opciones
 
 6- Falta solo Gráfica 1*******
 

@@ -245,13 +245,14 @@
     <Content Include="Views\Usuario\Roles.cshtml" />
     <Content Include="Views\Tarjeta\AdminCards.cshtml" />
     <Content Include="Views\Tarjeta\EditarTarjetaForm.cshtml" />
-    <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
+    <Content Include="Views\Tarjeta\ConsultCards2.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Tarjeta\SolicitudesTarjetas.cshtml" />
     <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
     <Content Include="Views\Tarjeta\AprobarForm.cshtml" />
     <Content Include="Views\Usuario\AdminProfile.cshtml" />
-    <Content Include="Views\Tarjeta\ConsultCards3.cshtml" />
+    <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
+    <Content Include="Views\Tarjeta\TarjetaGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditPand.BD\CreditPand.BD.csproj">
