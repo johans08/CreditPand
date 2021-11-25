@@ -39,7 +39,6 @@ namespace CreditPand.UI.Controllers
         public ActionResult InteresesConfigure(Interes objInteres)
         {
             int intereses = _oGestorTarjeta.ActualizarInteres(objInteres);
-            MessageBox.Show("Intereses cambiados");//Cambiar por el sweetalert
             return RedirectToAction("InteresesForm");
         }
 

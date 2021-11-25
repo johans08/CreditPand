@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -174,6 +180,7 @@
     <Content Include="Content\MainCss\fontawesome.css" />
     <Content Include="Content\MainCss\owl.css" />
     <Content Include="Content\MainCss\templatemo-finance-business.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\SweetAlert\sweetalert2.css" />
     <Content Include="Controllers\Faltante.txt" />
     <Content Include="favicon.ico" />
@@ -206,7 +213,7 @@
     <Content Include="Scripts\MainJs\owl.js" />
     <Content Include="Scripts\MainJs\slick.js" />
     <Content Include="Scripts\SweetAlert\sweetalert2.all.min.js" />
-    <Content Include="Views\Usuario\Alertas.js" />
+    <Content Include="Scripts\UserFunc.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
