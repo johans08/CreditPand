@@ -1,7 +1,14 @@
-﻿@model IEnumerable<CreditPand.BD.Modelo.Usuario>
+﻿<script src="~/Scripts/UserFunc.js"></script>
+@model IEnumerable<CreditPand.BD.Modelo.Usuario>
+
+<!--Paging-->
+<!--model PagedList.IEnumerable.IPagedList<CreditPand.BD.Modelo.Usuario>
+using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />-->
 
 @{
     ViewBag.Title = "Mantenimientos";
+
 }
 
 <div class="page-heading header-text">
@@ -25,8 +32,8 @@
                         <span>Mantenimiento de los clientes del sistema</span>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" id="tableClients">
+                    <table class="table table-hover table-bordered">
                         <tr>
                             <th>
                                 @Html.DisplayNameFor(model => model.Ide)
@@ -90,11 +97,15 @@
                                 </td>
                                 <td>
                                     @Html.ActionLink("Modificar", "EditarUserForm", new { Id = item.Ide }) |
-                                    @Html.ActionLink("Eliminar", "BorrarUsuario", new { Username = item.Username }) |
+                                    @Html.ActionLink("Eliminar", "BorrarUsuario", new { Username = item.Username }, new { id = "btn-Delete" }) |
                                     @Html.ActionLink("Asignar Rol", "Roles", new { Id = item.Ide })
                                 </td>
                             </tr>
                         }
+
+                        <!--Paging-->
+                        <!--Page (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of Model.PageCount
+                         Html.PagedListPager(Model, page => Url.Action("Index", new { page }))-->
 
                     </table>
 

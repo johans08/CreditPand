@@ -1,8 +1,11 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
 VALE % DEL PROYECTO
-2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda, No se puede ordenar el grid.
-Es para que el cliente lo vea o para que lo vea el admin?
+2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda
+El cliente solo puede sacar una tarjeta y por ende solo podría ver una tarjeta, Ahorita puede ver todas las tarjetas de todos los clientes.
+PARA LOS FILTROS
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
+
 Update Client: Rol, required, que no cambie el rol al hacer update
 -----------------------------------------------------------------------------------------
 
@@ -11,27 +14,25 @@ EXTRAS
 -----------------------------------------------------------------------------------------
 1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
 
-3- CRUD: Barra en mantenimientos, Agregar vista details, paginacion
-Se puede mejorar la lista de los usuarios y tarjetas con un grid igual al de la vista de tarjetas activas
-Registro no reciba quemado en el Rol (Default o 0 no definido)
+3- CRUD: Paginacion, Ordenar por id
+Rol (Default o 0 no definido)??
 Solicitud de Tarjeta con Fecha_actual(DATETIME.TODAY)
+Cambiar las validaciones al modelo: required, pattern, maxlenght
+Colocar Post y Get sobre el action
+Pantallas para el mantenimiento de roles e intereses
 
 4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
-
-5- Verificar que todo sea responsive: Barra de opciones, ConsultCards
-Optimizar el código , quitar código que no se uso
-
+5- Verificar que todo sea responsive: Barra de opciones
 6- Falta solo Gráfica 1*******
 
-7- Cambiar los Message-Box por SW en el Login y CRUD
---Login: datos incorrectos.
---Registro de Cliente y Solicitud: Registro Exitoso.
---Update o Delete de Cliente, Tarjeta o Solicitud: Registro actualizado/borrado.
---Interes Update: Interes actualizado.
+7- SweetAlert: en los mantenimientos no esperar al click de ok, revisar***
+--Login: falta if para que solo se muestre cuando si sean incorrectos. 
+--Delete de Cliente, Tarjeta o Solicitud, No funciona en el actionlink
 
-Mensajes por si datos se repiten y no se pueden actualizar ****
+Mensajes por si datos se repiten y no se pueden actualizar, o si el usuario se repite y da error, lo mismo para tarjeta
 Mensaje si el id de usuario no existe y no se puede procesar la solicitud o si el cliente ya tiene tarjeta
-Colocar try catch para las excepciones
+En eliminar: Seguro que desea eliminar el registro?
+Colocar try catch para las excepciones o validar con sweet alert
 -----------------------------------------------------------------------------------------
 
 
