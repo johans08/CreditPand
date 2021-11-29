@@ -8,6 +8,7 @@ using System.Windows;
 using CreditPand.BD.Interface;
 using CreditPand.BD.Modelo;
 using CreditPand.BD.Repositorios;
+using PagedList;
 
 namespace CreditPand.UI.Controllers
 {
@@ -127,167 +128,99 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
-        public ActionResult ConsultCards()
+        public ActionResult ConsultCards(string sortOrder, string currentFilter, string Marca, int? page)
         {
-            IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
-            return View(Cards);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-        }
-        
-
-        //Método para buscar en el Grid
-        public void Buscar(Tarjeta pTarjeta, DateTime? Fecha_activación = null, string Marca = null, int? Límite = null, string buscar = null)
-        {
-            using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
+            if (Marca != null)
             {
-                var bFecha = ContextoBD.Tarjeta.Where(a => a.Fecha_activación.Equals(pTarjeta.Fecha_activación)).ToList();
-                var bMarca = ContextoBD.Tarjeta.Where(a => a.Marca.Equals(pTarjeta.Marca)).ToList();
-                var bLimite = ContextoBD.Tarjeta.Where(a => a.Límite.Equals(pTarjeta.Límite)).ToList();
-
-
-
-            }
-        }
-
-
-        public ActionResult TarjetaGrid()
-        {
-
-            //IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
-           // return View(Cards);
-            using (CreditPandEntities ContextoBD = new CreditPandEntities())
-            {
-                List<Tarjeta> listTarjetas = new List<Tarjeta>();
-                List<Tarjeta> Marcas = ContextoBD.Tarjeta.ToList();
-                Marcas.ForEach(x =>
-                {
-                    Tarjeta oTarjeta = new Tarjeta();
-                    oTarjeta.Id = x.Id;
-                    oTarjeta.Marca = x.Marca;
-                    oTarjeta.Límite = x.Límite;
-                    oTarjeta.Monto_extra = x.Monto_extra;
-                    oTarjeta.Fecha_activación = x.Fecha_activación;
-                    oTarjeta.Internacional = x.Internacional;
-                    oTarjeta.IdUsuario = x.IdUsuario;
-                    listTarjetas.Add(oTarjeta);
-                });
-            
-            return View(Marcas);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult TarjetaGrid(string Marca)
-        {//,DateTime Fecha,int Limite
-
-            using (CreditPandEntities ContextoBD = new CreditPandEntities())
-            {
-               // IEnumerable<Tarjeta> listTarjetas = _oGestorTarjeta.ListadoTarjetas();
-                List<Tarjeta> listTarjetas = new List<Tarjeta>();
-                // IEnumerable<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca == Marca).ToList();
-
-
-
-                //List<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca == Marca).ToList();
-                List<Tarjeta> Marcas = ContextoBD.Tarjeta.Where(x => x.Marca.Contains(Marca)).ToList();
-                Marcas.ForEach(x =>
-                {
-                    Tarjeta oTarjeta = new Tarjeta();
-                    oTarjeta.Id = x.Id;
-                    oTarjeta.Marca = x.Marca;
-                    oTarjeta.Límite = x.Límite;
-                    oTarjeta.Monto_extra = x.Monto_extra;
-                    oTarjeta.Fecha_activación = x.Fecha_activación;
-                    oTarjeta.Internacional = x.Internacional;
-                    oTarjeta.IdUsuario = x.IdUsuario;
-                    listTarjetas.Add(oTarjeta);
-                });
-
-                //if (listTarjetas != null)
-                    if (listTarjetas.Count > 0)
-                {
-                    return View(listTarjetas);
-                }
-                else
-                {
-                    return Json("Sin Resultados");
-                }
-
-                /*List<Tarjeta> Fechas = ContextoBD.Tarjeta.Where(x => x.Fecha_activación.Contains(pTarjeta.Fecha_activación)).ToList();
-                Fechas.ForEach(x =>
-                {
-                    Tarjeta oTarjeta = new Tarjeta();
-                    oTarjeta.Id = x.Id;
-                    oTarjeta.Marca = x.Marca;
-                    oTarjeta.Límite = x.Límite;
-                    oTarjeta.Monto_extra = x.Monto_extra;
-                    oTarjeta.Fecha_activación = x.Fecha_activación;
-                    oTarjeta.Internacional = x.Internacional;
-                    oTarjeta.IdUsuario = x.IdUsuario;
-                    listTarjetas.Add(oTarjeta);
-                });
-
-                //if (listTarjetas != null)
-                if (listTarjetas.Count > 0)
-                {
-                    return View(listTarjetas);
-                }
-                else
-                {
-                    return Json("Sin Resultados");
-                }*/
-
-
-
-
-                /*List<Tarjeta> Montos = ContextoBD.Tarjeta.Where(x => x.Límite.Contains(pTarjeta.Límite)).ToList();
-            Limites.ForEach(x =>
-            {
-                Tarjeta oTarjeta = new Tarjeta();
-                oTarjeta.Id = x.Id;
-                oTarjeta.Marca = x.Marca;
-                oTarjeta.Límite = x.Límite;
-                oTarjeta.Monto_extra = x.Monto_extra;
-                oTarjeta.Fecha_activación = x.Fecha_activación;
-                oTarjeta.Internacional = x.Internacional;
-                oTarjeta.IdUsuario = x.IdUsuario;
-                listTarjetas.Add(oTarjeta);
-            });
-
-            //if (listTarjetas != null)
-            if (listTarjetas.Count > 0)
-            {
-                return View(listTarjetas);
+                page = 1;
             }
             else
             {
-                return Json("Sin Resultados");
-            }*/
-
-
-
-
-
-
-
+                Marca = currentFilter;
             }
+            ViewBag.CurrentFilter = Marca;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Marca))
+            {
+                datos = datos.Where(s => s.Marca.Contains(Marca));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
         }
+
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
+        public ActionResult ConsultCardsM(string sortOrder, string currentFilter, string Monto, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (Monto != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Monto = currentFilter;
+            }
+            ViewBag.CurrentFilter = Monto;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Monto))
+            {
+                datos = datos.Where(s => s.Monto_extra.ToString().Contains(Monto));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
+        public ActionResult ConsultCardsF(string sortOrder, string currentFilter, string Fecha, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (Fecha != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Fecha = currentFilter;
+            }
+            ViewBag.CurrentFilter = Fecha;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Fecha))
+            {
+                datos = datos.Where(s => s.Fecha_activación.ToString().Contains(Fecha));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
+        }
+
+
+
     
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    //Método que permite exportar la información de las tarjetas a Excel
+    //Método que permite exportar la información de las tarjetas a Excel, CAMBIAR***
     public void DescargarExcel()
         {
             List<Tarjeta> exceldata = new List<Tarjeta>();
@@ -299,7 +232,6 @@ namespace CreditPand.UI.Controllers
             WebGrid webGrid = new WebGrid(source: exceldata, canPage: false, canSort: false);
             string gridData = webGrid.GetHtml(
             columns: webGrid.Columns(
-                            webGrid.Column(columnName: "Id", header: "ID"),
                             webGrid.Column(columnName: "Marca", header: "Marca"),
                             webGrid.Column(columnName: "Límite", header: "Límite"),
                             webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),

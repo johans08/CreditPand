@@ -1,0 +1,185 @@
+﻿@model IEnumerable<CreditPand.BD.Modelo.Tarjeta>
+@{
+    ViewBag.Title = "ConsultCards";
+}
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Consulta de Tarjetas Personales</h1>
+                <span>Listado de Tarjetas Personales</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-services">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="section-heading">
+                <h2>Listado de <em>tarjeta</em></h2>
+                <span>Lista de tarjetas activas personales</span>
+            </div>
+        </div>
+        @using (Html.BeginForm(null, null, FormMethod.Get))
+        {
+        <fieldset>
+            <legend>Criterios de búsqueda</legend>
+            @Html.Label("Fecha_activacion", "Fecha activación:")
+            @Html.TextBox("Fecha_activación")
+
+
+            @Html.Label("Marca", "Marca:")
+            <select name="Marca" id="marca">
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">Mastercard</option>
+            </select>
+
+            @Html.Label("Límite", "Monto Límite:")
+            @Html.TextBox("Límite")
+
+            <!--<input type="submit" value="Buscar" />-->
+            @Html.ActionLink("Buscar", "ConsultCards", "Tarjeta", new { @class = "btn btn-secondary" })
+
+        </fieldset>
+        }
+    </div>
+
+    <br>
+
+
+    @{
+
+        WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2, sortFieldName:"Id");
+        //webGrid.Bind(source: Model, autoSortAndPage: false);
+    }
+
+    <!--Darle color verde a los títulos-->
+    <div class="container">
+
+
+        @webGrid.GetHtml(tableStyle: "table table-bordered table-stripe", htmlAttributes: new { id = "webGrid" },
+        columns: webGrid.Columns(
+            webGrid.Column(columnName: "Id", header: "ID"),
+            webGrid.Column(columnName: "Marca", header: "Marca"),
+            webGrid.Column(columnName: "Límite", header: "Límite"),
+            webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),
+            webGrid.Column(columnName: "Fecha_activación", header: "Fecha"),
+            webGrid.Column(columnName: "Internacional", header: "Internacional")
+
+            //webGrid.Column(header: "Modificar", Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
+            //webGrid.Column(header: "Eliminar", Html.ActionLink("Eliminar", "BorrarTarjeta", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
+            //https://www.aspsnippets.com/Articles/Export-WebGrid-with-Formatting-to-Excel-file-in-ASPNet-MVC.aspx
+            //https://www.c-sharpcorner.com/blogs/export-webgrid-data-to-microsoft-excel-in-asp-net-mvc-5
+            //https://www.variablenotfound.com/2011/10/aspnet-mvc-webgrid-con-filtro.html
+
+
+            /*grid.Column(columnName: "Edit", format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.id })),
+                grid.Column(columnName: "Delete", format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.id }, new { onclick = "return confirm('Are you sure you want to delete this record?');" }))
+                }
+
+            @Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })
+            */
+            )
+        )
+
+        <!--Response.ContentType = "application/excel";
+        Response.Write(webGrid);
+        Response.End();-->
+
+    </div>
+
+    <div class="container">
+        @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
+
+    </div>
+    <br><br><br><br><br>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#bttnSearch').click(function () {
+            var tarAct = $('#txtactive').attr('value');
+            var tarMar = $('#txtMarca').attr('value');
+            var tarAct = $('#txtLimit').attr('value');
+            $.ajax({
+                type: "post",
+                url: "/Tarjeta/TarjetaGrid",
+                data: { studentName: $('#txtName').attr('value') },
+                 { studentName: $('#txtName').attr('value') },
+                { studentName: $('#txtName').attr('value') },
+
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    // debugger
+                    if (data == "No Record Found") {
+                        alert('No Record Found');
+                    }
+                    else {
+                        $('#gridContent').html(data);
+                        $('#txtactive').val(tarAct);
+                        $('#txtMarca').val(tarMar);
+                        $('#txtLimit').val(tarLimit);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<!--
+
+<div id="grid">
+    <table width="100%">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            Activación <input type="date" id="txtactive" />
+                        </td>
+                        <td>
+                            Marca <input type="text" id="txtMarca" />
+                        </td>
+                        <td>
+                            Límite <input type="text" id="txtLimit" />
+                        </td>
+                        <td>
+                            <input type="button" id="bttnSearch" value="Search" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                {
+                    var webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 5,
+                    selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+                    webGrid.Pager(WebGridPagerModes.All);}
+
+
+                @webGrid.GetHtml(tableStyle: "table table-bordered table-stripe",
+                alternatingRowStyle: "alt",
+                selectedRowStyle: "select",
+                columns: webGrid.Columns(),
+                   webGrid.Column(columnName: "Marca", header: "Marca", canSort:true),
+                   webGrid.Column(columnName: "Límite", header: "Límite", canSort: true),
+                   webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento", canSort: true),
+                   webGrid.Column(columnName: "Fecha_activación", header: "Fecha", canSort: true),
+                   webGrid.Column(columnName: "Internacional", header: "Internacional", canSort: true)
+
+
+                ))
+
+            </td>
+        </tr>
+    </table>
+</div>-->
+
+<!--https://www.c-sharpcorner.com/UploadFile/sourabh_mishra1/webgrid-in-Asp-Net-mvc/-->
