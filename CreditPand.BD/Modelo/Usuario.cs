@@ -32,6 +32,7 @@ namespace CreditPand.BD.Modelo
         public string SegundoApellido { get; set; }
 
         [Display(Name = "Teléfono")]
+        //[Max(8, ErrorMessage = "Máximo 8 dígitos")]
         public int Telefono { get; set; }
         public string Email { get; set; }
 

@@ -7,7 +7,7 @@ using System.Windows;
 using CreditPand.BD.Interface;
 using CreditPand.BD.Modelo;
 using CreditPand.BD.Repositorios;
-
+using PagedList;
 
 namespace CreditPand.UI.Controllers
 {
@@ -107,11 +107,6 @@ namespace CreditPand.UI.Controllers
                     }
                     else
                     {
-                       
-
-                        ViewBag.ErrorMessage = "Usuario o contraseña incorrectos, Intente denuevo";
-
-                        //MessageBox.Show("Usuario o contraseña incorrectos", "Intente denuevo");
                         return RedirectToAction("Login");
                     }
 
@@ -150,9 +145,25 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra la tabla con todos los clientes a los que se les puede dar mantenimiento
-        public ActionResult Mantenimientos() {
+        public ActionResult Mantenimientos(string sortOrder, string currentFilter, string searchString, int? page) {
+
+            /*ViewBag.CurrentSort = sortOrder;
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;*/
 
             IEnumerable<Usuario> Clientes = _oGestorUsuario.ListadoUsuarios();
+
+            //int pageSize = 3;
+           // int pageNumber = (page ?? 1);.ToPagedList(pageNumber, pageSize
+
             return View(Clientes);
 
         }

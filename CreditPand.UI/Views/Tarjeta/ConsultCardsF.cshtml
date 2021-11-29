@@ -1,0 +1,159 @@
+﻿<!--model IEnumerable<CreditPand.BD.Modelo.Tarjeta>-->
+
+
+@{
+    ViewBag.Title = "ConsultCards";
+}
+
+@model PagedList.IPagedList<CreditPand.BD.Modelo.Tarjeta>
+@using PagedList.Mvc;
+
+<!--<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />-->
+
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Tarjetas</h1>
+                <span>Datos disponibles</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="single-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Vista de</h2>
+                        <span>Tarjetas</span>
+                    </div>
+                </div>
+
+
+                @using (Html.BeginForm("ConsultCards", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Marca: @Html.TextBox("Marca", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                @using (Html.BeginForm("ConsultCardsM", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Monto: @Html.TextBox("Monto", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+                @using (Html.BeginForm("ConsultCardsF", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Fecha: @Html.TextBox("Fecha", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Marca")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Límite")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Monto")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Fecha activación")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Internacional")
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Marca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Límite)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Monto_extra)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_activación)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Internacional)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <br>
+
+                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+                    <br>
+
+                    @Html.PagedListPager(Model, page => Url.Action("ConsultCards",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    @Html.ActionLink("Regresar", "ConsultCards", "Tarjeta", new { @class = "btn btn-info" })
+    @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
+
+</div>

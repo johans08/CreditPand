@@ -95,14 +95,6 @@ namespace CreditPand.BD.Repositorios
         }
 
 
-
-
-
-
-
-
-
-
         //Método para aprobar, cuando la tarjeta no se realiza de manera directa
         int IGestorTarjeta.Aprobar(Solicitud pSolicitud, Tarjeta oTarjeta, int id,
             string Marca, int Límite, int Monto_extra, System.DateTime Fecha_activación, Boolean Internacional, int IdUsuario)
@@ -158,5 +150,6 @@ namespace CreditPand.BD.Repositorios
 
             return n;
         }
+
     }
 }

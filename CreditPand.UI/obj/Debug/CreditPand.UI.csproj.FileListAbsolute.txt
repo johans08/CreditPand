@@ -183,3 +183,11 @@ C:\CreditPand\CreditPand.UI\bin\CreditPand.BD.dll.config
 C:\CreditPand\CreditPand.UI\bin\EntityFramework.xml
 C:\CreditPand\CreditPand.UI\bin\EntityFramework.SqlServer.xml
 C:\CreditPand\CreditPand.UI\obj\Debug\CreditPand.UI.csproj.CopyComplete
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\PagedList.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\PagedList.Mvc.dll
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\PagedList.xml
+C:\Users\Loaiza\Source\Repos\CreditPand\CreditPand.UI\bin\PagedList.Mvc.xml
+C:\CreditPand\CreditPand.UI\bin\PagedList.dll
+C:\CreditPand\CreditPand.UI\bin\PagedList.Mvc.dll
+C:\CreditPand\CreditPand.UI\bin\PagedList.xml
+C:\CreditPand\CreditPand.UI\bin\PagedList.Mvc.xml

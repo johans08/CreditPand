@@ -8,6 +8,7 @@ using System.Windows;
 using CreditPand.BD.Interface;
 using CreditPand.BD.Modelo;
 using CreditPand.BD.Repositorios;
+using PagedList;
 
 namespace CreditPand.UI.Controllers
 {
@@ -39,7 +40,6 @@ namespace CreditPand.UI.Controllers
         public ActionResult InteresesConfigure(Interes objInteres)
         {
             int intereses = _oGestorTarjeta.ActualizarInteres(objInteres);
-            MessageBox.Show("Intereses cambiados");//Cambiar por el sweetalert
             return RedirectToAction("InteresesForm");
         }
 
@@ -128,108 +128,100 @@ namespace CreditPand.UI.Controllers
 
 
         //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
-        public ActionResult ConsultCards(DateTime? Fecha_activación = null, string Marca = null, int? Límite = null,string buscar=null)
+        public ActionResult ConsultCards(string sortOrder, string currentFilter, string Marca, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            /* int _TotalRegistros = 0;
-             int _TotalPaginas = 0;
-
-             // FILTRO DE BÚSQUEDA
-             using (_DbContext = new AppDbContext())
-             {
-                 // Recuperamos el 'DbSet' completo
-                 _Customers = _DbContext.Customers.ToList();
-
-                 // Filtramos el resultado por el 'texto de búqueda'
-                 if (!string.IsNullOrEmpty(buscar))
-                 {
-                     foreach (var item in buscar.Split(new char[] { ' ' },
-                              StringSplitOptions.RemoveEmptyEntries))
-                     {
-                         _Customers = _Customers.Where(x => x.ContactName.Contains(item) ||
-                                                       x.CompanyName.Contains(item) ||
-                                                       x.Email.Contains(item))
-                                                       .ToList();
-                     }
-                 }
-             }
-
-             // SISTEMA DE PAGINACIÓN
-             using (_DbContext = new AppDbContext())
-             {
-                 // Número total de registros de la tabla Customers
-                 _TotalRegistros = _Customers.Count();
-                 // Obtenemos la 'página de registros' de la tabla Customers
-                 _Customers = _Customers.OrderBy(x => x.ContactName)
-                                                  .Skip((pagina - 1) * _RegistrosPorPagina)
-                                                  .Take(_RegistrosPorPagina)
-                                                  .ToList();
-                 // Número total de páginas de la tabla Customers
-                 _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
-
-                 // Instanciamos la 'Clase de paginación' y asignamos los nuevos valores
-                 _PaginadorCustomers = new PaginadorGenerico<Customer>()
-                 {
-                     RegistrosPorPagina = _RegistrosPorPagina,
-                     TotalRegistros = _TotalRegistros,
-                     TotalPaginas = _TotalPaginas,
-                     PaginaActual = pagina,
-                     BusquedaActual = buscar,
-                     Resultado = _Customers
-                 };
-             }
-
-             // Enviamos a la Vista la 'Clase de paginación'
-             return View(_PaginadorCustomers);*/
-
-            /*  var tarjetas = _GestorTarjeta.ObtenerPaginaDePersonasFiltrada(page, PERSONAS_POR_PAGINA,
-                                     sort, sortDir, buscar, minHijos, maxHijos);
-            */
-
-            
-                IEnumerable<Tarjeta> Cards = _oGestorTarjeta.ListadoTarjetas();
-
-
-            return View(Cards);
-
-
-
-
-        }
-        
-
-        //Método para buscar en el Grid
-        public void Buscar(Tarjeta pTarjeta, DateTime? Fecha_activación = null, string Marca = null, int? Límite = null, string buscar = null)
-        {
-            using (CreditPandEntities ContextoBD = new CreditPandEntities()) //No debería ir acá, solamente el if
+            if (Marca != null)
             {
-                var bFecha = ContextoBD.Tarjeta.Where(a => a.Fecha_activación.Equals(pTarjeta.Fecha_activación)).ToList();
-                var bMarca = ContextoBD.Tarjeta.Where(a => a.Marca.Equals(pTarjeta.Marca)).ToList();
-                var bLimite = ContextoBD.Tarjeta.Where(a => a.Límite.Equals(pTarjeta.Límite)).ToList();
-
-
-
+                page = 1;
             }
+            else
+            {
+                Marca = currentFilter;
+            }
+            ViewBag.CurrentFilter = Marca;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Marca))
+            {
+                datos = datos.Where(s => s.Marca.Contains(Marca));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
+        public ActionResult ConsultCardsM(string sortOrder, string currentFilter, string Monto, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (Monto != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Monto = currentFilter;
+            }
+            ViewBag.CurrentFilter = Monto;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Monto))
+            {
+                datos = datos.Where(s => s.Monto_extra.ToString().Contains(Monto));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        //Muestra todas las tarjetas registradas que pueden analizar los clientes, PENDIENTE*****
+        public ActionResult ConsultCardsF(string sortOrder, string currentFilter, string Fecha, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (Fecha != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Fecha = currentFilter;
+            }
+            ViewBag.CurrentFilter = Fecha;
+
+            var datos = new ModelServices().ObtenerTarjeta();
+            if (!String.IsNullOrEmpty(Fecha))
+            {
+                datos = datos.Where(s => s.Fecha_activación.ToString().Contains(Fecha));
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(datos.ToPagedList(pageNumber, pageSize));
+
         }
 
 
 
+    
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        //Método que permite exportar la información de las tarjetas a Excel
-        public void DescargarExcel()
+    //Método que permite exportar la información de las tarjetas a Excel, CAMBIAR***
+    public void DescargarExcel()
         {
             List<Tarjeta> exceldata = new List<Tarjeta>();
             using (CreditPandEntities ContextoDB = new CreditPandEntities())
@@ -240,7 +232,6 @@ namespace CreditPand.UI.Controllers
             WebGrid webGrid = new WebGrid(source: exceldata, canPage: false, canSort: false);
             string gridData = webGrid.GetHtml(
             columns: webGrid.Columns(
-                            webGrid.Column(columnName: "Id", header: "ID"),
                             webGrid.Column(columnName: "Marca", header: "Marca"),
                             webGrid.Column(columnName: "Límite", header: "Límite"),
                             webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),

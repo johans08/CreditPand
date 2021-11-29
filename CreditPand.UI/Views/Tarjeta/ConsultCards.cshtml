@@ -1,100 +1,165 @@
-﻿@model IEnumerable<CreditPand.BD.Modelo.Tarjeta>
+﻿<!--model IEnumerable<CreditPand.BD.Modelo.Tarjeta>-->
+
+
 @{
     ViewBag.Title = "ConsultCards";
 }
+
+@model PagedList.IPagedList<CreditPand.BD.Modelo.Tarjeta>
+@using PagedList.Mvc;
+
+<!--<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />-->
+
 
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Consulta de Tarjetas Personales</h1>
-                <span>Listado de Tarjetas Personales</span>
+                <h1>Tarjetas</h1>
+                <span>Datos disponibles</span>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="single-services">
     <div class="container">
-        <div class="col-md-12">
-            <div class="section-heading">
-                <h2>Listado de <em>tarjeta</em></h2>
-                <span>Lista de tarjetas activas personales</span>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Vista de</h2>
+                        <span>Tarjetas</span>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm("ConsultCards", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Marca: @Html.TextBox("Marca", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <br>
+
+                @using (Html.BeginForm("ConsultCardsM", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Monto: @Html.TextBox("Monto", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <br>
+
+                @using (Html.BeginForm("ConsultCardsF", "Tarjeta", FormMethod.Get))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-form">
+                                    <div class="row">
+                                        <p>
+                                            Fecha: @Html.TextBox("Fecha", ViewBag.CurrentFilter as string)
+                                            <input type="submit" value="Buscar" class="btn-primary" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <br>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Marca")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Límite")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Monto")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Fecha activación")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Internacional")
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Marca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Límite)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Monto_extra)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_activación)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Internacional)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <br>
+
+                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+                    <br>
+
+                    @Html.PagedListPager(Model, page => Url.Action("ConsultCards",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+                </div>
             </div>
         </div>
-        @using (Html.BeginForm(null, null, FormMethod.Get))
-        {
-            <fieldset>
-                <legend>Criterios de búsqueda</legend>
-                @Html.Label("Fecha_activacion", "Fecha activación:")
-                @Html.TextBox("Fecha_activación")
-
-
-                @Html.Label("Marca", "Marca:")
-                <select name="Marca" id="marca">
-                    <option value="Visa">Visa</option>
-                    <option value="Mastercard">Mastercard</option>
-                </select>
-
-                @Html.Label("Límite", "Monto Límite:")
-                @Html.TextBox("Límite")
-
-                <!--<input type="submit" value="Buscar" />-->
-                @Html.ActionLink("Buscar", "ConsultCards", "Tarjeta", new { @class = "btn btn-secondary" })
-
-            </fieldset>
-        }
     </div>
-
-    <br>
-
-
-    @{
-
-        WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 2, sortFieldName:"Id");
-        //webGrid.Bind(source: Model, autoSortAndPage: false);
-    }
-
-    <!--Darle color verde a los títulos-->
-    <div class="container">
-
-
-        @webGrid.GetHtml(tableStyle: "table table-bordered table-stripe", htmlAttributes: new { id = "webGrid" },
-        columns: webGrid.Columns(
-            webGrid.Column(columnName: "Id", header: "ID"),
-            webGrid.Column(columnName: "Marca", header: "Marca"),
-            webGrid.Column(columnName: "Límite", header: "Límite"),
-            webGrid.Column(columnName: "Monto_extra", header: "Extrafinanciamiento"),
-            webGrid.Column(columnName: "Fecha_activación", header: "Fecha"),
-            webGrid.Column(columnName: "Internacional", header: "Internacional")
-
-            //webGrid.Column(header: "Modificar", Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
-            //webGrid.Column(header: "Eliminar", Html.ActionLink("Eliminar", "BorrarTarjeta", new { id = item.Id })) //Para usar en el mantenimiento de Clientes
-            //https://www.aspsnippets.com/Articles/Export-WebGrid-with-Formatting-to-Excel-file-in-ASPNet-MVC.aspx
-            //https://www.c-sharpcorner.com/blogs/export-webgrid-data-to-microsoft-excel-in-asp-net-mvc-5
-            //https://www.variablenotfound.com/2011/10/aspnet-mvc-webgrid-con-filtro.html
-
-
-            /*grid.Column(columnName: "Edit", format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.id })),
-                grid.Column(columnName: "Delete", format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.id }, new { onclick = "return confirm('Are you sure you want to delete this record?');" }))
-                }
-            
-            @Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id })
-            */
-            )
-        )
-
-        <!--Response.ContentType = "application/excel";
-        Response.Write(webGrid);
-        Response.End();-->
-
-    </div>
-
-    <div class="container">
-        @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
-
-    </div>
-    <br><br><br><br><br>
 </div>
 
-    
+<br>
+
+<div class="container">
+    @Html.ActionLink("Regresar", "ConsultCards", "Tarjeta", new { @class = "btn btn-info" })
+    @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
+
+</div>
+
+                        

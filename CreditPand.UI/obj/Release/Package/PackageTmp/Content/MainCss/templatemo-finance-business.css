@@ -387,7 +387,8 @@ header .navbar {
 }
 
 .Modern-Slider .item-1 .img-fill {
-	background-image: url(../images/slide_01.jpg);
+	/*background-image: url(../images/slide_01.jpg);*/
+	background-image: url(~/Content/Images/slide_01.jpg);
 }
 
 .Modern-Slider .item-2 .img-fill {
@@ -779,6 +780,43 @@ ul.slick-dots {
 	margin-bottom: 35px;
 }
 
+	.callback-form .contact-form select {
+		width: 100%;
+		height: calc(2.25rem+2px);
+		padding: 0.375rem 0.75rem;
+		font-size: 1rem;
+		line-height: 1.5;
+		color: #495057;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #ced4da;
+		border-radius: 3.2rem;
+		font-family: 'Poppins', sans-serif;
+		transition: border-color 0.15s ease-in-out, box-shadow 0.15s, ease-in-out;
+	}
+
+	.callback-form .contact-form option {
+		width: 100%;
+		height: calc(2.25rem+2px);
+		padding: 0.375rem 0.75rem;
+		font-size: 1rem;
+		line-height: 1.5;
+		color: #495057;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #ced4da;
+		border-radius: 3.0rem;
+		font-family: 'Poppins', sans-serif;
+		transition: border-color 0.15s ease-in-out, box-shadow 0.15s, ease-in-out;
+	}
+
+	.callback-form .contact-form select:focus {
+		outline: none;
+		box-shadow: none;
+		border: none;
+	}
+
+
 .callback-form .contact-form input:focus {
 	outline: none;
 	box-shadow: none;
@@ -966,6 +1004,37 @@ footer .contact-form input {
 	border: none;
 	margin-bottom: 15px;
 }
+
+	footer .contact-form select {
+		border-radius: 20px;
+		height: 40px;
+		line-height: 40px;
+		display: inline-block;
+		padding: 0px 15px;
+		color: #aaa !important;
+		background-color: #343434;
+		font-size: 13px;
+		text-transform: none;
+		box-shadow: none;
+		border: none;
+		margin-bottom: 15px;
+	}
+
+	footer .contact-form option {
+		border-radius: 20px;
+		height: 40px;
+		line-height: 40px;
+		display: inline-block;
+		padding: 0px 15px;
+		color: #aaa !important;
+		background-color: #343434;
+		font-size: 13px;
+		text-transform: none;
+		box-shadow: none;
+		border: none;
+		margin-bottom: 15px;
+	}
+
 
 footer .contact-form input:focus {
 	outline: none;
