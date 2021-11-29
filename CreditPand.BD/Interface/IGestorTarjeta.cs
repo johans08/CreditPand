@@ -25,5 +25,7 @@ namespace CreditPand.BD.Interface
                 string Marca, int Límite, int Monto_extra, System.DateTime 
                 Fecha_activación, Boolean Internacional, int IdUsuario);
 
+            
+
     }
 }

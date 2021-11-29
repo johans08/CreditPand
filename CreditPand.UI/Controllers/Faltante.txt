@@ -1,10 +1,10 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
 VALE % DEL PROYECTO
-2- Consulta de Tarjetas Activas: faltan los filtros de búsqueda
-El cliente solo puede sacar una tarjeta y por ende solo podría ver una tarjeta, Ahorita puede ver todas las tarjetas de todos los clientes.
-PARA LOS FILTROS
-https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
+2- Funciona pero solo puede buscar un parametro, y se tienen que tener 3 vistas y 3 actions
+El cliente solo puede sacar una tarjeta y por ende solo podría ver una tarjeta, 
+Ahorita puede ver todas las tarjetas de todos los clientes.
+
 
 Update Client: Rol, required, que no cambie el rol al hacer update
 -----------------------------------------------------------------------------------------

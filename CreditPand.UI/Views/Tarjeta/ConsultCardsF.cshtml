@@ -22,7 +22,6 @@
     </div>
 </div>
 
-
 <div class="single-services">
     <div class="container">
         <div class="row">
@@ -34,6 +33,7 @@
                     </div>
                 </div>
 
+
                 @using (Html.BeginForm("ConsultCards", "Tarjeta", FormMethod.Get))
                 {
                     <div class="container">
@@ -43,16 +43,15 @@
                                     <div class="row">
                                         <p>
                                             Marca: @Html.TextBox("Marca", ViewBag.CurrentFilter as string)
-                                            <input type="submit" value="Buscar" class="btn-primary"/>
+                                            <input type="submit" value="Buscar" class="btn-primary" />
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
 
-                <br>
+                }
 
                 @using (Html.BeginForm("ConsultCardsM", "Tarjeta", FormMethod.Get))
                 {
@@ -63,7 +62,7 @@
                                     <div class="row">
                                         <p>
                                             Monto: @Html.TextBox("Monto", ViewBag.CurrentFilter as string)
-                                            <input type="submit" value="Buscar" class="btn-primary"/>
+                                            <input type="submit" value="Buscar" class="btn-primary" />
                                         </p>
                                     </div>
                                 </div>
@@ -72,7 +71,6 @@
                     </div>
                 }
 
-                <br>
 
                 @using (Html.BeginForm("ConsultCardsF", "Tarjeta", FormMethod.Get))
                 {
@@ -92,7 +90,6 @@
                     </div>
                 }
 
-                <br>
 
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
@@ -112,6 +109,7 @@
                             <th>
                                 @Html.DisplayName("Internacional")
                             </th>
+                            <th></th>
                         </tr>
 
                         @foreach (var item in Model)
@@ -146,8 +144,6 @@
                     @Html.PagedListPager(Model, page => Url.Action("ConsultCards",
                         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-
-
                 </div>
             </div>
         </div>
@@ -161,5 +157,3 @@
     @Html.ActionLink("Exportar a Excel", "DescargarExcel", "Tarjeta", new { @class = "btn btn-success" })
 
 </div>
-
-                        
