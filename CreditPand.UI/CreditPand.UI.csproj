@@ -257,7 +257,6 @@
     <Content Include="Views\Tarjeta\InteresesForm.cshtml" />
     <Content Include="Views\Tarjeta\AprobarForm.cshtml" />
     <Content Include="Views\Usuario\AdminProfile.cshtml" />
-    <Content Include="Views\Tarjeta\TarjetaGrid.cshtml" />
     <Content Include="Views\Tarjeta\ConsultCards.cshtml" />
     <Content Include="Views\Tarjeta\ConsultCardsM.cshtml" />
     <Content Include="Views\Tarjeta\ConsultCardsF.cshtml" />
