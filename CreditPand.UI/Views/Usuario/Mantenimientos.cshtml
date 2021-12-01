@@ -92,20 +92,24 @@
                                     @Html.DisplayFor(modelItem => item.Rol)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Modificar", "EditarUserForm", new { Id = item.Ide }) |
-                                    @Html.ActionLink("Eliminar", "BorrarUsuario", new { Username = item.Username }, new { id = "btn-Delete" }) |
-                                    @Html.ActionLink("Asignar Rol", "Roles", new { Id = item.Ide })
+                                    @Html.ActionLink("Modificar", "EditarUserForm", new { Id = item.Ide }, new { @class = "btn btn-info" })
+                                    <br><br>
+                                    @Html.ActionLink("Eliminar", "BorrarUsuario",  new { Username = item.Username }, new { @class = "btn btn-info", @id = "btn-Delete"} )
+                                    <br><br>
+                                    @Html.ActionLink("Asignar Rol", "Roles", new { Id = item.Ide }, new { @class = "btn btn-info" })
                                 </td>
                             </tr>
                         }
 
-                 
+
 
                     </table>
 
                 </div>
-
-                @Html.ActionLink("Registrar Usuario", "Register", "Usuario", new { @class = "btn btn-secondary" })
+                <div class="container">
+                    @Html.ActionLink("Registrar Usuario", "Register", "Usuario", new { @class = "btn btn-info" })
+                </div>
+                <br><br><br><br>
             </div>
         </div>
     </div>

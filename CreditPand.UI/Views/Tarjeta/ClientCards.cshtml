@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="IdUsuario" type="number" class="form-control" id="id_user" placeholder="IdUsuario" required=""> 
+                                            <input name="IdUsuario" type="number" class="form-control" id="id_user" placeholder=@HttpContext.Current.Session["Ide"].ToString() required="" value=@HttpContext.Current.Session["Ide"].ToString() readonly> 
                                         </fieldset>
                                     </div>
 

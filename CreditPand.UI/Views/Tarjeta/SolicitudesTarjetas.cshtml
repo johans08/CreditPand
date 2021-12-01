@@ -80,8 +80,9 @@
                                     @Html.DisplayFor(modelItem => item.IdUsuario)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Aprobar", "AprobarForm", new { id = item.Id }) |
-                                    @Html.ActionLink("Denegar", "BorrarSolicitud", new { id = item.Id })
+                                    @Html.ActionLink("Aprobar", "AprobarForm", new { id = item.Id }, new { @class = "btn btn-info" })
+                                    <br><br>
+                                    @Html.ActionLink("Denegar", "BorrarSolicitud", new { id = item.Id }, new { @class = "btn btn-info" })
                                 </td>
                             </tr>
                         }

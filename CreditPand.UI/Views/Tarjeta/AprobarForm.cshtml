@@ -9,54 +9,63 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Seguro de que desea aprobar la solicitud?</h1>
+                <h1>Aprobar Solicitud</h1>
                 <span>Revise los datos detenidamente antes de aprobarla</span>
             </div>
         </div>
     </div>
 </div>
 
-<br>
-
 @using (Html.BeginForm("AprobarSolicitud", "Tarjeta", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
+    <div class="single-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>Aprobar <em>Solicitud</em></h2>
+                            <span>
+                            Seguro que quieres aprobar la solicitud?</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="row">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="contact-form">
-                    <div class="row">
+                            @Html.AntiForgeryToken()
+
+
+
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.HiddenFor(model => model.Id)
 
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
-                            <br>
-                        </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+                                <br>
+                            </div>
 
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            @Html.LabelFor(model => model.Límite, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Límite, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Límite, "", new { @class = "text-danger" })
-                            <br>
-                        </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                @Html.LabelFor(model => model.Límite, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Límite, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Límite, "", new { @class = "text-danger" })
+                                <br>
+                            </div>
 
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            @Html.LabelFor(model => model.Monto_extra, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Monto_extra, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Monto_extra, "", new { @class = "text-danger" })
-                            <br>
-                        </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                @Html.LabelFor(model => model.Monto_extra, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Monto_extra, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Monto_extra, "", new { @class = "text-danger" })
+                                <br>
+                            </div>
 
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            @Html.LabelFor(model => model.Fecha_activación, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Fecha_activación, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Fecha_activación, "", new { @class = "text-danger" })
-                            <br>
-                        </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                @Html.LabelFor(model => model.Fecha_activación, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Fecha_activación, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fecha_activación, "", new { @class = "text-danger" })
+                                <br>
+                            </div>
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 @Html.LabelFor(model => model.Internacional, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -76,14 +85,15 @@
 
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <input type="submit" id="btn-Aprobar" value="Aprobar" class="btn btn-info" />
-                                @Html.ActionLink("Regresar", "SolicitudesTarjetas", new { @class = "btn btn-success" })
+                                @Html.ActionLink("Regresar", "SolicitudesTarjetas", new { @class = "btn btn-danger" })
                                 <br>
                             </div>
-
-                     </div>
+                           
+                        </div>
+                    </div>
+                    <br><br><br><br>
                 </div>
             </div>
         </div>
     </div>
 }
-

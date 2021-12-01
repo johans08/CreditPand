@@ -78,9 +78,11 @@
                                     @Html.DisplayFor(modelItem => item.IdUsuario)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id }) |
-                                    @Html.ActionLink("Eliminar", "BorrarTarjeta", new { id = item.Id }) |
-                                    @Html.ActionLink("Bloquear", "f", new { id = item.Id })
+                                    @Html.ActionLink("Modificar Tarjeta", "EditarTarjetaForm", new { id = item.Id }, new { @class = "btn btn-info"})
+                                    <br><br>
+                                    @Html.ActionLink("Eliminar", "BorrarTarjeta", new { id = item.Id }, new { @class = "btn btn-info" })
+                                    <br><br>
+                                    @Html.ActionLink("Bloquear", "f", new { id = item.Id }, new { @class = "btn btn-info" })
 
                                 </td>
                             </tr>
@@ -89,8 +91,8 @@
                 </div>
 
 
-                @Html.ActionLink("Solicitar Tarjeta", "ClientCards", "Tarjeta", new { @class = "btn btn-secondary" }) <!--Arreglar así los demás botones-->
-
+                @Html.ActionLink("Solicitar Tarjeta", "ClientCards", "Tarjeta", new { @class = "btn btn-danger" }) <!--Arreglar así los demás botones-->
+                <br><br><br>
             </div>
         </div>
     </div>
