@@ -84,6 +84,7 @@ namespace CreditPand.UI.Controllers
                         Session["Telefono"] = data.FirstOrDefault().Telefono;
                         Session["Email"] = data.FirstOrDefault().Email;
                         Session["Pass"] = data.FirstOrDefault().Pass;
+                        Session["Rol"] = data.FirstOrDefault().Rol;
 
                         return RedirectToAction("Index", "Home");
 
@@ -101,6 +102,7 @@ namespace CreditPand.UI.Controllers
                         Session["Telefono"] = data.FirstOrDefault().Telefono;
                         Session["Email"] = data.FirstOrDefault().Email;
                         Session["Pass"] = data.FirstOrDefault().Pass;
+                        Session["Rol"] = data.FirstOrDefault().Rol;
 
 
                         return RedirectToAction("Index", "Home");

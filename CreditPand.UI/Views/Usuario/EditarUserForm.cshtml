@@ -101,12 +101,27 @@
                                             @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <!--Html.DropDownListFor(model => model.Rol, new SelectList(Model.Rol1.ToString()) , htmlAttributes: new { class = "control-label col-md-2" })-->
 
-                                            <select name="Rol" id="rol" class="form-control">
-                                                <option class="form-control" value="">Seleccione</option>
+                                            @{
+                                                var Rol = (Int32)Session["Rol"];
+                                            }
+                                            @if (Session["Username"] != null)
+                                            {
+                                                <select name="Rol" id="rol" class="form-control" required>
+                                                    <option class="form-control" value=@Rol>Seleccione</option>
+                                                    <option name="Rol" class="form-control" value="1">Cliente</option>
+                                                    <option name="Rol" class="form-control" value="2">Administrador</option>
+                                                </select>
+                                                @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+                                            }else if (Session["Admin"] != null)
+                                            {
+                                            <select name="Rol" id="rol" class="form-control" required>
+                                                <option class="form-control" value=@Rol>Seleccione</option>
                                                 <option name="Rol" class="form-control" value="1">Cliente</option>
                                                 <option name="Rol" class="form-control" value="2">Administrador</option>
                                             </select>
                                             @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+                                            }
+
                                             <br>
                                             <br>
                                         </div>
