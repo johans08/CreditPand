@@ -1,18 +1,16 @@
 ﻿Faltantes del Proyecto
 -----------------------------------------------------------------------------------------
+
 VALE % DEL PROYECTO
 2- Funciona pero solo puede buscar un parametro, y se tienen que tener 3 vistas y 3 actions
 El cliente solo puede sacar una tarjeta y por ende solo podría ver una tarjeta, 
 Ahorita puede ver todas las tarjetas de todos los clientes.
 
-
-Update Client: Rol, required, que no cambie el rol al hacer update
 -----------------------------------------------------------------------------------------
 
 
 EXTRAS
 -----------------------------------------------------------------------------------------
-1- Tarjeta de Crédito: La tabla de Interes no tiene relación con ninguna.
 
 3- CRUD: Paginacion, Ordenar por id
 Rol (Default o 0 no definido)??
@@ -21,13 +19,19 @@ Cambiar las validaciones al modelo: required, pattern, maxlenght
 Colocar Post y Get sobre el action
 Pantallas para el mantenimiento de roles e intereses
 
-4- Perfil de Usuario: con Session no se va a poder actualizar datos, separar de Login
-5- Verificar que todo sea responsive: Barra de opciones
 6- Falta solo Gráfica 1*******
+
+
+
+************************************************************************************************
+
 
 7- SweetAlert: en los mantenimientos no esperar al click de ok, revisar***
 --Login: falta if para que solo se muestre cuando si sean incorrectos. 
 --Delete de Cliente, Tarjeta o Solicitud, No funciona en el actionlink
+
+
+*************************************************************************************************
 
 Mensajes por si datos se repiten y no se pueden actualizar, o si el usuario se repite y da error, lo mismo para tarjeta
 Mensaje si el id de usuario no existe y no se puede procesar la solicitud o si el cliente ya tiene tarjeta
